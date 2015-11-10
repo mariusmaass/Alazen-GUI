@@ -1,0 +1,33 @@
+{
+  "name": "package",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run js && npm run html && npm run css",
+    "clean": "rm -rf dist/*",
+    "html": "mkdir -p dist && cp src/index.html dist/",
+    "css": "mkdir -p dist/css && sass src/css/app.scss > dist/css/bundle.css",
+    "js": "jspm bundle-sfx app.js dist/js/bundle.js",
+    "postinstall": "jspm install",
+    "server": "mkdir -p dist && http-server -p 8000 dist",
+    "start": "npm run server & npm run watch",
+    "watch": "npm run clean && npm run build && onchange src -- npm run build"
+  },
+  "jspm": {
+    "dependencies": {
+      "react": "npm:react@^0.14.2",
+      "react-dom": "npm:react-dom@^0.14.2"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0"
+    }
+  },
+  "devDependencies": {
+    "http-server": "^0.8.5",
+    "onchange": "^2.0.0",
+    "watch": "^0.16.0"
+  }
+}
