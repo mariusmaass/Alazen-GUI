@@ -16,6 +16,8 @@ https://nodejs.org/en/download/
 
 http://sass-lang.com/install
 
+This requires an installed version of Ruby 2.x
+
 ## 4) Install Other Dependencies
 
     $ npm install
