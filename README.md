@@ -42,6 +42,11 @@ Install jshint integration for your editor:
 
 http://jshint.com/install/
 
+# Git Conventions
+
+- Main development on `develop` branch
+- More TBD
+
 # Documentation Links
 ## Frontend
 
