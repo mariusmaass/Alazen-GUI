@@ -1,5 +1,9 @@
 # Setup
 
+## 0) Clone this Project
+
+   $ git clone git@github.com:hu-semesterprojekt-genombrowser/Alazen-GUI.git
+
 ## 1) Install Node
 
 https://nodejs.org/en/download/
