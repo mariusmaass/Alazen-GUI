@@ -20,6 +20,8 @@ This requires an installed version of Ruby 2.x
 
 ## 4) Install Other Dependencies
 
+In the project directory, run:
+
     $ npm install
 
 (This will also trigger `jspm install`)
