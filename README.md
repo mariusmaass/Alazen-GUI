@@ -2,7 +2,7 @@
 
 ## 0) Clone this Project
 
-   $ git clone git@github.com:hu-semesterprojekt-genombrowser/Alazen-GUI.git
+    $ git clone git@github.com:hu-semesterprojekt-genombrowser/Alazen-GUI.git
 
 ## 1) Install Node
 
@@ -27,6 +27,16 @@ http://sass-lang.com/install
     $ npm start
 
 This will start a local webserver on http://127.0.0.1:8000
+
+## Optional 6)
+
+Install jshint:
+
+    $ sudo npm install -g jshint
+
+Install jshint integration for your editor:
+
+http://jshint.com/install/
 
 # Documentation Links
 ## Frontend
