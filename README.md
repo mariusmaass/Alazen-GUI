@@ -51,6 +51,7 @@ http://jshint.com/install/
 # Documentation Links
 ## Frontend
 
+- JavaScript https://github.com/getify/You-Dont-Know-JS/
 - React Docs: https://facebook.github.io/react/docs/getting-started.html
 - React Style Guide: https://github.com/Khan/style-guides/blob/master/style/react.md
 - Bootstrap Docs: http://getbootstrap.com/
