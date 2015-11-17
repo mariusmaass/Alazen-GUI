@@ -68,3 +68,7 @@ http://jshint.com/install/
 - Code reloading sometimes takes some seconds
 - Transpile errors sometimes hard to spot in terminal
 - To kill old server ("port already taken") do `killall node`
+
+## Everytime a dependency is added to `package.json`
+
+When someone adds a new package, everyone has to run `jspm install` in the project directory to fetch the new packages (= JSPM will download them to the `jspm_modules` folder).
