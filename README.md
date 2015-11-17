@@ -46,7 +46,7 @@ http://jshint.com/install/
 
 - Main development on `develop` branch
 - More TBD
-- https://de.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
+- Gitflow for small Features https://de.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 
 # Documentation Links
 ## Frontend
