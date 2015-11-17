@@ -18,6 +18,7 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
+    "bootstrap": "github:twbs/bootstrap-sass@3.3.5",
     "core-js": "npm:core-js@1.2.5",
     "jshint": "npm:jshint@2.8.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",

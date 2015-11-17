@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 
 var renderHelloWorld = function(){
   ReactDOM.render(
-    <marquee>Reeeeact Component</marquee>,
+    <button className="btn btn-success">Reeeeact Component</button>,
     document.getElementById('blubb')
   );
 }
