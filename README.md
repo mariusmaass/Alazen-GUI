@@ -51,14 +51,16 @@ http://jshint.com/install/
 # Documentation Links
 ## Frontend
 
-- https://facebook.github.io/react/docs/getting-started.html
+- React Docs: https://facebook.github.io/react/docs/getting-started.html
+- React Style Guide: https://github.com/Khan/style-guides/blob/master/style/react.md
+- Bootstrap Docs: http://getbootstrap.com/
 
 ## Tooling
 
-- https://babeljs.io
-- https://github.com/systemjs/systemjs
-- http://jspm.io
-- https://docs.npmjs.com
+- Babel: https://babeljs.io
+- System.js: https://github.com/systemjs/systemjs
+- JSPM: http://jspm.io
+- NPM: https://docs.npmjs.com
 
 # Remarks / things to watch out for
 
