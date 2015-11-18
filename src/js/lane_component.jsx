@@ -1,14 +1,6 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-var data = [{id: 1, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 2, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 3, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 4, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 5, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"}
-            ];
 
 var Lane = React.createClass({
   //functions?
@@ -33,6 +25,4 @@ var Lane = React.createClass({
   }
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-  ReactDOM.render(<Lane data={data}/>, document.getElementById("lane_component"));
-})
+export default Lane;
