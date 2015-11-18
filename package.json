@@ -9,7 +9,7 @@
     "css": "mkdir -p dist/css && sass -I jspm_packages/github/twbs/bootstrap-sass@3.3.5/assets/stylesheets src/css/app.scss > dist/css/bundle.css",
     "js": "jspm bundle-sfx app.js dist/js/bundle.js",
     "postinstall": "jspm install",
-    "server": "kill $(ps aux | grep '[h]ttp-server' | awk '{print $2}') 2>/dev/null; mkdir -p dist && http-server -o -p 8000 dist",
+    "server": "mkdir -p dist && http-server -o -p 8000 dist",
     "start": "npm run server & npm run watch",
     "watch": "npm run clean && npm run build && onchange src -- npm run build"
   },
