@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Lane from 'lane_component.jsx!';
+import Lane from 'components/lane_component.jsx!';
 
 // - - -
 
