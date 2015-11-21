@@ -16,6 +16,7 @@
   "jspm": {
     "dependencies": {
       "bootstrap": "github:twbs/bootstrap-sass@^3.3.5",
+      "jquery": "npm:jquery@^2.1.4",
       "rc-slider": "npm:rc-slider@^3.0.1",
       "react": "npm:react@^0.14.2",
       "react-dom": "npm:react-dom@^0.14.2"
