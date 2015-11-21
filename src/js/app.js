@@ -3,6 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import dataProvider from 'backend/data_provider';
+
 import Lane from 'components/lane_component.jsx!';
 import Slider from 'rc-slider';
 

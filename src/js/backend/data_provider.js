@@ -1,3 +1,7 @@
+'use strict';
+
+import $ from 'jquery';
+
 //var refGen = require("../../../test/json/dummyRefGen.json");
 //
 //console.log("refseq: " + refGen.refseq + "\n" + "begin: " + refGen.begin + "\n" + "end: " + refGen.end + "\n");
@@ -13,13 +17,18 @@ function sendRequest() {
      data: {},
      dataType: "json",
      success: function(data){
-    	 console.log(JSON.stringify(data));
+       console.log(JSON.stringify(data));
      },
-     error: function(){
-       alert("Error:");
+     error: function(e){
+       console.log("Error:", e);
      }
   });
 }
 
+var dataProvider = {
+  fetchData: function(){
+    return sendRequest();
+  }
+}
 
-
+export default dataProvider;
