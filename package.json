@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npm run js && npm run html && npm run css",
+    "build": "npm run js && npm run static && npm run css",
     "clean": "rm -rf dist/*",
-    "html": "mkdir -p dist && cp src/index.html dist/",
+    "static": "mkdir -p dist && cp src/index.html dist/ && cp -R src/static/* dist/",
     "css": "mkdir -p dist/css && sass -I jspm_packages/github/twbs/bootstrap-sass@3.3.5/assets/stylesheets src/css/app.scss > dist/css/bundle.css",
     "js": "jspm bundle-sfx app.js dist/js/bundle.js",
     "postinstall": "jspm install",
-    "server": "mkdir -p dist && http-server -p 8000 dist",
+    "server": "mkdir -p dist && http-server -o -p 8000 dist",
     "start": "npm run server & npm run watch",
     "watch": "npm run clean && npm run build && onchange src -- npm run build"
   },

@@ -1,9 +1,23 @@
 'use strict';
 
 import React from 'react';
-import 'other_file';
-import 'react_component.jsx!';
+import ReactDOM from 'react-dom';
 
-let testES6 = 'working';
-console.log('it is', testES6);
+import Lane from 'components/lane_component.jsx!';
 
+// - - -
+
+var data = [{id: 1, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
+            {id: 2, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
+            {id: 3, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
+            {id: 4, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
+            {id: 5, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"}
+            ];
+
+// - - -
+
+document.addEventListener('DOMContentLoaded', function(){
+  ReactDOM.render(React.createElement(Lane, {
+    data: data
+  }), document.getElementById("lane_component"));
+});
