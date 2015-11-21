@@ -40,4 +40,6 @@ document.addEventListener('DOMContentLoaded', function(){
 document.addEventListener('DOMContentLoaded', function(){
   ReactDOM.render(React.createElement(SearchField),
   document.getElementById("searchfield_component"));
+  dataProvider.fetchReferenceGenome();
+  dataProvider.fetchMutations();
 });

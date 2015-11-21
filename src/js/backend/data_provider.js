@@ -2,18 +2,13 @@
 
 import $ from 'jquery';
 
-//var refGen = require("../../../test/json/dummyRefGen.json");
-//
-//console.log("refseq: " + refGen.refseq + "\n" + "begin: " + refGen.begin + "\n" + "end: " + refGen.end + "\n");
-//
-//var mutations = require("../../../test/json/dummyMutations.json");
-//
-//console.log("source: " + mutations.source + "\n" + "begin: " + mutations.begin + "\n" + "end: " + mutations.end + "\n" + "mutations: " + mutations.mutations[0].name);
+var refGenUrl = "/test/dummyRefGen.json";
+var mutationsUrl = "/test/dummyMutations.json";
 
-function sendRequest() {
+function fetchData(url) {
  $.ajax({
      type: "GET",
-     url: "/test/dummyRefGen.json",
+     url: url,
      data: {},
      dataType: "json",
      success: function(data){
@@ -26,8 +21,13 @@ function sendRequest() {
 }
 
 var dataProvider = {
-  fetchData: function(){
-    return sendRequest();
+  
+  fetchReferenceGenome: function() {
+    return fetchData(refGenUrl);
+  },
+  
+  fetchMutations: function() {
+    return fetchData(mutationsUrl);
   }
 }
 
