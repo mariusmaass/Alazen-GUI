@@ -13,7 +13,7 @@ import $ from 'jquery';
 function sendRequest() {
  $.ajax({
      type: "GET",
-     url: "dummyRefGen.json",
+     url: "/test/dummyRefGen.json",
      data: {},
      dataType: "json",
      success: function(data){
