@@ -11,6 +11,7 @@
     "postinstall": "jspm install",
     "server": "mkdir -p dist && http-server -p 8000 dist",
     "start": "npm run server & npm run watch",
+    "test": "rm -f spec/compiled.js && jspm bundle-sfx spec.js src/js/spec/compiled.js --skip-source-maps && karma start",
     "watch": "npm run clean && npm run build && onchange src -- npm run build"
   },
   "jspm": {
@@ -31,6 +32,11 @@
   },
   "devDependencies": {
     "http-server": "^0.8.5",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.6",
     "onchange": "^2.0.0",
     "watch": "^0.16.0"
   }
