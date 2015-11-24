@@ -2,23 +2,31 @@
 
 import React from 'react';
 
-var Lane = React.createClass({
-  //functions?
-  parseSeq: function(seq){
+import LaneFragment from './lane_fragment.jsx!';
 
-    return seq[1].text.slice(0,5)+"#"+seq[1].text.slice(6,22)+"#"+seq[1].text.slice(23);
+
+var Lane = React.createClass({
+  getInitialState: function() {
+    return {testseq: this.props.data};
   },
+
+  setLane: function() {
+    return this.state.testseq.map(function(seq){
+      var color;
+      if(seq.mutation){
+        color = "red";
+      }else{
+        color = "green";
+      }
+      return <LaneFragment sequence={seq.sequence} color={color} />
+    })
+  },
+
   render: function() {
     return (
       <div className="lane">
         <p>
-          {this.props.data.map(function(row){
-              console.log(row.text.length);
-              return row.text;
-            })}
-        </p>
-        <p>
-          {this.parseSeq(this.props.data)}
+          {this.setLane()}
         </p>
       </div>
     );
