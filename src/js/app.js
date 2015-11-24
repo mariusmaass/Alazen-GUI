@@ -40,12 +40,10 @@ document.addEventListener('DOMContentLoaded', function(){
 document.addEventListener('DOMContentLoaded', function(){
   ReactDOM.render(React.createElement(SearchField),
   document.getElementById("searchfield_component"));
-
-  dataProvider.fetchReferenceGenome();
-  dataProvider.fetchMutations();
-  var searchReference = "TGACTGACTG";
-  var source = "Elefant";
-  var position = dataProvider.searchFor(searchReference, source);
-  console.log(searchReference + " has been found in source: " + source + " at following postion: " + position.begin + " " + position.end);
-
 });
+
+var searchReference = "TGACTGACTG";
+var source = "Elefant";
+var position = dataProvider.searchFor(searchReference, source);
+console.log(searchReference + " has been found in source: " + source + " at following postion: " + position.begin + " " + position.end);
+
