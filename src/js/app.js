@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
     React.createElement(Lane, {
       data: testjson
     }),
-    document.getElementById("lane_component")
+    document.getElementById("lane")
   );
 
   ReactDOM.render(
