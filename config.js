@@ -23,7 +23,7 @@ System.config({
     "jquery": "npm:jquery@2.1.4",
     "jshint": "npm:jshint@2.8.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
-    "rc-slider": "npm:rc-slider@3.0.1",
+    "rc-slider": "npm:rc-slider@3.1.2",
     "react": "npm:react@0.14.2",
     "react-dom": "npm:react-dom@0.14.2",
     "github:floatdrop/plugin-jsx@1.1.0": {
@@ -429,6 +429,11 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "source-map": "npm:source-map@0.1.31"
     },
+    "npm:lodash.keys@3.1.2": {
+      "lodash._getnative": "npm:lodash._getnative@3.9.1",
+      "lodash.isarguments": "npm:lodash.isarguments@3.0.4",
+      "lodash.isarray": "npm:lodash.isarray@3.0.4"
+    },
     "npm:lodash@3.7.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -521,14 +526,14 @@ System.config({
     },
     "npm:rc-align@2.2.0": {
       "dom-align": "npm:dom-align@1.3.0",
-      "rc-util": "npm:rc-util@3.0.1"
+      "rc-util": "npm:rc-util@3.1.2"
     },
     "npm:rc-animate@2.0.2": {
       "css-animation": "npm:css-animation@1.1.1"
     },
-    "npm:rc-slider@3.0.1": {
+    "npm:rc-slider@3.1.2": {
       "rc-tooltip": "npm:rc-tooltip@3.2.0",
-      "rc-util": "npm:rc-util@3.0.1"
+      "rc-util": "npm:rc-util@3.1.2"
     },
     "npm:rc-tooltip@3.2.0": {
       "rc-trigger": "npm:rc-trigger@1.0.6"
@@ -537,11 +542,13 @@ System.config({
       "object-assign": "npm:object-assign@4.0.1",
       "rc-align": "npm:rc-align@2.2.0",
       "rc-animate": "npm:rc-animate@2.0.2",
-      "rc-util": "npm:rc-util@3.0.1"
+      "rc-util": "npm:rc-util@3.1.2"
     },
-    "npm:rc-util@3.0.1": {
+    "npm:rc-util@3.1.2": {
       "add-dom-event-listener": "npm:add-dom-event-listener@1.0.1",
-      "classnames": "npm:classnames@2.2.0"
+      "classnames": "npm:classnames@2.2.0",
+      "shallowequal": "npm:shallowequal@0.2.2",
+      "util-deprecate": "npm:util-deprecate@1.0.2"
     },
     "npm:react-dom@0.14.2": {
       "react": "npm:react@0.14.2"
@@ -586,6 +593,9 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:shallowequal@0.2.2": {
+      "lodash.keys": "npm:lodash.keys@3.1.2"
     },
     "npm:shelljs@0.3.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -632,6 +642,9 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "punycode": "npm:punycode@1.3.2",
       "querystring": "npm:querystring@0.2.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:util-deprecate@1.0.2": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:util@0.10.3": {
