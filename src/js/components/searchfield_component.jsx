@@ -20,17 +20,18 @@ var SearchField = React.createClass({
 	},
 
 	handleSearchSubmit: function(searchdata) {
+
+		console.log(searchdata.inputSearch);
+
 	    var data = new FormData();
 	    data.append('inputSearch', searchdata.inputSearch);
 	    
 	    var submitUrl = 'http://127.0.0.1:8000/';
-	    console.log(submitUrl);
-
-	    var xhr = new XMLHttpRequest();
-	    console.log(xhr);
-	    xhr.open('post', submitUrl, true);
 	    
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('post', submitUrl, true);
 	    xhr.send(data);
+	    
 	},
 
 	render: function() {
