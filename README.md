@@ -54,6 +54,7 @@ Run:
     $ npm test
 
 # Documentation Links
+
 ## Frontend
 
 - JavaScript https://github.com/getify/You-Dont-Know-JS/
@@ -61,8 +62,15 @@ Run:
 - React Style Guide: https://github.com/Khan/style-guides/blob/master/style/react.md
 - Bootstrap Docs: http://getbootstrap.com/
 
+## Testing
+
+- Jasmine Docs: http://jasmine.github.io/2.3/introduction.html
+- Jasmine Cheatsheet: http://www.cheatography.com/citguy/cheat-sheets/jasmine-js-testing/
+- Karma Docs: http://karma-runner.github.io
+
 ## Tooling
 
+- ES6 Module System: https://github.com/systemjs/systemjs/blob/master/docs/es6-modules-overview.md
 - Babel: https://babeljs.io
 - System.js: https://github.com/systemjs/systemjs
 - JSPM: http://jspm.io
