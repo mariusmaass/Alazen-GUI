@@ -9,14 +9,6 @@ import Slider from 'rc-slider';
 import SearchField from 'components/searchfield_component.jsx!';
 
 // - - -
-
-var data = [{id: 1, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 2, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 3, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 4, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"},
-            {id: 5, text: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC"}
-            ];
-
 var testjson = [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
                 {id: 2, sequence: "BGFD", mutation: true},
                 {id: 3, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
