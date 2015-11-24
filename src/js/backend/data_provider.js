@@ -20,25 +20,6 @@ function fetchData(url) {
   });
 }
 
-function sendData(data) {
-  $.ajax({
-     type: "POST",
-     //TODO.. replace with middleware url, maybe set up a dummyResponseServer till then
-     url: "",         
-     dataType: "json",
-     data: {
-      //data needs to be of type string
-       o: data
-     },
-     success: function (data) {
-       console.log("request has been a success");
-     },
-     error: function (e) {
-        console.log("Error: ", e);
-     }
-  });  
-}
-
 var dataProvider = {
   
   fetchReferenceGenome: function() {
