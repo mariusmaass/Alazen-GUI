@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Lane from 'components/lane_component.jsx!';
+import Slider from 'rc-slider';
 
 // - - -
 
@@ -25,8 +26,17 @@ var testjson = [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
 // - - -
 
 document.addEventListener('DOMContentLoaded', function(){
-  ReactDOM.render(React.createElement(Lane, {
-    data: testjson
-  }), document.getElementById("lane_component"));
-  console.log("test");
+
+  ReactDOM.render(
+    React.createElement(Lane, {
+      data: testjson
+    }),
+    document.getElementById("lane_component")
+  );
+
+  ReactDOM.render(
+    React.createElement(Slider),
+    document.getElementById("slider")
+  );
+
 });

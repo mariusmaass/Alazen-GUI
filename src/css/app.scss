@@ -1,5 +1,16 @@
 @import "bootstrap";
+@import "slider";
 
 body {
   background: #ccc;
+  margin: 0;
+}
+
+.world {
+  margin: 10px;
+}
+
+#slider {
+  width: 30vw;
+  // margin-left: 2vw;
 }
