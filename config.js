@@ -20,6 +20,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "bootstrap": "github:twbs/bootstrap-sass@3.3.5",
     "core-js": "npm:core-js@1.2.5",
+    "jquery": "npm:jquery@2.1.4",
     "jshint": "npm:jshint@2.8.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
     "rc-slider": "npm:rc-slider@3.0.1",
@@ -399,6 +400,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:jquery@2.1.4": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:jshint@2.8.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
