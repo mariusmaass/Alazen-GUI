@@ -45,10 +45,16 @@ http://jshint.com/install/
 # Git Conventions
 
 - Main development on `develop` branch
-- More TBD
 - Gitflow for small Features https://de.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/
 
+# Test Suite
+
+Run:
+
+    $ npm test
+
 # Documentation Links
+
 ## Frontend
 
 - JavaScript https://github.com/getify/You-Dont-Know-JS/
@@ -56,8 +62,15 @@ http://jshint.com/install/
 - React Style Guide: https://github.com/Khan/style-guides/blob/master/style/react.md
 - Bootstrap Docs: http://getbootstrap.com/
 
+## Testing
+
+- Jasmine Docs: http://jasmine.github.io/2.3/introduction.html
+- Jasmine Cheatsheet: http://www.cheatography.com/citguy/cheat-sheets/jasmine-js-testing/
+- Karma Docs: http://karma-runner.github.io
+
 ## Tooling
 
+- ES6 Module System: https://github.com/systemjs/systemjs/blob/master/docs/es6-modules-overview.md
 - Babel: https://babeljs.io
 - System.js: https://github.com/systemjs/systemjs
 - JSPM: http://jspm.io
@@ -71,4 +84,14 @@ http://jshint.com/install/
 
 ## Everytime a dependency is added to `package.json`
 
-When someone adds a new package, everyone has to run `jspm install` in the project directory to fetch the new packages (= JSPM will download them to the `jspm_modules` folder).
+When someone adds a new package, everyone needs to run:
+
+    $ npm install
+
+to fetch new development modules (which NPM puts into `node_modules`).
+
+This will automatically trigger:
+
+    $ jspm install
+
+which fetches all other dependencies (which JSPM puts into `jspm_modules`)

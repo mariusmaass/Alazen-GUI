@@ -1,5 +1,6 @@
 {
   "browser": true,
   "esnext": true,
-  "strict": "global"
+  "strict": "global",
+  "jasmine": true
 }
