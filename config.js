@@ -22,6 +22,7 @@ System.config({
     "core-js": "npm:core-js@1.2.5",
     "jshint": "npm:jshint@2.8.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
+    "rc-slider": "npm:rc-slider@3.0.1",
     "react": "npm:react@0.14.2",
     "react-dom": "npm:react-dom@0.14.2",
     "github:floatdrop/plugin-jsx@1.1.0": {
@@ -82,6 +83,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
+    },
+    "npm:add-dom-event-listener@1.0.1": {
+      "object-assign": "npm:object-assign@4.0.1"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -169,6 +173,11 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "string_decoder": "github:jspm/nodelibs-string_decoder@0.1.0"
+    },
+    "npm:classnames@2.2.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:cli@0.6.6": {
       "exit": "npm:exit@0.1.2",
@@ -505,6 +514,30 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:rc-align@2.2.0": {
+      "dom-align": "npm:dom-align@1.3.0",
+      "rc-util": "npm:rc-util@3.0.1"
+    },
+    "npm:rc-animate@2.0.2": {
+      "css-animation": "npm:css-animation@1.1.1"
+    },
+    "npm:rc-slider@3.0.1": {
+      "rc-tooltip": "npm:rc-tooltip@3.2.0",
+      "rc-util": "npm:rc-util@3.0.1"
+    },
+    "npm:rc-tooltip@3.2.0": {
+      "rc-trigger": "npm:rc-trigger@1.0.6"
+    },
+    "npm:rc-trigger@1.0.6": {
+      "object-assign": "npm:object-assign@4.0.1",
+      "rc-align": "npm:rc-align@2.2.0",
+      "rc-animate": "npm:rc-animate@2.0.2",
+      "rc-util": "npm:rc-util@3.0.1"
+    },
+    "npm:rc-util@3.0.1": {
+      "add-dom-event-listener": "npm:add-dom-event-listener@1.0.1",
+      "classnames": "npm:classnames@2.2.0"
     },
     "npm:react-dom@0.14.2": {
       "react": "npm:react@0.14.2"

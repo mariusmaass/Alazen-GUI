@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "slider";
 
 body {
   background: #eee;
@@ -42,5 +43,14 @@ body {
 }
  
 .search-query:focus + button {
-    z-index: 3;   
+    z-index: 3;
+}
+
+.world {
+  margin: 10px;
+}
+
+#slider {
+  width: 30vw;
+  // margin-left: 2vw;
 }
