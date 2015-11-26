@@ -2,13 +2,34 @@
 @import "slider";
 
 body {
-  background: #eee;
+    background: #f3f3f3;
+    text-align: center;
 }
+
+.main {
+    .row > * {
+        padding: 10px;
+    }
+}
+
+.navigation {
+    background: #eaeaea;
+}
+
+.slider-container {
+    padding: 1em 3em;
+}
+
+.lane-container {
+    overflow: auto;
+}
+
+
 
 /** SearchField Custom Styles **/
 
 #custom-search-input {
-	margin:0;
+    margin:0;
     margin-top: 10px;
     padding: 0;
 }
@@ -27,7 +48,7 @@ body {
 }
  
 #custom-search-input button {
-	border: 0;
+    border: 0;
     background: none;
     /** belows styles are working good */
     padding: 2px 5px;
@@ -44,13 +65,4 @@ body {
  
 .search-query:focus + button {
     z-index: 3;
-}
-
-.world {
-  margin: 10px;
-}
-
-#slider {
-  width: 30vw;
-  // margin-left: 2vw;
 }

@@ -4,33 +4,39 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alazen</title>
+  <title>Alazen | Mutation Browser</title>
   <script src="js/bundle.js"></script>
   <link rel="stylesheet" href="css/bundle.css">
 </head>
 <body>
-  <div class="row">
-  <div class="container">
-    <div class="col-md-4">
-      <h2>Suche</h2>  
-      <div id="searchfield_component">
-      </div>
-    </div>
-    <div class="col-md-4">
-      <h2>Zoom</h2>
-      <div id="slider"></div>
-    </div>
-    <div class="col-md-4">
-    </div>
-  </div>
-  </div>
-  <div class="row">
-  <div class="world">
+  <div class="banner">
     <h1>Alazen</h1>
-    <h2>Lanes</h2>
-    <div id="lane-container"></div>
   </div>
+  <div class="chromosome-info">
+    <h2>Chromosome 14</h2>
   </div>
 
+  <div class="container-fluid main">
+    <div class="row navigation">
+      <div class="col-xs-12 col-sm-7">
+        <div id="searchfield_component"></div>
+      </div>
+      <div class="col-xs-12 col-sm-5">
+        <div class="slider-container">
+          <div id="slider"></div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12">
+        <div class="info">
+          Current Position / Zoomlevel / More Info
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="lane-container" class="lane-container"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
