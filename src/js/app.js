@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Lane from 'components/lane_component.jsx!';
+import Lane from 'components/lane_container.jsx!';
 
 // - - -
 
@@ -22,11 +22,16 @@ var testjson = [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
                 {id: 6, sequence: "===BG", mutation: true},
                 {id: 7, sequence: "ATGCATGCATGCATGCATGC", mutation: false}
               ];
+
+var testdatas = [{id: 1, data: testjson},
+                 {id: 2, data: testjson},
+                 {id: 3, data: testjson}
+                ];
 // - - -
 
 document.addEventListener('DOMContentLoaded', function(){
-  ReactDOM.render(React.createElement(Lane, {
-    data: testjson
-  }), document.getElementById("lane_component"));
+  ReactDOM.render(React.createElement(LaneContainer, {
+    datas: testdatas
+  }), document.getElementById("lane-container"));
   console.log("test");
 });
