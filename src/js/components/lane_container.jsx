@@ -6,7 +6,7 @@ import LaneComponent from './lane_component.jsx!';
 
 var SourceSelect = React.createClass({
   addSource: function(){
-    var test = [{id: 4, data: [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false}]}];
+    var test = {id: 4, data: [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false}]};
     console.log(test);
     this.props.handleClick(test);
   },
@@ -26,11 +26,13 @@ var LaneContainer = React.createClass({
   },
   handleClick: function(updateData){
     //this.replaceState({data: updateData});
-    this.setState({data: updateData});
+    var testdata = this.state.data;
+    console.log(testdata.push(updateData));
+    this.setState({data: testdata});
   },
   createLane: function(){
     return this.state.data.map(function(lanedata){
-      return <div><div className="lanesource">Source: {lanedata.id}</div><LaneComponent key={lanedata.id} data={lanedata.data} /></div>
+      return <div><div className="lanesource">Source: {lanedata.id}</div><LaneComponent data={lanedata.data} /></div>
     })
   },
   render: function(){
