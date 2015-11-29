@@ -24,6 +24,19 @@ body {
     overflow: auto;
 }
 
+.lanesource {
+  background: #6E6E6E;
+  color: #FFFFFF;
+  padding: 0px 10px;
+  display: block;
+  position: fixed;
+}
+
+.source-select {
+  position: relative;
+  padding: 10px;
+}
+
 
 
 /** SearchField Custom Styles **/
@@ -33,20 +46,20 @@ body {
     margin-top: 10px;
     padding: 0;
 }
- 
+
 #custom-search-input .search-query {
     padding-right: 3px;
     padding-right: 4px \9;
     padding-left: 3px;
     padding-left: 4px \9;
     /* IE7-8 doesn't have border-radius, so don't indent the padding */
- 
+
     margin-bottom: 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
- 
+
 #custom-search-input button {
     border: 0;
     background: none;
@@ -62,7 +75,7 @@ body {
     border-radius: 3px;
     color:#D9230F;
 }
- 
+
 .search-query:focus + button {
     z-index: 3;
 }

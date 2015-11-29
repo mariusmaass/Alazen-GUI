@@ -17,7 +17,12 @@ var testjson = [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
                 {id: 4, sequence: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC", mutation: false},
                 {id: 5, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
                 {id: 6, sequence: "===BG", mutation: true},
-                {id: 7, sequence: "ATGCATGCATGCATGCATGC", mutation: false}
+                {id: 7, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                {id: 8, sequence: "ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC", mutation: false},
+                {id: 9, sequence: "ATGCATGCATGCATGCATGCATGCATGC", mutation: false},
+                {id: 10, sequence: "ATGCATGCATGCATGCAATGCATGCTGC", mutation: false},
+                {id: 11, sequence: "ATGCATATGCATGCATGCATGCGCATGCATGCATGC", mutation: false},
+                {id: 12, sequence: "ATGCATGCATGCATGCATGC", mutation: false}
               ];
 
 var testdatas = [{id: 1, data: testjson},
