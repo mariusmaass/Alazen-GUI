@@ -41,7 +41,11 @@ document.addEventListener('DOMContentLoaded', function(){
   );
 
   ReactDOM.render(
-    React.createElement(Slider),
+    React.createElement(Slider, {
+      min: 1,
+      max: 9,
+      defaultValue: 4,
+    }),
     document.getElementById("slider")
   );
 
