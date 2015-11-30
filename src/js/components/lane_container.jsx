@@ -31,7 +31,7 @@ var SourceSelect = React.createClass({
 
 var LaneContainer = React.createClass({
   getInitialState: function(){
-    return {data: this.props.data, detailView: false};
+    return {data: this.props.data, detailView: true};
   },
   handleClick: function(updateData){
     //this.replaceState({data: updateData});
