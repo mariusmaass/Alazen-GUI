@@ -34,6 +34,7 @@ var LaneAggregation = React.createClass({
   render: function() {
     return (
       <div className="lane lane-aggregation">
+        <div className="lane-aggregation-source">Source 1</div>
         <AreaChart
           data={areaData}
           width={1400}

@@ -7,7 +7,15 @@ import LaneAggregation from './lane_aggregation.jsx!';
 
 var SourceSelect = React.createClass({
   addSource: function(){
-    var test = {id: 4, data: [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false}]};
+    var test = {id: 4, data: [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                              {id: 2, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                              {id: 3, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                              {id: 4, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                              {id: 5, sequence: "ATGCATGCA===========", mutation: true},
+                              {id: 6, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                              {id: 7, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
+                              {id: 8, sequence: "ATGCATGCATGCATGCATGC", mutation: false}
+                              ]};
     console.log(test);
     this.props.handleClick(test);
   },
@@ -16,7 +24,7 @@ var SourceSelect = React.createClass({
       <button className="sourcebutton">Source 1</button>
       <button className="sourcebutton">Source 2</button>
       <button className="sourcebutton">Source 3</button>
-      <button className="sourcebutton" onClick={this.addSource}>Source new</button>
+      <button className="sourcebutton" onClick={this.addSource}>Source 4</button>
       </div>
   }
 });
@@ -28,8 +36,15 @@ var LaneContainer = React.createClass({
   handleClick: function(updateData){
     //this.replaceState({data: updateData});
     var testdata = this.state.data;
-    console.log(testdata.push(updateData));
-    this.setState({data: testdata});
+    if(typeof testdata[3] == "undefined"){
+      console.log(testdata.push(updateData));
+      this.setState({data: testdata});
+    }else{
+      testdata.pop();
+      console.log("pop()");
+      this.setState({data: testdata});
+    }
+
   },
   toggleDetailView: function(){
     this.setState({detailView: !this.state.detailView});
