@@ -24,7 +24,8 @@ System.config({
     "jshint": "npm:jshint@2.8.0",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
     "rc-slider": "npm:rc-slider@3.1.2",
-    "react": "npm:react@0.14.2",
+    "react": "npm:react@0.14.3",
+    "react-d3": "npm:react-d3@0.4.0",
     "react-dom": "npm:react-dom@0.14.2",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.3"
@@ -553,8 +554,12 @@ System.config({
       "shallowequal": "npm:shallowequal@0.2.2",
       "util-deprecate": "npm:util-deprecate@1.0.2"
     },
+    "npm:react-d3@0.4.0": {
+      "d3": "npm:d3@3.5.9",
+      "react": "npm:react@0.14.3"
+    },
     "npm:react-dom@0.14.2": {
-      "react": "npm:react@0.14.2"
+      "react": "npm:react@0.14.3"
     },
     "npm:react-tools@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -562,12 +567,12 @@ System.config({
       "jstransform": "npm:jstransform@10.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:react@0.14.2": {
+    "npm:react@0.14.3": {
       "envify": "npm:envify@3.4.0",
       "fbjs": "npm:fbjs@0.3.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:readable-stream@1.0.33": {
+    "npm:readable-stream@1.1.13": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "core-util-is": "npm:core-util-is@1.0.2",
       "events": "github:jspm/nodelibs-events@0.1.1",
@@ -624,7 +629,7 @@ System.config({
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
-      "readable-stream": "npm:readable-stream@1.0.33"
+      "readable-stream": "npm:readable-stream@1.1.13"
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"

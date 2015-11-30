@@ -20,6 +20,7 @@
       "jquery": "npm:jquery@^2.1.4",
       "rc-slider": "npm:rc-slider@^3.1.2",
       "react": "npm:react@^0.14.2",
+      "react-d3": "npm:react-d3@^0.4.0",
       "react-dom": "npm:react-dom@^0.14.2"
     },
     "devDependencies": {

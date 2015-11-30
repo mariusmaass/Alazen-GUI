@@ -3,6 +3,7 @@
 import React from 'react';
 
 import LaneComponent from './lane_component.jsx!';
+import LaneAggregation from './lane_aggregation.jsx!';
 
 var SourceSelect = React.createClass({
   addSource: function(){
@@ -30,7 +31,7 @@ var LaneContainer = React.createClass({
     console.log(testdata.push(updateData));
     this.setState({data: testdata});
   },
-  createLane: function(){
+  createLanes: function(){
     return this.state.data.map(function(lanedata){
       return <div><div className="lanesource">Source: {lanedata.id}</div><LaneComponent data={lanedata.data} /></div>
     })
@@ -38,9 +39,9 @@ var LaneContainer = React.createClass({
   render: function(){
     return <div className="lanecontainer">
       <SourceSelect handleClick={this.handleClick} />
-      {this.createLane()}
+      {this.createLanes()}
+      <LaneAggregation key="lane-aggregation-example" />
     </div>
-
   }
 });
 
