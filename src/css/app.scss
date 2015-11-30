@@ -38,6 +38,17 @@ body {
   display: inline-block;
 }
 
+.lane-aggregation-source {
+  background: #6E6E6E;
+  color: #FFFFFF;
+  padding: 0px 10px;
+  display: block;
+  position: fixed;
+  transform: rotate(90deg);
+  left: -30px;
+  margin-top: 20px;
+}
+
 
 
 /** SearchField Custom Styles **/
