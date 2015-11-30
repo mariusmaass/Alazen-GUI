@@ -23,7 +23,7 @@ var SourceSelect = React.createClass({
 
 var LaneContainer = React.createClass({
   getInitialState: function(){
-    return {data: this.props.data};
+    return {data: this.props.data, detailView: false};
   },
   handleClick: function(updateData){
     //this.replaceState({data: updateData});
@@ -31,16 +31,25 @@ var LaneContainer = React.createClass({
     console.log(testdata.push(updateData));
     this.setState({data: testdata});
   },
+  toggleDetailView: function(){
+    this.setState({detailView: !this.state.detailView});
+  },
   createLanes: function(){
-    return this.state.data.map(function(lanedata){
-      return <div><div className="lanesource">Source: {lanedata.id}</div><LaneComponent data={lanedata.data} /></div>
-    })
+    if(this.state.detailView){
+      return this.state.data.map(function(lanedata){
+        return <div><div className="lanesource">Source: {lanedata.id}</div><LaneComponent data={lanedata.data} /></div>
+      });
+    } else {
+      return <LaneAggregation />
+    }
   },
   render: function(){
-    return <div className="lanecontainer">
+    return <div>
       <SourceSelect handleClick={this.handleClick} />
-      {this.createLanes()}
-      <LaneAggregation key="lane-aggregation-example" />
+      <button onClick={this.toggleDetailView}>Toggle Details</button>
+      <div className="lane-container">
+        {this.createLanes()}
+      </div>
     </div>
   }
 });
