@@ -12,7 +12,10 @@
     "server": "mkdir -p dist && http-server -p 8000 dist",
     "start": "npm run server & npm run watch",
     "test": "rm -f spec/compiled.js && jspm bundle-sfx spec.js src/js/spec/compiled.js --skip-source-maps && karma start",
-    "watch": "npm run clean && npm run build && onchange src -- npm run build"
+    "watch": "npm run clean && npm run build && ( npm run watchCss & npm run watchJs & npm run watchStatic )",
+    "watchCss": "onchange src/css -- npm run css",
+    "watchJs": "onchange src/js -- npm run js",
+    "watchStatic": "onchange src/static src/index.html -- npm run static"
   },
   "jspm": {
     "dependencies": {
