@@ -26,7 +26,7 @@ var testdatas = [{id: 1, data: testjson},
                 ];
 
 var GuiComponent = React.createClass({
-  
+
   render: function() {
     return (
       <div>
@@ -36,7 +36,7 @@ var GuiComponent = React.createClass({
         <div className="chromosome-info">
           <h2>Chromosome 14</h2>
         </div>
-        
+
         <div className="container-fluid main">
           <div className="row navigation">
             <div className="col-xs-12 col-sm-7">
@@ -55,7 +55,7 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="col-sm-12">
-              <LaneContainer data={testdatas}/>
+              <LaneContainer key="lanecontainer" data={testdatas}/>
             </div>
           </div>
         </div>
