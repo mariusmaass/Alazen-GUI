@@ -18,10 +18,16 @@ body {
     background: #eaeaea;
 }
 
+/* Lane Elememente */
+
 .slider-container {
     padding: 1em 3em;
 }
 
+.char-element {
+    display: inline-block;
+    width: 15px;
+}
 
 .lane-block {
     display: flex;
@@ -31,12 +37,15 @@ body {
 .lane {
     margin-top: $lane-space;
     text-align: left;
+    cursor: grab;
+    color: #6E6E6E;
 }
 
 .lanes {
     overflow: auto;
     z-index: 5;
     width: 90%;
+    white-space: nowrap;
 }
 
 .lane-labels {

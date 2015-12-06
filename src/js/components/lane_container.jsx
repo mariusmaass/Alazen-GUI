@@ -66,11 +66,11 @@ var LaneContainer = React.createClass({
   },
   createIndex: function(){
     var index = [];
-      for(var i = 0; i <= 200; i++){
+      for(var i = 200; i <= 400; i++){
         if((i%10)==0){
-          index.push(<span>{i}</span>);
+          index.push(<span className="char-element">{i}</span>);
         }else{
-          index.push(<span>_</span>);
+          index.push(<span className="char-element">_</span>);
         }
       }
       return index;

@@ -11,13 +11,7 @@ var Lane = React.createClass({
   },
   setLane: function() {
     return this.state.testseq.map(function(seq){
-      var color;
-      if(seq.mutation){
-        color = "red";
-      }else{
-        color = "green";
-      }
-      return <LaneFragment sequence={seq.sequence} color={color} />
+      return <LaneFragment sequence={seq.sequence} mutation={seq.mutation} />
     })
   },
 
