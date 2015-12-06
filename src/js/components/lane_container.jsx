@@ -4,6 +4,7 @@ import React from 'react';
 
 import LaneComponent from './lane_component.jsx!';
 import LaneAggregation from './lane_aggregation.jsx!';
+import Draggable from 'react-draggable';
 
 var SourceSelect = React.createClass({
   addSource: function(){
@@ -52,19 +53,47 @@ var LaneContainer = React.createClass({
   createLanes: function(){
     if(this.state.detailView){
       return this.state.data.map(function(lanedata){
-        return <div><div className="lanesource">Source: {lanedata.id}</div><LaneComponent data={lanedata.data} /></div>
+        return <div><LaneComponent data={lanedata.data} /></div>
       });
     } else {
       return <LaneAggregation />
     }
   },
+  createLanesLabes: function(){
+    return this.state.data.map(function(lanedata){
+      return <div className="lanesource">Source: {lanedata.id}</div>
+    });
+  },
+  createIndex: function(){
+    var index = [];
+      for(var i = 0; i <= 200; i++){
+        if((i%10)==0){
+          index.push(<span>{i}</span>);
+        }else{
+          index.push(<span>_</span>);
+        }
+      }
+      return index;
+  },
+  handleDrag: function(){
+    console.log("handleDrag: ", arguments);
+  },
   render: function(){
     return <div>
       <SourceSelect handleClick={this.handleClick} />
       <button onClick={this.toggleDetailView}>Toggle Details</button>
-      <div className="lane-container">
-        {this.createLanes()}
+      <div className="lane-block">
+        <div className="lane-labels">{this.createLanesLabes()}</div>
+        <div className="lanes">
+            <Draggable axis="x" onStop={this.handleDrag}>
+              <div>
+                <div className="index-intervall">{this.createIndex()}</div>
+                <div>{this.createLanes()}</div>
+              </div>
+            </Draggable>
+          </div>
       </div>
+
     </div>
   }
 });

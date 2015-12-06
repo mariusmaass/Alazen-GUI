@@ -1,6 +1,8 @@
 @import "bootstrap";
 @import "slider";
 
+$lane-space: 50px;
+
 body {
     background: #f3f3f3;
     text-align: center;
@@ -20,16 +22,33 @@ body {
     padding: 1em 3em;
 }
 
-.lane-container {
+
+.lane-block {
+    display: flex;
+    align-items: flex-start;
+}
+
+.lane {
+    margin-top: $lane-space;
+    text-align: left;
+}
+
+.lanes {
     overflow: auto;
+    z-index: 5;
+    width: 90%;
+}
+
+.lane-labels {
+    z-index: 6;
+    width: 9%;
 }
 
 .lanesource {
   background: #6E6E6E;
   color: #FFFFFF;
   padding: 0px 10px;
-  display: block;
-  position: fixed;
+  margin-top: $lane-space;
 }
 
 .source-select {

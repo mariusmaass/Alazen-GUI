@@ -9,7 +9,6 @@ var Lane = React.createClass({
   getInitialState: function() {
     return {testseq: this.props.data};
   },
-
   setLane: function() {
     return this.state.testseq.map(function(seq){
       var color;
@@ -25,9 +24,7 @@ var Lane = React.createClass({
   render: function() {
     return (
       <div className="lane">
-        <p>
           {this.setLane()}
-        </p>
       </div>
     );
   }
