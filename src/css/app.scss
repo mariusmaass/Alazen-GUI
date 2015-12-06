@@ -51,19 +51,24 @@ body {
 .lane-labels {
     z-index: 6;
     width: 9%;
+    margin-top: 20px;
 }
 
 .lanesource {
-  background: #6E6E6E;
-  color: #FFFFFF;
-  padding: 0px 10px;
-  margin-top: $lane-space;
+    background: #6E6E6E;
+    color: #FFFFFF;
+    padding: 0px 10px;
+    margin-top: $lane-space;
 }
 
 .source-select {
-  position: relative;
-  padding: 10px;
-  display: inline-block;
+    position: relative;
+    padding: 10px;
+    display: inline-block;
+}
+
+.source-button {
+    margin: 10px;
 }
 
 .lane-aggregation-source {

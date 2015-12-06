@@ -22,10 +22,10 @@ var SourceSelect = React.createClass({
   },
   render: function(){
     return <div className="source-select">
-      <button className="sourcebutton">Source 1</button>
-      <button className="sourcebutton">Source 2</button>
-      <button className="sourcebutton">Source 3</button>
-      <button className="sourcebutton" onClick={this.addSource}>Source 4</button>
+      <button className="btn btn-success active source-button">Source 1</button>
+      <button className="btn btn-success active source-button">Source 2</button>
+      <button className="btn btn-success active source-button">Source 3</button>
+      <button className="btn btn-primary sourcebutton" onClick={this.addSource}>Source 4</button>
       </div>
   }
 });
