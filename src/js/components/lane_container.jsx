@@ -66,7 +66,7 @@ var LaneContainer = React.createClass({
   },
   createIndex: function(){
     var index = [];
-      for(var i = 200; i <= 400; i++){
+      for(var i = 200; i <= 500; i++){
         if((i%10)==0){
           index.push(<span className="char-element">{i}</span>);
         }else{
@@ -74,6 +74,9 @@ var LaneContainer = React.createClass({
         }
       }
       return index;
+  },
+  startPoint: function(){
+    return {x:-(20*15), y:0};
   },
   handleDrag: function(){
     console.log("handleDrag: ", arguments);
@@ -83,9 +86,12 @@ var LaneContainer = React.createClass({
       <SourceSelect handleClick={this.handleClick} />
       <button onClick={this.toggleDetailView}>Toggle Details</button>
       <div className="lane-block">
-        <div className="lane-labels">{this.createLanesLabes()}</div>
+        <div className="labels">
+          <div>Index</div>
+          <div className="lane-labels">{this.createLanesLabes()}</div>
+        </div>
         <div className="lanes">
-            <Draggable axis="x" onStop={this.handleDrag}>
+            <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
               <div>
                 <div className="index-intervall">{this.createIndex()}</div>
                 <div>{this.createLanes()}</div>

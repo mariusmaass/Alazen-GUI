@@ -17,7 +17,7 @@ var testjson = [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
                 {id: 9, sequence: "ATGCATGCATGCATGCATGCATGCATGC", mutation: false},
                 {id: 10, sequence: "ATGCATGCATGCATGCAATGCATGCTGC", mutation: false},
                 {id: 11, sequence: "ATGCATATGCATGCATGCATGCGCATGCATGCATGC", mutation: false},
-                {id: 12, sequence: "ATGCATGCATGCATGCATGC", mutation: false}
+                {id: 12, sequence: "ATGCATGCATGCATGCATGCTGGA", mutation: false}
               ];
 
 var testdatas = [{id: 1, data: testjson},
