@@ -66,11 +66,7 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="col-sm-12">
-<<<<<<< HEAD
-              <LaneContainer key="lanecontainer" data={testdatas}/>
-=======
               <LaneContainer data={this.state.testdata} moveFunction={this.handleMove}/>
->>>>>>> develop
             </div>
           </div>
         </div>
