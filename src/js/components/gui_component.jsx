@@ -26,7 +26,18 @@ var testdatas = [{id: 1, data: testjson},
                 ];
 
 var GuiComponent = React.createClass({
+  getInitialState: function(){
+    return {testdata: testdatas};
+  },
+  handleMove: function(bundle){
+    this.setState({testdata: testdatas});
+  },
+  handleSearch: function(bundle){
 
+  },
+  handleZoom: function(bundle){
+
+  },
   render: function() {
     return (
       <div>
@@ -55,7 +66,11 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="col-sm-12">
+<<<<<<< HEAD
               <LaneContainer key="lanecontainer" data={testdatas}/>
+=======
+              <LaneContainer data={this.state.testdata} moveFunction={this.handleMove}/>
+>>>>>>> develop
             </div>
           </div>
         </div>
