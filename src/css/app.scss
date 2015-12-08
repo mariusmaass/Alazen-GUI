@@ -24,6 +24,10 @@ body {
     padding: 1em 3em;
 }
 
+.main .lane-container {
+  padding: 0;
+}
+
 .char-element {
     display: inline-block;
     width: 15px;
@@ -46,18 +50,22 @@ body {
     z-index: 5;
     width: 90%;
     white-space: nowrap;
+    background-color: #EEEEEE;
+    padding: 10px 0;
+}
+
+.caption {
+    padding: 0px 10px;
 }
 
 .labels {
     z-index: 6;
-    width: 9%;
-    border: 1px solid #BABABA;
+    width: 10%;
+    background-color: #CCCCCC;
+    padding: 10px 0;
 }
 
 .lanesource {
-    background: #6E6E6E;
-    color: #FFFFFF;
-    padding: 0px 10px;
     margin-top: $lane-space;
 }
 

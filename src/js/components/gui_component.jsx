@@ -27,16 +27,24 @@ var testdatas = [{id: 1, data: testjson},
 
 var GuiComponent = React.createClass({
   getInitialState: function(){
-    return {testdata: testdatas};
+    return {testdata: testdatas,
+            currentPosition: 0,
+            currentZoomlevel: 1};
   },
   handleMove: function(bundle){
-    this.setState({testdata: testdatas});
+    console.log("handleMove ", bundle);
+    //testjson.push({id: 13, sequence: "XYZELEFANT======", mutation: true});
+    this.setState({
+        testdata: testdatas,
+        currentPosition: bundle.position
+    });
   },
   handleSearch: function(bundle){
 
   },
-  handleZoom: function(bundle){
-
+  handleZoom: function(value){
+      console.log("handleZoom ", value);
+      this.setState({currentZoomlevel: value});
   },
   render: function() {
     return (
@@ -55,17 +63,17 @@ var GuiComponent = React.createClass({
             </div>
             <div className="col-xs-12 col-sm-5">
               <div className="slider-container">
-                <Slider min={1} max={9} defaultValue={4} />
+                <Slider min={1} max={7} defaultValue={this.state.currentZoomlevel} onChange={this.handleZoom}/>
               </div>
             </div>
             <div className="col-xs-12 col-sm-12">
               <div className="info">
-                Current Position / Zoomlevel / More Info
+                Current Position {this.state.currentPosition} / Zoomlevel {this.state.currentZoomlevel} / More Info
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-12">
+            <div className="lane-container col-sm-12">
               <LaneContainer data={this.state.testdata} moveFunction={this.handleMove}/>
             </div>
           </div>

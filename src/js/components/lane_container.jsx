@@ -32,17 +32,21 @@ var SourceSelect = React.createClass({
 
 var LaneContainer = React.createClass({
   getInitialState: function(){
-    return {data: this.props.data, detailView: true};
+    return {data: this.props.data,
+            detailView: true,
+            startPos: 200,
+            endPos: 500
+            };
   },
   handleClick: function(updateData){
+    //todo: anpassen für alle vier quellen
     //this.replaceState({data: updateData});
     var testdata = this.state.data;
     if(typeof testdata[3] == "undefined"){
-      console.log(testdata.push(updateData));
+      testdata.push(updateData)
       this.setState({data: testdata});
     }else{
       testdata.pop();
-      console.log("pop()");
       this.setState({data: testdata});
     }
 
@@ -53,7 +57,7 @@ var LaneContainer = React.createClass({
   createLanes: function(){
     if(this.state.detailView){
       return this.state.data.map(function(lanedata){
-        return <div><LaneComponent data={lanedata.data} /></div>
+        return <LaneComponent data={lanedata.data} />
       });
     } else {
       return <LaneAggregation />
@@ -61,12 +65,12 @@ var LaneContainer = React.createClass({
   },
   createLanesLabes: function(){
     return this.state.data.map(function(lanedata){
-      return <div className="lanesource">Source: {lanedata.id}</div>
+      return <div className="lanesource caption">Source: {lanedata.id}</div>
     });
   },
   createIndex: function(){
     var index = [];
-      for(var i = 200; i <= 500; i++){
+      for(var i = this.state.startPos; i <= this.state.endPos; i++){
         if((i%10)==0){
           index.push(<span className="char-element">{i}</span>);
         }else{
@@ -78,8 +82,12 @@ var LaneContainer = React.createClass({
   startPoint: function(){
     return {x:-(20*15), y:0};
   },
-  handleDrag: function(){
-    console.log("handleDrag: ", arguments);
+  handleDrag: function(event, ui){
+    //console.log("handleDrag: ", event);
+    console.log("handleDrag: ", ui.position);
+    console.log("handleDrag: ", (Math.abs(ui.position.left)/15)+this.state.startPos);
+    var bundle = {position: (Math.abs(ui.position.left)/15)+this.state.startPos};
+    this.props.moveFunction(bundle);
   },
   render: function(){
     return <div>
@@ -87,7 +95,7 @@ var LaneContainer = React.createClass({
       <button onClick={this.toggleDetailView}>Toggle Details</button>
       <div className="lane-block">
         <div className="labels">
-          <div>Index</div>
+          <div className="caption">Index</div>
           <div className="lane-labels">{this.createLanesLabes()}</div>
         </div>
         <div className="lanes">
