@@ -16,7 +16,7 @@ app.get('/refGen', function (req, res) {
       res.jsonp(JSON.stringify(data));
       res.end();
    });
-})
+});
 
 app.get('/mutations', function (req, res) {
       fs.readFile("../../static/test/dummyMutations.json", 'utf8', function (err, data) {
@@ -25,11 +25,11 @@ app.get('/mutations', function (req, res) {
        res.jsonp(JSON.stringify(data));
        res.end();
    });
-})
+});
 
 var server = app.listen(8081, 'localhost', function () {
 
   var host = server.address().address
   var port = server.address().port
   console.log("dummy-backend-server listening at http://%s:%s", host, port)
-})
+});

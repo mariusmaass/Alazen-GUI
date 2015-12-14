@@ -16,7 +16,6 @@ var SearchField = React.createClass({
 	    this.handleSearchSubmit({inputSearch : inputSearchValue});
 	    // TODO: send request to the server
 	    this.refs.inputSearch.value = '';
-	    return;
 	},
 
 	handleSearchSubmit: function(searchdata) {
