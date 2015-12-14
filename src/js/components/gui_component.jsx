@@ -13,10 +13,10 @@ var chromosomeList = dataProvider.fetchChromosomes();
 
 var GuiComponent = React.createClass({
     getInitialState: function () {
-        return {testdata: dataProvider.fetchAllSources()};
+        return {testData: dataProvider.fetchAllSources()};
     },
     handleMove: function (bundle) {
-        this.setState({testdata: dataProvider.fetchAllSources});
+        this.setState({testData: dataProvider.fetchAllSources});
     },
     handleSearch: function (bundle) {
 
@@ -54,7 +54,7 @@ var GuiComponent = React.createClass({
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            <LaneContainer data={this.state.testdata} moveFunction={this.handleMove}/>
+                            <LaneContainer data={this.state.testData} moveFunction={this.handleMove}/>
                         </div>
                     </div>
                 </div>

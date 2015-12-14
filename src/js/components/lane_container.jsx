@@ -48,10 +48,10 @@ var LaneContainer = React.createClass({
 
     createLanes: function () {
         if (this.state.detailView) {
-            return this.state.data.map(function (lanedata) {
+            return this.state.data.map(function (laneData) {
                 return <div>
-                    <div className="lanesource">Source: {lanedata.id}</div>
-                    <LaneComponent data={lanedata.data}/></div>
+                    <div className="lanesource">Source: {laneData.id}</div>
+                    <LaneComponent data={laneData.data}/></div>
             });
         } else {
             return <LaneAggregation />
