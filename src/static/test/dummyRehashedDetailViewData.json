@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "sequence": "ATGCATGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 2,
+    "sequence": "BGFD",
+    "mutation": true
+  },
+  {
+    "id": 3,
+    "sequence": "ATGCATGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 4,
+    "sequence": "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC",
+    "mutation": false
+  },
+  {
+    "id": 5,
+    "sequence": "ATGCATGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 6,
+    "sequence": "===BG",
+    "mutation": true
+  },
+  {
+    "id": 7,
+    "sequence": "ATGCATGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 8,
+    "sequence": "ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 9,
+    "sequence": "ATGCATGCATGCATGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 10,
+    "sequence": "ATGCATGCATGCATGCAATGCATGCTGC",
+    "mutation": false
+  },
+  {
+    "id": 11,
+    "sequence": "ATGCATATGCATGCATGCATGCGCATGCATGCATGC",
+    "mutation": false
+  },
+  {
+    "id": 12,
+    "sequence": "ATGCATGCATGCATGCATGC",
+    "mutation": false
+  }
+]

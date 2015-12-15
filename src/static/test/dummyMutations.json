@@ -1,12 +1,14 @@
 {
-	"source": "Quelle",
-	"begin": "0",
-	"end": 200000000000,
-	"count": 1,
-	"mutations":[{
-		"sequence": "ASDASDASNYLVNALSDNASLKDNASLKND",
-		"begin": 1000,
-		"end": 2000000,
-		"name": "NinjaTurtle"
-	    }]
+  "source": "Quelle",
+  "begin": "0",
+  "end": 200000000000,
+  "count": 1,
+  "mutations": [
+    {
+      "sequence": "ASDASDASNYLVNALSDNASLKDNASLKND",
+      "begin": 1000,
+      "end": 2000000,
+      "name": "NinjaTurtle"
+    }
+  ]
 }
