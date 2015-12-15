@@ -13,10 +13,10 @@ var chromosomeList = dataProvider.getChromosomes();
 
 var GuiComponent = React.createClass({
     getInitialState: function () {
-        return {testData: dataProvider.getAllSources()};
+        return {testData: dataProvider.getSources()};
     },
     handleMove: function (bundle) {
-        this.setState({testData: dataProvider.getAllSources});
+        this.setState({testData: dataProvider.getSources});
     },
     handleSearch: function (bundle) {
 

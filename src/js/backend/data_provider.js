@@ -32,13 +32,14 @@ function fetchData(url) {
 /**
  * Interface to GUI
  *
- * @type {{getSource: dataProvider.getSource, getMutations: dataProvider.getMutations, getAllSources: dataProvider.getAllSources, getChromosomes: dataProvider.getChromosomes, searchFor: dataProvider.searchFor}}
+ * @type {{getSource: dataProvider.getSource, getMutations: dataProvider.getMutations, getAllSources: dataProvider.getSources, getChromosomes: dataProvider.getChromosomes, searchFor: dataProvider.searchFor}}
  */
 var dataProvider = {
 
     /**
      * if detailView -> detailed data with refString will be sent
      * otherwise aggregated data
+     *
      * @param detailView
      * @returns {*[]}
      */
@@ -50,25 +51,56 @@ var dataProvider = {
         }
     },
 
-    getMutations: function () {
-        return testDataForDetailView;
-    },
-
-    getAllSources: function () {
+    /**
+     *
+     * @returns {*[]}
+     */
+    getSources: function () {
         return [{id: 1, data: testDataForDetailView},
             {id: 2, data: testDataForDetailView},
             {id: 3, data: testDataForDetailView}
         ];
     },
 
+    /**
+     *
+     * @param sources
+     * @param chromosome
+     * @param position
+     * @param detailView
+     * @returns {*[]}
+     */
+    getPosition: function (sources, chromosome, position, detailView) {
+        return testDataForDetailView;
+    },
+
+    /**
+     * @returns {*[]} a simple list of all chromosomes
+     */
     getChromosomes: function () {
         return chromosomeList;
     },
 
-    //returns position in source
-    searchFor: function (source, reference) {
-        //will be replaced by a post-request
-        return {"begin": "5000", "end": "100000"};
+    /**
+     * send get-request regarding the source, if source exists existing data will be returned
+     * otherwise this function will (TODO) throw an error or return null
+     *
+     * (TODO) add missing parameters
+     *
+     * @param source search-string by user
+     * @returns {{begin: string, end: string}}
+     */
+    searchFor: function (source) {
+        //TODO... send get-request and return data if available
+    },
+
+    /**
+     * returns all source-names being in line for userInput
+     *
+     * @param userInput
+     */
+    getPossibleSourceNamesForUserInput(userInput) {
+        //TODO... implement filter
     }
 };
 
