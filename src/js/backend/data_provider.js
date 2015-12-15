@@ -133,3 +133,40 @@ var chromosomeList = [{
 }, {id: 20, name: "Chromosome 20"}, {id: 21, name: "Chromosome 21"}, {
     id: 22, name: "Chromosome 22"
 }, {id: 23, name: "Chromosome X"}, {id: 24, name: "Chromosome Y"}];
+
+
+var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",'+
+		'"mutations": [{"name":"PX7","position": { '+
+		'"from": 4, "to": 6 }},{"name": "PX10",'+
+		'"from": 7, "to": 9}] }}';
+
+/* parameter object has to be a parsed JSON-variable like 'testMutationJSON' */
+function buildMutationSequence(object) {
+	var ref = object.detail.refseq;
+	var mutations = object.detail.mutations;
+	var mutationSequence = [];
+	var to = 0;
+	var from = 0;
+	
+	if (mutations.length == 0){
+		mutationSequence.push({id: "refSeq", sequence: ref, mutationFlag: false, metadata: ""})
+	}
+	
+	for (var index=0;index<mutations.length;index++){
+		from = mutations[index].position.from;
+		if (from != 0 || to < from-1){
+			var innerSequence = ref.substring(to, from-1);
+			mutationSequence.push({id: index, sequence: innerSequence, mutationFlag: false, metadata: ""});
+		}
+		to = mutations[index].position.to;
+		var subSequence = ref.substring(from,to);
+		mutationSequence.push({id: mutations[index].name, sequence: subSequence, mutationFlag: true, metadata: mutations[index].metadata});
+		if (index+1 == mutations.length){
+			if (to != ref.length){
+				var lastSequence = ref.substring(to+1, ref.length);
+				mutationSequence.push({id: index, sequence: lastSequence, mutationFlag: false, metadata: ""});
+			}
+		}
+	}
+	return mutationSequence;
+}
