@@ -5,7 +5,7 @@ import { AreaChart } from 'react-d3';
 
 import dataProvider from 'backend/data_provider';
 
-var areaData = dataProvider.fetchReferenceGenome(false);
+var areaData = dataProvider.getSource(false);
 
 var viewBox = {x: 0, y: 0, heigth: 400, width: 500};
 

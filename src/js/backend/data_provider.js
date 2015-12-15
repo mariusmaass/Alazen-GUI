@@ -31,11 +31,18 @@ function fetchData(url) {
 
 /**
  * Interface to GUI
- * @type {{fetchReferenceGenome: dataProvider.fetchReferenceGenome, fetchMutations: dataProvider.fetchMutations, fetchAllSources: dataProvider.fetchAllSources, fetchChromosomes: dataProvider.fetchChromosomes, searchFor: dataProvider.searchFor}}
+ *
+ * @type {{getSource: dataProvider.getSource, getMutations: dataProvider.getMutations, getAllSources: dataProvider.getAllSources, getChromosomes: dataProvider.getChromosomes, searchFor: dataProvider.searchFor}}
  */
 var dataProvider = {
 
-    fetchReferenceGenome: function (detailView) {
+    /**
+     * if detailView -> detailed data with refString will be sent
+     * otherwise aggregated data
+     * @param detailView
+     * @returns {*[]}
+     */
+    getSource: function (detailView) {
         if (detailView) {
             return testDataForDetailView;
         } else {
@@ -43,18 +50,18 @@ var dataProvider = {
         }
     },
 
-    fetchMutations: function () {
+    getMutations: function () {
         return testDataForDetailView;
     },
 
-    fetchAllSources: function () {
+    getAllSources: function () {
         return [{id: 1, data: testDataForDetailView},
             {id: 2, data: testDataForDetailView},
             {id: 3, data: testDataForDetailView}
         ];
     },
 
-    fetchChromosomes: function () {
+    getChromosomes: function () {
         return chromosomeList;
     },
 

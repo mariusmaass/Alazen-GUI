@@ -9,7 +9,7 @@ import dataProvider from 'backend/data_provider';
 
 var SourceSelect = React.createClass({
     addSource: function () {
-        var test = dataProvider.fetchReferenceGenome(true);
+        var test = dataProvider.getSource(true);
         console.log(test);
         this.props.handleClick(test);
     },

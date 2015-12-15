@@ -9,14 +9,14 @@ import SelectChromosome from 'components/chromosome_selection_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
 
-var chromosomeList = dataProvider.fetchChromosomes();
+var chromosomeList = dataProvider.getChromosomes();
 
 var GuiComponent = React.createClass({
     getInitialState: function () {
-        return {testData: dataProvider.fetchAllSources()};
+        return {testData: dataProvider.getAllSources()};
     },
     handleMove: function (bundle) {
-        this.setState({testData: dataProvider.fetchAllSources});
+        this.setState({testData: dataProvider.getAllSources});
     },
     handleSearch: function (bundle) {
 
