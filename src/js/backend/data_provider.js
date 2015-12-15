@@ -32,7 +32,7 @@ function fetchData(url) {
 /**
  * Interface to GUI
  *
- * @type {{getSource: dataProvider.getSource, getMutations: dataProvider.getMutations, getAllSources: dataProvider.getSources, getChromosomes: dataProvider.getChromosomes, searchFor: dataProvider.searchFor}}
+ * @type {{getSource: dataProvider.getSource, getSources: dataProvider.getSources, getPosition: dataProvider.getPosition, getChromosomes: dataProvider.getChromosomes, searchFor: dataProvider.searchFor, getPossibleSourceNamesForUserInput: ((userInput))}}
  */
 var dataProvider = {
 
