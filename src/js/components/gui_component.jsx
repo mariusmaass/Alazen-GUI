@@ -16,7 +16,8 @@ var GuiComponent = React.createClass({
         return {
             testdata: dataProvider.getSources(),
             currentPosition: 0,
-            currentZoomlevel: 1
+            currentZoomlevel: 1,
+            chromosomeNr: chromosomeList[0].id
         };
     },
     handleMove: function (bundle) {
@@ -34,6 +35,9 @@ var GuiComponent = React.createClass({
         console.log("handleZoom ", value);
         this.setState({currentZoomlevel: value});
     },
+    changeChromHeader: function(chromNum) {
+        this.setState({chromosomeNr:chromNum});
+    },
     render: function () {
         return (
             <div>
@@ -41,12 +45,12 @@ var GuiComponent = React.createClass({
                     <h1>Alazen</h1>
                 </div>
                 <div className="chromosome-info">
-                    <h2 id="chromosome_header">Chromosome 1</h2>
+                    <h2 id="chromosome_header">Chromosome {this.state.chromosomeNr}</h2>
                 </div>
 
                 <div className="container-fluid main">
                     <div id="chromosome_selection_component"></div>
-                    <SelectChromosome list={chromosomeList} selected={chromosomeList[0]} />
+                    <SelectChromosome list={chromosomeList} changeChromNumber={this.changeChromHeader}/>
                     <div className="row navigation">
                         <div className="col-xs-12 col-sm-7">
                             <SearchField/>

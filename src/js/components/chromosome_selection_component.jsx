@@ -9,8 +9,7 @@ var SelectChromosome = React.createClass({
         temp = "X";
     else if(temp === "24")
         temp = "Y";
-    document.getElementById("chromosome_header").innerHTML= "Chromosome " + temp;
-    this.props.selected = item;
+    this.props.changeChromNumber(temp);
   },
 
   render: function() {
