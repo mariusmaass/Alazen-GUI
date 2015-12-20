@@ -172,10 +172,14 @@ var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
     '"from": 4, "to": 6 }},{"name": "PX10",' +
     '"from": 7, "to": 9}] }}';
 
-/* parameter object has to be a parsed JSON-variable like 'testMutationJSON' */
-function buildMutationSequence(object) {
-    var ref = object.detail.refseq;
-    var mutations = object.detail.mutations;
+/**
+ *
+ * @param parsedJson has to be a parsed JSON-variable like 'testMutationJSON'
+ * @returns {Array}
+ */
+function buildMutationSequence(parsedJson) {
+    var ref = parsedJson.detail.refseq;
+    var mutations = parsedJson.detail.mutations;
     var mutationSequence = [];
     var to = 0;
     var from = 0;
