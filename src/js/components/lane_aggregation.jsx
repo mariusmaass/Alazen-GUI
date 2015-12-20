@@ -8,7 +8,7 @@ import dataProvider from 'backend/data_provider';
 var areaData = dataProvider.getSource(false);
 
 var LaneAggregation = React.createClass({
-  render: function () {
+  render: function() {
     return (
       <div className="lane lane-aggregation">
         <div className="lane-aggregation-source">Source 1</div>

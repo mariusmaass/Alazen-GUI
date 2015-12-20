@@ -4,7 +4,7 @@ import React from 'react';
 
 var SearchField = React.createClass({
 
-  handleSubmit: function (e) {
+  handleSubmit: function(e) {
     console.log(e);
     e.preventDefault();
     //var inputSearchValue = this.refs.inputSearch.getDOMNode().value.trim();
@@ -18,7 +18,7 @@ var SearchField = React.createClass({
     this.refs.inputSearch.value = '';
   },
 
-  handleSearchSubmit: function (searchdata) {
+  handleSearchSubmit: function(searchdata) {
 
     console.log(searchdata.inputSearch);
 
@@ -33,7 +33,7 @@ var SearchField = React.createClass({
 
   },
 
-  render: function () {
+  render: function() {
     return (
       <div className="searchfield">
         <div idName="custom-search-input">

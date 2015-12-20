@@ -12,7 +12,7 @@ import dataProvider from 'backend/data_provider';
 var chromosomeList = dataProvider.getChromosomes();
 
 var GuiComponent = React.createClass({
-  getInitialState: function () {
+  getInitialState: function() {
     return {
       testData: dataProvider.getSources(),
       currentPosition: 0,
@@ -20,7 +20,7 @@ var GuiComponent = React.createClass({
       chromosomeNr: chromosomeList[0].id
     };
   },
-  handleMove: function (bundle) {
+  handleMove: function(bundle) {
     console.log("handleMove ", bundle);
     //testjson.push({id: 13, sequence: "XYZELEFANT======", mutation: true});
     this.setState({
@@ -28,17 +28,17 @@ var GuiComponent = React.createClass({
       currentPosition: bundle.position
     });
   },
-  handleSearch: function (bundle) {
+  handleSearch: function(bundle) {
 
   },
-  handleZoom: function (value) {
+  handleZoom: function(value) {
     console.log("handleZoom ", value);
     this.setState({currentZoomLevel: value});
   },
-  changeChromHeader: function (chromNum) {
+  changeChromHeader: function(chromNum) {
     this.setState({chromosomeNr: chromNum});
   },
-  render: function () {
+  render: function() {
     return (
       <div>
         <div className="banner">
