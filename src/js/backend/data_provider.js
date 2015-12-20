@@ -14,7 +14,7 @@ function fetchData(url) {
      success: function(data){
        console.log(JSON.stringify(data));
      },
-     error: function(e){
+     error: function (e){
        console.log("Error:", e);
      }
   });
