@@ -5,27 +5,18 @@ import LaneFragment from './lane_fragment.jsx!';
 
 var Lane = React.createClass({
     getInitialState: function () {
-        return {testSeq: this.props.data};
+        return {testseq: this.props.data};
     },
-
     setLane: function () {
-        return this.state.testSeq.map(function (seq) {
-            var color;
-            if (seq.mutation) {
-                color = "red";
-            } else {
-                color = "green";
-            }
-            return <LaneFragment sequence={seq.sequence} color={color}/>
+        return this.state.testseq.map(function (seq) {
+            return <LaneFragment sequence={seq.sequence} mutation={seq.mutation}/>
         })
     },
 
     render: function () {
         return (
             <div className="lane">
-                <p>
-                    {this.setLane()}
-                </p>
+                {this.setLane()}
             </div>
         );
     }

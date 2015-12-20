@@ -15,18 +15,18 @@ var mutationsUrl = "http://localhost:8081/mutations/";
  * @param url to endpoint
  */
 function fetchData(url) {
-    $.ajax({
-        type: "GET",
-        url: url,
-        data: {},
-        dataType: "jsonp",
-        success: function (data) {
-            console.log(JSON.parse(data));
-        },
-        error: function (e) {
-            console.log("Error:", e);
-        }
-    });
+ $.ajax({
+     type: "GET",
+     url: url,
+     data: {},
+     dataType: "json",
+     success: function(data){
+       console.log(JSON.stringify(data));
+     },
+     error: function (e){
+       console.log("Error:", e);
+     }
+  });
 }
 
 /**

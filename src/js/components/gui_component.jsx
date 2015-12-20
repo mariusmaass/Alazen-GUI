@@ -13,16 +13,26 @@ var chromosomeList = dataProvider.getChromosomes();
 
 var GuiComponent = React.createClass({
     getInitialState: function () {
-        return {testData: dataProvider.getSources()};
+        return {
+            testdata: dataProvider.getSources(),
+            currentPosition: 0,
+            currentZoomlevel: 1
+        };
     },
     handleMove: function (bundle) {
-        this.setState({testData: dataProvider.getSources});
+        console.log("handleMove ", bundle);
+        //testjson.push({id: 13, sequence: "XYZELEFANT======", mutation: true});
+        this.setState({
+            testdata: dataProvider.getSources(),
+            currentPosition: bundle.position
+        });
     },
     handleSearch: function (bundle) {
 
     },
-    handleZoom: function (bundle) {
-
+    handleZoom: function (value) {
+        console.log("handleZoom ", value);
+        this.setState({currentZoomlevel: value});
     },
     render: function () {
         return (
@@ -36,25 +46,25 @@ var GuiComponent = React.createClass({
 
                 <div className="container-fluid main">
                     <div id="chromosome_selection_component"></div>
-                    <SelectChromosome list={chromosomeList} selected={chromosomeList[0]}/>
+                    <SelectChromosome list={chromosomeList} selected={chromosomeList[0]} />
                     <div className="row navigation">
                         <div className="col-xs-12 col-sm-7">
                             <SearchField/>
                         </div>
                         <div className="col-xs-12 col-sm-5">
                             <div className="slider-container">
-                                <Slider min={1} max={9} defaultValue={4}/>
+                                <Slider min={1} max={7} defaultValue={this.state.currentZoomlevel} onChange={this.handleZoom}/>
                             </div>
                         </div>
                         <div className="col-xs-12 col-sm-12">
                             <div className="info">
-                                Current Position / Zoomlevel / More Info
+                                Current Position {this.state.currentPosition} / Zoomlevel {this.state.currentZoomlevel} / More Info
                             </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-sm-12">
-                            <LaneContainer data={this.state.testData} moveFunction={this.handleMove}/>
+                        <div className="lane-container col-sm-12">
+                            <LaneContainer data={this.state.testdata} moveFunction={this.handleMove}/>
                         </div>
                     </div>
                 </div>

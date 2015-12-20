@@ -27,6 +27,7 @@ System.config({
     "react": "npm:react@0.14.3",
     "react-d3": "npm:react-d3@0.4.0",
     "react-dom": "npm:react-dom@0.14.2",
+    "react-draggable": "npm:react-draggable@1.1.3",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.3"
     },
@@ -180,6 +181,11 @@ System.config({
       "string_decoder": "github:jspm/nodelibs-string_decoder@0.1.0"
     },
     "npm:classnames@2.2.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:classnames@2.2.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
@@ -560,6 +566,11 @@ System.config({
     },
     "npm:react-dom@0.14.2": {
       "react": "npm:react@0.14.3"
+    },
+    "npm:react-draggable@1.1.3": {
+      "classnames": "npm:classnames@2.2.1",
+      "object-assign": "npm:object-assign@4.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:react-tools@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",

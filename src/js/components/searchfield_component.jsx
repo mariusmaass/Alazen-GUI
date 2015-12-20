@@ -16,14 +16,15 @@ var SearchField = React.createClass({
         this.handleSearchSubmit({inputSearch: inputSearchValue});
         // TODO: send request to the server
         this.refs.inputSearch.value = '';
+        return;
     },
 
-    handleSearchSubmit: function (searchData) {
+    handleSearchSubmit: function (searchdata) {
 
-        console.log(searchData.inputSearch);
+        console.log(searchdata.inputSearch);
 
         var data = new FormData();
-        data.append('inputSearch', searchData.inputSearch);
+        data.append('inputSearch', searchdata.inputSearch);
 
         var submitUrl = 'http://127.0.0.1:8000/';
 
