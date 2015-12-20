@@ -2,8 +2,9 @@
   "preset": "google",
   "esnext": true,
   "validateQuoteMarks": false,
-  "maximumLineLength": {
-    "value": 100,
-    "allExcept": ["comments", "regex"]
-  }
+  "maximumLineLength": false,
+  "jsDoc": false,
+  "excludeFiles": [
+    "src/js/spec/compiled.js"
+  ]
 }
