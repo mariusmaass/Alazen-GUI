@@ -2,33 +2,33 @@
 
 import React from 'react';
 var SelectChromosome = React.createClass({
-  onSelectClick: function(item) {
+  onSelectClick: function (item) {
     console.log("Chromosome " + this.refs.selectBox.value + " selected.");
     var temp = this.refs.selectBox.value;
-    if(temp === "23")
-        temp = "X";
-    else if(temp === "24")
-        temp = "Y";
+    if (temp === "23")
+      temp = "X";
+    else if (temp === "24")
+      temp = "Y";
     this.props.changeChromNumber(temp);
   },
 
-  render: function() {
-      return (
-        <div>
-          <div className="selection-list">
-            <div className="row">
-              <div className="col-xs-2 col-md-offset-5">
-                <select className="form-control" ref="selectBox" onChange={this.onSelectClick}>
-                 {this.renderListChromosomes()}
-                </select>
-              </div>
+  render: function () {
+    return (
+      <div>
+        <div className="selection-list">
+          <div className="row">
+            <div className="col-xs-2 col-md-offset-5">
+              <select className="form-control" ref="selectBox" onChange={this.onSelectClick}>
+                {this.renderListChromosomes()}
+              </select>
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
   },
 
-  renderListChromosomes: function() {
+  renderListChromosomes: function () {
     var chromosomes = [];
     for (var i = 0; i < this.props.list.length; i++) {
       var chromosomeNr = this.props.list[i];
