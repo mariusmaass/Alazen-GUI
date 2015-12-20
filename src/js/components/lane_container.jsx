@@ -52,16 +52,16 @@ var LaneContainer = React.createClass({
   },
   createLanes: function () {
     if (this.state.detailView) {
-      return this.state.data.map(function (lanedata) {
-        return <LaneComponent data={lanedata.data}/>
+      return this.state.data.map(function (laneData) {
+        return <LaneComponent data={laneData.data}/>
       });
     } else {
       return <LaneAggregation />
     }
   },
   createLanesLabes: function () {
-    return this.state.data.map(function (lanedata) {
-      return <div className="lanesource caption">Source: {lanedata.id}</div>
+    return this.state.data.map(function (laneData) {
+      return <div className="lanesource caption">Source: {laneData.id}</div>
     });
   },
   createIndex: function () {

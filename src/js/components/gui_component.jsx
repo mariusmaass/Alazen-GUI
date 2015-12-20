@@ -14,9 +14,9 @@ var chromosomeList = dataProvider.getChromosomes();
 var GuiComponent = React.createClass({
   getInitialState: function () {
     return {
-      testdata: dataProvider.getSources(),
+      testData: dataProvider.getSources(),
       currentPosition: 0,
-      currentZoomlevel: 1,
+      currentZoomLevel: 1,
       chromosomeNr: chromosomeList[0].id
     };
   },
@@ -24,7 +24,7 @@ var GuiComponent = React.createClass({
     console.log("handleMove ", bundle);
     //testjson.push({id: 13, sequence: "XYZELEFANT======", mutation: true});
     this.setState({
-      testdata: dataProvider.getSources(),
+      testData: dataProvider.getSources(),
       currentPosition: bundle.position
     });
   },
@@ -33,7 +33,7 @@ var GuiComponent = React.createClass({
   },
   handleZoom: function (value) {
     console.log("handleZoom ", value);
-    this.setState({currentZoomlevel: value});
+    this.setState({currentZoomLevel: value});
   },
   changeChromHeader: function (chromNum) {
     this.setState({chromosomeNr: chromNum});
@@ -57,18 +57,18 @@ var GuiComponent = React.createClass({
             </div>
             <div className="col-xs-12 col-sm-5">
               <div className="slider-container">
-                <Slider min={1} max={7} defaultValue={this.state.currentZoomlevel} onChange={this.handleZoom}/>
+                <Slider min={1} max={7} defaultValue={this.state.currentZoomLevel} onChange={this.handleZoom}/>
               </div>
             </div>
             <div className="col-xs-12 col-sm-12">
               <div className="info">
-                Current Position {this.state.currentPosition} / Zoomlevel {this.state.currentZoomlevel} / More Info
+                Current Position {this.state.currentPosition} / Zoomlevel {this.state.currentZoomLevel} / More Info
               </div>
             </div>
           </div>
           <div className="row">
             <div className="lane-container col-sm-12">
-              <LaneContainer data={this.state.testdata} moveFunction={this.handleMove}/>
+              <LaneContainer data={this.state.testData} moveFunction={this.handleMove}/>
             </div>
           </div>
         </div>

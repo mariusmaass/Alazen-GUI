@@ -5,10 +5,10 @@ import LaneFragment from './lane_fragment.jsx!';
 
 var Lane = React.createClass({
   getInitialState: function () {
-    return {testseq: this.props.data};
+    return {testSeq: this.props.data};
   },
   setLane: function () {
-    return this.state.testseq.map(function (seq) {
+    return this.state.testSeq.map(function (seq) {
       return <LaneFragment sequence={seq.sequence} mutation={seq.mutation}/>
     })
   },
