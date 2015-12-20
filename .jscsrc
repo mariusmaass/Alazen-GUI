@@ -1,5 +1,9 @@
 {
   "preset": "google",
   "esnext": true,
-  "validateQuoteMarks": false
+  "validateQuoteMarks": false,
+  "maximumLineLength": {
+    "value": 100,
+    "allExcept": ["comments", "regex"]
+  }
 }
