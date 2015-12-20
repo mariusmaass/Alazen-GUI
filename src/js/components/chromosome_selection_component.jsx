@@ -5,10 +5,12 @@ var SelectChromosome = React.createClass({
   onSelectClick: function (item) {
     console.log("Chromosome " + this.refs.selectBox.value + " selected.");
     var temp = this.refs.selectBox.value;
-    if (temp === "23")
+    if (temp === "23"){
       temp = "X";
-    else if (temp === "24")
+    }
+    else if (temp === "24"){
       temp = "Y";
+    }
     this.props.changeChromNumber(temp);
   },
 
