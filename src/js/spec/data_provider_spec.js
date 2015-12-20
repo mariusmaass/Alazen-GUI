@@ -8,8 +8,8 @@ describe('dataProvider', function(){
     	expect( dataProvider.getSource ).toBeDefined();
     });
 
-    it('has a searchFor function', function() {
-    	expect ( dataProvider.searchFor ).toBeDefined();
+    it('has a searchGene function', function () {
+      expect(dataProvider.searchGene).toBeDefined();
     });
 
   });
