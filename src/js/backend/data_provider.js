@@ -16,7 +16,7 @@ var chromosomeTestDataUrl = "/test/dummyChromosomeList.json";
 /**
  * GET-request to backend
  *
- * @param url to endpoint
+ * @param {string} url to endpoint
  */
 function fetchData(url) {
   $.ajax({
@@ -24,10 +24,10 @@ function fetchData(url) {
     url: url,
     data: {},
     dataType: "json",
-    success: function (data) {
+    success: function(data) {
       console.log(JSON.stringify(data));
     },
-    error: function (e) {
+    error: function(e) {
       console.log("Error:", e);
     }
   });
@@ -44,10 +44,10 @@ var dataProvider = {
    * if detailView -> detailed data with refString will be sent
    * otherwise aggregated data
    *
-   * @param detailView
    * @returns {*[]}
+   * @param {boolean} detailView
    */
-  getSource: function (detailView) { //TODO replace -> getPosition
+  getSource: function(detailView) { //TODO replace -> getPosition
     if (detailView) {
       return fetchData(detailTestDataUrl);
     } else {
@@ -60,7 +60,7 @@ var dataProvider = {
    *
    * return string-array/list
    */
-  getInitialSources: function () {
+  getInitialSources: function() {
     //TODO return dummyData
   },
 
@@ -68,7 +68,7 @@ var dataProvider = {
    *
    * @returns {*[]}
    */
-  getSources: function () { //TODO replace
+  getSources: function() { //TODO replace
     return [{id: 1, data: fetchData(detailTestDataUrl)},
       {id: 2, data: fetchData(detailTestDataUrl)},
       {id: 3, data: fetchData(detailTestDataUrl)}
@@ -77,14 +77,14 @@ var dataProvider = {
 
   /**
    *
-   * @param sources array
-   * @param chromosome string
-   * @param position from ... to ...
-   * @param detailView flag
-   * @param zoomLevel int [1-7]
+   * @param {array} sources
+   * @param {string} chromosome
+   * @param {number} position from ... to ...
+   * @param {number} zoomLevel [1-7]
+   * @param {boolean} detailView
    * @returns {*[]}
    */
-  getPosition: function (sources, chromosome, position, zoomLevel, detailView) {
+  getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
     return fetchData(detailTestDataUrl);
   },
 
@@ -92,7 +92,7 @@ var dataProvider = {
    * @returns {*[]} a simple list of all chromosomes
    * maybe request, maybe static data
    */
-  getChromosomes: function () {
+  getChromosomes: function() {
     return fetchData(chromosomeTestDataUrl);
   },
 
@@ -100,18 +100,18 @@ var dataProvider = {
    * send search-request regarding gene, if gene exists existing data will be returned
    * otherwise this function will (TODO) throw an error or return null
    *
-   * @param gene search-string by user
-   * @returns {{begin: int, end: int}, {chromsome}}
+   * @param {string} gene search-string by user
+   * return {json} begin: int, end: int, chromsome
    */
-  searchGene: function (gene) {
+  searchGene: function(gene) {
     //TODO... send get-request and return data if available
   },
 
   /**
    * returns all source-names being in line for userInput
    *
-   * @param userInput
-   * @returns string-array
+   * @param {string} userInput
+   * return {array} list of matching Genes
    */
   getPossibleGeneNames(userInput) {
     //TODO... implement filter
@@ -120,6 +120,7 @@ var dataProvider = {
 
 export default dataProvider;
 
+//TODO extract
 var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
   '"mutations": [{"name":"PX7","position": { ' +
   '"from": 4, "to": 6 }},{"name": "PX10",' +
@@ -127,7 +128,7 @@ var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
 
 /**
  *
- * @param parsedJson has to be a parsed JSON-variable like 'testMutationJSON'
+ * @param {json} parsedJson has to be a parsed JSON-variable like 'testMutationJSON'
  * @returns {Array}
  */
 function buildMutationSequence(parsedJson) {
@@ -141,7 +142,7 @@ function buildMutationSequence(parsedJson) {
     mutationSequence.push({id: "refSeq", sequence: ref, mutationFlag: false, metadata: ""})
   }
 
-  for (var index = 0; index < mutations.length; index++) {
+  for(var index = 0; index < mutations.length; index++) {
     from = mutations[index].position.from;
     if (from != 0 || to < from - 1) {
       var innerSequence = ref.substring(to, from - 1);
@@ -149,7 +150,12 @@ function buildMutationSequence(parsedJson) {
     }
     to = mutations[index].position.to;
     var subSequence = ref.substring(from, to);
-    mutationSequence.push({id: mutations[index].name, sequence: subSequence, mutationFlag: true, metadata: mutations[index].metadata});
+    mutationSequence.push({
+      id: mutations[index].name,
+      sequence: subSequence,
+      mutationFlag: true,
+      metadata: mutations[index].metadata
+    });
     if (index + 1 == mutations.length) {
       if (to != ref.length) {
         var lastSequence = ref.substring(to + 1, ref.length);
