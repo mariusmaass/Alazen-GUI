@@ -9,7 +9,7 @@ var Lane = React.createClass({
   },
   setLane: function() {
     return this.state.testSeq.map(function(seq) {
-      return <LaneFragment sequence={seq.sequence} mutation={seq.mutation}/>;
+      return <LaneFragment key={seq.id} sequence={seq.sequence} mutation={seq.mutation}/>;
     });
   },
 

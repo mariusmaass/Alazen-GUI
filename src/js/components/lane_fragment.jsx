@@ -12,7 +12,7 @@ var LaneFragment = React.createClass({
     var base = [];
     var seq = this.props.sequence;
     for (var i = 0; i < seq.length; i++) {
-      base.push(<span className="char-element">{seq[i]}</span>);
+      base.push(<span className="char-element" key={i}>{seq[i]}</span>);
     }
     return base;
   },

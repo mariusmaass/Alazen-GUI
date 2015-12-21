@@ -53,7 +53,7 @@ var LaneContainer = React.createClass({
   createLanes: function() {
     if (this.state.detailView) {
       return this.state.data.map(function(laneData) {
-        return <LaneComponent data={laneData.data}/>;
+        return <LaneComponent key={laneData.id} data={laneData.data}/>;
       });
     } else {
       return <LaneAggregation />;
@@ -61,16 +61,16 @@ var LaneContainer = React.createClass({
   },
   createLanesLabes: function() {
     return this.state.data.map(function(laneData) {
-      return <div className="lanesource caption">Source: {laneData.id}</div>;
+      return <div className="lanesource caption" key={laneData.id}>Source: {laneData.id}</div>;
     });
   },
   createIndex: function() {
     var index = [];
     for (var i = this.state.startPos; i <= this.state.endPos; i++) {
       if ((i % 10) == 0) {
-        index.push(<span className="char-element">{i}</span>);
+        index.push(<span className="char-element" key={i}>{i}</span>);
       } else {
-        index.push(<span className="char-element">_</span>);
+        index.push(<span className="char-element" key={i}>_</span>);
       }
     }
     return index;

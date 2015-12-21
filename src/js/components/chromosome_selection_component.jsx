@@ -34,7 +34,7 @@ var SelectChromosome = React.createClass({
     for (var i = 0; i < this.props.list.length; i++) {
       var chromosomeNr = this.props.list[i];
       chromosomes.push(
-        <option value={chromosomeNr.id}>{chromosomeNr.name}</option>
+        <option value={chromosomeNr.id} key={chromosomeNr.id}>{chromosomeNr.name}</option>
       );
     }
     return chromosomes;
