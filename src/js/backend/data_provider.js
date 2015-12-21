@@ -20,10 +20,10 @@ function fetchData(url) {
     url: url,
     data: {},
     dataType: "json",
-    success: function (data) {
+    success: function(data) {
       console.log(JSON.stringify(data));
     },
-    error: function (e) {
+    error: function(e) {
       console.log("Error:", e);
     }
   });
@@ -43,7 +43,7 @@ var dataProvider = {
    * @param detailView
    * @returns {*[]}
    */
-  getSource: function (detailView) { //TODO replace -> getPosition
+  getSource: function(detailView) { //TODO replace -> getPosition
     if (detailView) {
       return testDataForDetailView;
     } else {
@@ -56,7 +56,7 @@ var dataProvider = {
    *
    * return string-array/list
    */
-  getInitialSources: function () {
+  getInitialSources: function() {
     //TODO return dummyData
   },
 
@@ -64,7 +64,7 @@ var dataProvider = {
    *
    * @returns {*[]}
    */
-  getSources: function () { //TODO replace
+  getSources: function() { //TODO replace
     return [{id: 1, data: testDataForDetailView},
       {id: 2, data: testDataForDetailView},
       {id: 3, data: testDataForDetailView}
@@ -80,7 +80,7 @@ var dataProvider = {
    * @param zoomLevel int [1-7]
    * @returns {*[]}
    */
-  getPosition: function (sources, chromosome, position, zoomLevel, detailView) {
+  getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
     return testDataForDetailView;
   },
 
@@ -88,7 +88,7 @@ var dataProvider = {
    * @returns {*[]} a simple list of all chromosomes
    * maybe request, maybe static data
    */
-  getChromosomes: function () {
+  getChromosomes: function() {
     return chromosomeList;
   },
 
@@ -99,7 +99,7 @@ var dataProvider = {
    * @param gene search-string by user
    * @returns {{begin: int, end: int}, {chromsome}}
    */
-  searchGene: function (gene) {
+  searchGene: function(gene) {
     //TODO... send get-request and return data if available
   },
 
@@ -176,7 +176,6 @@ var chromosomeList = [{
   id: 22, name: "Chromosome 22"
 }, {id: 23, name: "Chromosome X"}, {id: 24, name: "Chromosome Y"}];
 
-
 var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
   '"mutations": [{"name":"PX7","position": { ' +
   '"from": 4, "to": 6 }},{"name": "PX10",' +
@@ -195,7 +194,7 @@ function buildMutationSequence(parsedJson) {
   var from = 0;
 
   if (mutations.length == 0) {
-    mutationSequence.push({id: "refSeq", sequence: ref, mutationFlag: false, metadata: ""})
+    mutationSequence.push({id: "refSeq", sequence: ref, mutationFlag: false, metadata: ""});
   }
 
   for (var index = 0; index < mutations.length; index++) {

@@ -3,12 +3,12 @@
 import React from 'react';
 
 var LaneFragment = React.createClass({
-  style: function () {
+  style: function() {
     if (this.props.mutation) {
-      return {backgroundColor: "red", cursor: "help"}
+      return {backgroundColor: "red", cursor: "help"};
     }
   },
-  createBase: function () {
+  createBase: function() {
     var base = [];
     var seq = this.props.sequence;
     for (var i = 0; i < seq.length; i++) {
@@ -16,12 +16,12 @@ var LaneFragment = React.createClass({
     }
     return base;
   },
-  getData: function () {
+  getData: function() {
     if (this.props.mutation) {
       console.log("Mutation!");
     }
   },
-  render: function () {
+  render: function() {
     return (
       <span className="lanefragment" onClick={this.getData} style={this.style()}>
         {this.createBase()}
