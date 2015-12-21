@@ -31,7 +31,8 @@ var LaneContainer = React.createClass({
       data: this.props.data,
       detailView: true,
       startPos: 200,
-      endPos: 500
+      endPos: 500,
+      mutationMetaData: "keine Mutation ausgewählt"
     };
   },
   handleClick: function(updateData) {
@@ -52,9 +53,10 @@ var LaneContainer = React.createClass({
   },
   createLanes: function() {
     if (this.state.detailView) {
+      //console.log("LaneContainer", this.state.data);
       return this.state.data.map(function(laneData) {
-        return <LaneComponent key={laneData.id} data={laneData.data}/>;
-      });
+        return <LaneComponent key={laneData.id} data={laneData.data} clickOnMutation={this.handleMutation}/>;
+      },this);
     } else {
       return <LaneAggregation />;
     }
@@ -85,6 +87,9 @@ var LaneContainer = React.createClass({
     var bundle = {position: (Math.abs(ui.position.left) / 15) + this.state.startPos};
     this.props.moveFunction(bundle);
   },
+  handleMutation: function(bundle) {
+    this.setState({mutationMetaData: bundle});
+  },
   render: function() {
     return <div>
       <SourceSelect handleClick={this.handleClick}/>
@@ -103,7 +108,7 @@ var LaneContainer = React.createClass({
           </Draggable>
         </div>
       </div>
-
+      <div className="mutation-view">{this.state.mutationMetaData}</div>
     </div>;
   }
 });
