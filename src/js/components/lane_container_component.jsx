@@ -53,9 +53,9 @@ var LaneContainer = React.createClass({
     var index = [];
     for (var i = this.state.startPos; i <= this.state.endPos; i++) {
       if ((i % 10) == 0) {
-        index.push(<span className="char-element" key={i}>{i}</span>);
+        index.push(<span className="lane-interval" key={i}>{i}</span>);
       } else {
-        index.push(<span className="char-element" key={i}>_</span>);
+        index.push(<span className="lane-interval" key={i}>_</span>);
       }
     }
     return index;
@@ -71,22 +71,23 @@ var LaneContainer = React.createClass({
   },
   createLanesLabels: function() {
     return this.state.sourceData.map(function(laneData) {
-      return <div className="lanesource caption" key={laneData.id}>Source: {laneData.id}</div>;
+      return <div className="lane-label" key={laneData.id}>Source: {laneData.id}</div>;
     });
   },
   render: function() {
     return <div>
       <SourceSelect handleClick={this.handleSourceSelect}/>
       <button onClick={this.toggleDetailView}>Toggle Details</button>
-      <div className="lane-block">
-        <div className="labels">
-          <div className="caption">Index</div>
-          <div className="lane-labels">{this.createLanesLabels()}</div>
+      <div className="mutation-board">
+        <div className="lane-labels">
+          <div className="lane-label-index">Index</div>
+          <div>{this.createLanesLabels()}</div>
         </div>
-        <div className="lanes">
+
+        <div className="lane-contents">
           <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
             <div>
-              <div className="index-intervall">{this.createIndex()}</div>
+              <div className="lane-content-index">{this.createIndex()}</div>
               <div>{this.createLanes()}</div>
             </div>
           </Draggable>

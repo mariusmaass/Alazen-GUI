@@ -14,7 +14,7 @@ var Lane = React.createClass({
   },
   render: function() {
     return (
-      <div className="lane">
+      <div className="lane-content lane-detail">
         {this.setLane()}
       </div>
     );

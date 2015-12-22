@@ -42,12 +42,11 @@ var GuiComponent = React.createClass({
           <h1>Alazen</h1>
         </div>
         <div className="chromosome-info">
-          <h2 id="chromosome_header">Chromosome {this.state.chromosomeNr}</h2>
+          <h2>Chromosome {this.state.chromosomeNr}</h2>
+          <SelectChromosome list={chromosomeList} changeChromNumber={this.changeChromHeader}/>
         </div>
 
         <div className="container-fluid main">
-          <div id="chromosome_selection_component"></div>
-          <SelectChromosome list={chromosomeList} changeChromNumber={this.changeChromHeader}/>
           <div className="row navigation">
             <div className="col-xs-12 col-sm-7">
               <SearchField/>

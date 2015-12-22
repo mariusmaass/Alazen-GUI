@@ -12,7 +12,7 @@ var LaneFragment = React.createClass({
     var base = [];
     var seq = this.props.sequence;
     for (var i = 0; i < seq.length; i++) {
-      base.push(<span className="char-element" key={i}>{seq[i]}</span>);
+      base.push(<span className="lane-interval" key={i}>{seq[i]}</span>);
     }
     return base;
   },
@@ -23,7 +23,7 @@ var LaneFragment = React.createClass({
   },
   render: function() {
     return (
-      <span className="lanefragment" onClick={this.clickMutation} style={this.style()}>
+      <span className="lane-fragment" onClick={this.clickMutation} style={this.style()}>
         {this.createBase()}
       </span>
     );
