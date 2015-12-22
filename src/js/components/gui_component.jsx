@@ -8,6 +8,7 @@ import SearchField from './searchfield_component.jsx!';
 import SelectChromosome from './chromosome_selection_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
+import DATA from 'backend/embedded_data';
 
 var chromosomeList = dataProvider.getChromosomes();
 
@@ -17,7 +18,17 @@ var GuiComponent = React.createClass({
       sourceData: dataProvider.getSources(),
       currentPosition: 0,
       currentZoomLevel: 1,
+      windowBegin: 0,
+      windowEnd: DATA.zoomLevel[1],
+      windowSize: DATA.zoomLevel[1],
       chromosomeNr: chromosomeList[0].id
+    };
+  },
+  getWindowIntervalByZoomLevel: function(zoomLevel) {
+    return {
+      windowBegin: 0,
+      windowEnd: DATA.zoomLevel[zoomLevel],
+      windowSize: DATA.zoomLevel[zoomLevel]
     };
   },
   handleMove: function(bundle) {
@@ -30,7 +41,11 @@ var GuiComponent = React.createClass({
     // TODO
   },
   handleZoom: function(value) {
-    this.setState({currentZoomLevel: value});
+    value = value || 1;
+    var stateUpdate = {};
+    Object.assign(stateUpdate, {currentZoomLevel: value}, this.getWindowIntervalByZoomLevel(value));
+    console.log("handleZoom ", value, stateUpdate);
+    this.setState(stateUpdate);
   },
   changeChromHeader: function(chromosomeNr) {
     this.setState({chromosomeNr: chromosomeNr});
@@ -64,7 +79,7 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="lane-container col-sm-12">
-              <LaneContainer sourceData={this.state.sourceData} currentZoomLevel={this.state.currentZoomLevel} moveFunction={this.handleMove}/>
+              <LaneContainer data={this.state.sourceData} currentZoomLevel={this.state.currentZoomLevel} windowBegin={this.state.windowBegin} windowEnd={this.state.windowEnd} windowSize={this.state.windowSize} moveFunction={this.handleMove}/>
             </div>
           </div>
         </div>
