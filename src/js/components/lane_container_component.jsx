@@ -40,7 +40,7 @@ var LaneContainer = React.createClass({
     this.setState({detailView: !this.state.detailView});
   },
   handleDrag: function(event, ui) {
-    var bundle = {position: (Math.abs(ui.position.left) / 15) + this.state.startPos};
+    var bundle = {position: Math.round(Math.abs(ui.position.left) / 15) + this.state.startPos};
     this.props.moveFunction(bundle);
   },
   handleSingleMutation: function(singleData) {
