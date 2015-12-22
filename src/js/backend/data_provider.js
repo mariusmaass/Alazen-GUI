@@ -126,7 +126,12 @@ export default dataProvider;
  * testData
  */
 var testMutationMetaData = {
-  metaDataId: 4,
+  name: "GBChr.382",
+  sequence: "ACCCCTGACGG",
+  position: {
+    from: 345,
+    to: 356
+  },
   source: "genome1000",
   gender: 'm',
   origin: "DDR",
@@ -157,8 +162,7 @@ var testDataForDetailView = [{
 }, {
   id: 6,
   sequence: "===BG",
-  mutation: true,
-  metadata: testMutationMetaData
+  mutation: true
 }, {
   id: 7,
   sequence: "ATGCATGCATGCATGCATGC",

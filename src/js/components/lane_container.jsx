@@ -33,7 +33,7 @@ var LaneContainer = React.createClass({
       detailView: true,
       startPos: 200,
       endPos: 500,
-      mutationMetaData: "keine Mutation ausgewählt"
+      mutationMetaData: null
     };
   },
   handleClick: function(updateData) {

@@ -19,11 +19,7 @@ var LaneFragment = React.createClass({
   clickMutation: function() {
     if (this.props.mutation) {
       console.log("Mutation!", this.props.metadata);
-      if (this.props.metadata === undefined) {
-        this.props.clickOnMutation("Keine Meta-Daten für diese Mutation gefunden.");
-      } else {
-        this.props.clickOnMutation(this.props.metadata);
-      }
+      this.props.clickOnMutation(this.props.metadata);
     }
   },
   render: function() {
