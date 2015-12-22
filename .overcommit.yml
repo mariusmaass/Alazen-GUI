@@ -4,6 +4,10 @@ PreCommit:
   Jscs:
     enabled: true
     include: ['**/*.js', '**/*.jsx']
+CommitMsg:
+  TextWidth:
+    enabled: true
+    max_subject_width: 80
 
 # Use this file to configure the Overcommit hooks you wish to use. This will
 # extend the default configuration defined in:
@@ -37,4 +41,3 @@ PreCommit:
 #
 #  IndexTags:
 #    enabled: true # Generate a tags file with `ctags` each time HEAD changes
-
