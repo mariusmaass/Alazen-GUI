@@ -5,6 +5,7 @@ import React from 'react';
 import LaneComponent from './lane_component.jsx!';
 import LaneAggregation from './lane_aggregation.jsx!';
 import Draggable from 'react-draggable';
+import MutationView from './mutation_view_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
 
@@ -108,7 +109,7 @@ var LaneContainer = React.createClass({
           </Draggable>
         </div>
       </div>
-      <div className="mutation-view">{this.state.mutationMetaData}</div>
+      <MutationView metadata={this.state.mutationMetaData} />
     </div>;
   }
 });

@@ -65,10 +65,16 @@ var dataProvider = {
    * @returns {*[]}
    */
   getSources: function() { //TODO replace
-    return [{id: 1, data: testDataForDetailView},
-      {id: 2, data: testDataForDetailView},
-      {id: 3, data: testDataForDetailView}
-    ];
+    return [{
+      id: 1,
+      data: testDataForDetailView
+    }, {
+      id: 2,
+      data: testDataForDetailView
+    }, {
+      id: 3,
+      data: testDataForDetailView
+    }];
   },
 
   /**
@@ -119,62 +125,195 @@ export default dataProvider;
 /**
  * testData
  */
-var testDataForDetailView = [{id: 1, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
-  {id: 2, sequence: "BGFD", mutation: true},
-  {id: 3, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
-  {id: 4, sequence: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC", mutation: false},
-  {id: 5, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
-  {id: 6, sequence: "===BG", mutation: true},
-  {id: 7, sequence: "ATGCATGCATGCATGCATGC", mutation: false},
-  {id: 8, sequence: "ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC", mutation: false},
-  {id: 9, sequence: "ATGCATGCATGCATGCATGCATGCATGC", mutation: false},
-  {id: 10, sequence: "ATGCATGCATGCATGCAATGCATGCTGC", mutation: false},
-  {id: 11, sequence: "ATGCATATGCATGCATGCATGCGCATGCATGCATGC", mutation: false},
-  {id: 12, sequence: "ATGCATGCATGCATGCATGC", mutation: false}
-];
+var testMutationMetaData = {
+  metaDataId: 4,
+  source: "genome1000",
+  gender: 'm',
+  origin: "DDR",
+  downloadTime: "22/11/2015"
+};
 
-var testDataForAggregatedView = [
-  {
-    name: "mutations",
-    values: [
-      {x: 1000, y: 100},
-      {x: 1060, y: 5},
-      {x: 1100, y: 200},
-      {x: 1200, y: 0},
-      {x: 1300, y: 0},
-      {x: 1350, y: 50},
-      {x: 1450, y: 200},
-      {x: 1500, y: 100},
-      {x: 1300, y: 0},
-      {x: 1320, y: 0},
-      {x: 1400, y: 180},
-      {x: 1500, y: 150},
-      {x: 1600, y: 140},
-      {x: 1700, y: 135},
-      {x: 1800, y: 0},
-      {x: 1900, y: 5},
-      {x: 2000, y: 40}
-    ]
-  }
-];
+var testDataForDetailView = [{
+  id: 1,
+  sequence: "ATGCATGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 2,
+  sequence: "BGFD",
+  mutation: true,
+  metadata: testMutationMetaData
+}, {
+  id: 3,
+  sequence: "ATGCATGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 4,
+  sequence: "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC",
+  mutation: false
+}, {
+  id: 5,
+  sequence: "ATGCATGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 6,
+  sequence: "===BG",
+  mutation: true,
+  metadata: testMutationMetaData
+}, {
+  id: 7,
+  sequence: "ATGCATGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 8,
+  sequence: "ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 9,
+  sequence: "ATGCATGCATGCATGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 10,
+  sequence: "ATGCATGCATGCATGCAATGCATGCTGC",
+  mutation: false
+}, {
+  id: 11,
+  sequence: "ATGCATATGCATGCATGCATGCGCATGCATGCATGC",
+  mutation: false
+}, {
+  id: 12,
+  sequence: "ATGCATGCATGCATGCATGC",
+  mutation: false
+}];
+
+var testDataForAggregatedView = [{
+  name: "mutations",
+  values: [{
+    x: 1000,
+    y: 100
+  }, {
+    x: 1060,
+    y: 5
+  }, {
+    x: 1100,
+    y: 200
+  }, {
+    x: 1200,
+    y: 0
+  }, {
+    x: 1300,
+    y: 0
+  }, {
+    x: 1350,
+    y: 50
+  }, {
+    x: 1450,
+    y: 200
+  }, {
+    x: 1500,
+    y: 100
+  }, {
+    x: 1300,
+    y: 0
+  }, {
+    x: 1320,
+    y: 0
+  }, {
+    x: 1400,
+    y: 180
+  }, {
+    x: 1500,
+    y: 150
+  }, {
+    x: 1600,
+    y: 140
+  }, {
+    x: 1700,
+    y: 135
+  }, {
+    x: 1800,
+    y: 0
+  }, {
+    x: 1900,
+    y: 5
+  }, {
+    x: 2000,
+    y: 40
+  }]
+}];
 
 var chromosomeList = [{
-  id: 1, name: "Chromosome 1"
-}, {id: 2, name: "Chromosome 2"}, {id: 3, name: "Chromosome 3"}, {
-  id: 4, name: "Chromosome 4"
-}, {id: 5, name: "Chromosome 5"}, {id: 6, name: "Chromosome 6"}, {
-  id: 7, name: "Chromosome 7"
-}, {id: 8, name: "Chromosome 8"}, {id: 9, name: "Chromosome 9"}, {
-  id: 10, name: "Chromosome 10"
-}, {id: 11, name: "Chromosome 11"}, {id: 12, name: "Chromosome 12"}, {
-  id: 13, name: "Chromosome 13"
-}, {id: 14, name: "Chromosome 14"}, {id: 15, name: "Chromosome 15"}, {
-  id: 16, name: "Chromosome 16"
-}, {id: 17, name: "Chromosome 17"}, {id: 18, name: "Chromosome 18"}, {
-  id: 19, name: "Chromosome 19"
-}, {id: 20, name: "Chromosome 20"}, {id: 21, name: "Chromosome 21"}, {
-  id: 22, name: "Chromosome 22"
-}, {id: 23, name: "Chromosome X"}, {id: 24, name: "Chromosome Y"}];
+  id: 1,
+  name: "Chromosome 1"
+}, {
+  id: 2,
+  name: "Chromosome 2"
+}, {
+  id: 3,
+  name: "Chromosome 3"
+}, {
+  id: 4,
+  name: "Chromosome 4"
+}, {
+  id: 5,
+  name: "Chromosome 5"
+}, {
+  id: 6,
+  name: "Chromosome 6"
+}, {
+  id: 7,
+  name: "Chromosome 7"
+}, {
+  id: 8,
+  name: "Chromosome 8"
+}, {
+  id: 9,
+  name: "Chromosome 9"
+}, {
+  id: 10,
+  name: "Chromosome 10"
+}, {
+  id: 11,
+  name: "Chromosome 11"
+}, {
+  id: 12,
+  name: "Chromosome 12"
+}, {
+  id: 13,
+  name: "Chromosome 13"
+}, {
+  id: 14,
+  name: "Chromosome 14"
+}, {
+  id: 15,
+  name: "Chromosome 15"
+}, {
+  id: 16,
+  name: "Chromosome 16"
+}, {
+  id: 17,
+  name: "Chromosome 17"
+}, {
+  id: 18,
+  name: "Chromosome 18"
+}, {
+  id: 19,
+  name: "Chromosome 19"
+}, {
+  id: 20,
+  name: "Chromosome 20"
+}, {
+  id: 21,
+  name: "Chromosome 21"
+}, {
+  id: 22,
+  name: "Chromosome 22"
+}, {
+  id: 23,
+  name: "Chromosome X"
+}, {
+  id: 24,
+  name: "Chromosome Y"
+}];
 
 var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
   '"mutations": [{"name":"PX7","position": { ' +
@@ -194,22 +333,42 @@ function buildMutationSequence(parsedJson) {
   var from = 0;
 
   if (mutations.length == 0) {
-    mutationSequence.push({id: "refSeq", sequence: ref, mutationFlag: false, metadata: ""});
+    mutationSequence.push({
+      id: "refSeq",
+      sequence: ref,
+      mutationFlag: false,
+      metadata: ""
+    });
   }
 
   for (var index = 0; index < mutations.length; index++) {
     from = mutations[index].position.from;
     if (from != 0 || to < from - 1) {
       var innerSequence = ref.substring(to, from - 1);
-      mutationSequence.push({id: index, sequence: innerSequence, mutationFlag: false, metadata: ""});
+      mutationSequence.push({
+        id: index,
+        sequence: innerSequence,
+        mutationFlag: false,
+        metadata: ""
+      });
     }
     to = mutations[index].position.to;
     var subSequence = ref.substring(from, to);
-    mutationSequence.push({id: mutations[index].name, sequence: subSequence, mutationFlag: true, metadata: mutations[index].metadata});
+    mutationSequence.push({
+      id: mutations[index].name,
+      sequence: subSequence,
+      mutationFlag: true,
+      metadata: mutations[index].metadata
+    });
     if (index + 1 == mutations.length) {
       if (to != ref.length) {
         var lastSequence = ref.substring(to + 1, ref.length);
-        mutationSequence.push({id: index, sequence: lastSequence, mutationFlag: false, metadata: ""});
+        mutationSequence.push({
+          id: index,
+          sequence: lastSequence,
+          mutationFlag: false,
+          metadata: ""
+        });
       }
     }
   }
