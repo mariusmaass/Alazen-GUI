@@ -18,7 +18,6 @@ var LaneFragment = React.createClass({
   },
   clickMutation: function() {
     if (this.props.mutation) {
-      console.log("Mutation!", this.props.metadata);
       this.props.clickOnMutation(this.props.metadata);
     }
   },
