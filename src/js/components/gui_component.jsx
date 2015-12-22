@@ -2,10 +2,10 @@
 
 import React from 'react';
 
-import LaneContainer from './lane_container.jsx!';
+import LaneContainer from './lane_container_component.jsx!';
 import Slider from 'rc-slider';
 import SearchField from './searchfield_component.jsx!';
-import SelectChromosome from 'components/chromosome_selection_component.jsx!';
+import SelectChromosome from './chromosome_selection_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
 
@@ -14,29 +14,26 @@ var chromosomeList = dataProvider.getChromosomes();
 var GuiComponent = React.createClass({
   getInitialState: function() {
     return {
-      testData: dataProvider.getSources(),
+      sourceData: dataProvider.getSources(),
       currentPosition: 0,
       currentZoomLevel: 1,
       chromosomeNr: chromosomeList[0].id
     };
   },
   handleMove: function(bundle) {
-    console.log("handleMove ", bundle);
-    //testjson.push({id: 13, sequence: "XYZELEFANT======", mutation: true});
     this.setState({
-      testData: dataProvider.getSources(),
+      sourceData: dataProvider.getSources(),
       currentPosition: bundle.position
     });
   },
   handleSearch: function(bundle) {
-
+    // TODO
   },
   handleZoom: function(value) {
-    console.log("handleZoom ", value);
     this.setState({currentZoomLevel: value});
   },
-  changeChromHeader: function(chromNum) {
-    this.setState({chromosomeNr: chromNum});
+  changeChromHeader: function(chromosomeNr) {
+    this.setState({chromosomeNr: chromosomeNr});
   },
   render: function() {
     return (
@@ -68,14 +65,13 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="lane-container col-sm-12">
-              <LaneContainer data={this.state.testData} moveFunction={this.handleMove}/>
+              <LaneContainer sourceData={this.state.sourceData} moveFunction={this.handleMove}/>
             </div>
           </div>
         </div>
       </div>
     );
   }
-
 });
 
 export default GuiComponent;
