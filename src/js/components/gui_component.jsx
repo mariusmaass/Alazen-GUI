@@ -64,7 +64,7 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="lane-container col-sm-12">
-              <LaneContainer sourceData={this.state.sourceData} moveFunction={this.handleMove}/>
+              <LaneContainer sourceData={this.state.sourceData} currentZoomLevel={this.state.currentZoomLevel} moveFunction={this.handleMove}/>
             </div>
           </div>
         </div>
