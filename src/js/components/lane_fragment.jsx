@@ -16,14 +16,14 @@ var LaneFragment = React.createClass({
     }
     return base;
   },
-  getData: function() {
+  clickMutation: function() {
     if (this.props.mutation) {
-      console.log("Mutation!");
+      this.props.clickOnMutation(this.props.metadata);
     }
   },
   render: function() {
     return (
-      <span className="lanefragment" onClick={this.getData} style={this.style()}>
+      <span className="lanefragment" onClick={this.clickMutation} style={this.style()}>
         {this.createBase()}
       </span>
     );
