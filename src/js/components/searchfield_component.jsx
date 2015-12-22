@@ -3,110 +3,104 @@
 import React from 'react';
 
 var SearchField = React.createClass({
+  handleSubmit: function(e) {
+    e.preventDefault();
 
-	handleSubmit: function(e) {
-		
-		e.preventDefault();
-	    
-	    var inputSearchValue = this.refs.inputSearch.value;
-	   	var bundle;
+    var inputSearchValue = this.refs.inputSearch.value;
+    var bundle;
 
-	    if (!inputSearchValue) {
-	    	/* Input Value is Empty */
-	    	//return;
-	      	console.log('Eingabe String ist leer.');
+    if (!inputSearchValue) {
+      /* Input Value is Empty */
+      //return;
+      console.log('Eingabe String ist leer.');
 
-	    } else if (this.valueIsNumber(inputSearchValue)) {
-	    	
-	    	/* Input Value is Integer and not empty */ 
+    } else if (this.valueIsNumber(inputSearchValue)) {
 
-	    	var iInputSearchValue = inputSearchValue;
+      /* Input Value is Integer and not empty */
 
-	    	if( -1 !== iInputSearchValue.indexOf(';') ) {
-	    		/* Input Value contains ';' */
-	    		var iChromosom	 	= iInputSearchValue.slice(0, iInputSearchValue.indexOf(';'));
-	    		iInputSearchValue	= iInputSearchValue.slice(iInputSearchValue.indexOf(';') + 1);
-	    	}
+      var iInputSearchValue = inputSearchValue;
 
-	    	if( -1 !== iInputSearchValue.indexOf('-') ) {
-	    		/* Input Value contains '-' */
-	    		var iLeftPosition	= iInputSearchValue.slice(0, iInputSearchValue.indexOf('-'));
-	    		var iRightPosition	= iInputSearchValue.slice(iInputSearchValue.indexOf('-') + 1);		
-	    	}
+      if (-1 !== iInputSearchValue.indexOf(';')) {
+        /* Input Value contains ';' */
+        var iChromosom    = iInputSearchValue.slice(0, iInputSearchValue.indexOf(';'));
+        iInputSearchValue = iInputSearchValue.slice(iInputSearchValue.indexOf(';') + 1);
+      }
 
-	    	/* Create bundle for the Backend */
+      if (-1 !== iInputSearchValue.indexOf('-')) {
+        /* Input Value contains '-' */
+        var iLeftPosition = iInputSearchValue.slice(0, iInputSearchValue.indexOf('-'));
+        var iRightPosition  = iInputSearchValue.slice(iInputSearchValue.indexOf('-') + 1);
+      }
 
-	    	bundle = {
-	    		chromosom: iChromosom,
-	    		from: iLeftPosition,
-	    		to: iRightPosition,  
-	    	};
+      /* Create bundle for the Backend */
 
-	    	/* Call Backend Function getPosition() */	
-	    	//getPosition(bundle); 
+      bundle = {
+        chromosom: iChromosom,
+        from: iLeftPosition,
+        to: iRightPosition,
+      };
 
-	    } else {
+            /* Call Backend Function getPosition() */
+            //getPosition(bundle);
 
-	    	/* Input Value is String and not empty */
-	    	
-	    	inputSearchValue = inputSearchValue.trim();
-			/* Create bundle for the Backend */		    	
-	    	bundle = inputSearchValue;
+    } else {
 
-	    	/* Call Backend Function searchGene() */	
-	    	//searchGene(bundle);
-	    }
+      /* Input Value is String and not empty */
 
-	    //this.handleSearchSubmit({inputSearch : inputSearchValue});
-	    // TODO: send request to the server
-	    //this.refs.inputSearch.value = '';
-	    return;
-	},
+      inputSearchValue = inputSearchValue.trim();
+      /* Create bundle for the Backend */
+      bundle = inputSearchValue;
 
-	handleSearchSubmit: function(searchdata) {
+      /* Call Backend Function searchGene() */
+      //searchGene(bundle);
+    }
 
-		console.log('SearchDataInput : ' + searchdata.inputSearch);
+    //this.handleSearchSubmit({inputSearch : inputSearchValue});
+    // TODO: send request to the server
+    //this.refs.inputSearch.value = '';
+    return;
+  },
 
-	    var data = new FormData();
-	    data.append('inputSearch', searchdata.inputSearch);
-	    
-	    var submitUrl = 'http://127.0.0.1:8000/';
-	    
-	    var xhr = new XMLHttpRequest();
-	    xhr.open('post', submitUrl, true);
-	    xhr.send(data);
-	    
-	},
+  handleSearchSubmit: function(searchdata) {
 
-	valueIsString: function(o) {
-    	return typeof o == "string" || (typeof o == "object" && o.constructor === String);
-	},
+    console.log('SearchDataInput : ' + searchdata.inputSearch);
 
-	valueIsNumber: function(o) {
-    	//return typeof o == "number" || (typeof o == "object" && o.constructor === Number);
-    	//return (typeof o == 'number') && !isNaN(o - 0) && o !== '';
-    	return !isNaN(parseInt(o)); 
-	},
+    var data = new FormData();
+    data.append('inputSearch', searchdata.inputSearch);
 
-	render: function() {
-		return (
-			<div className="searchfield">
-				<div idName="custom-search-input">
-                    <div className="input-group col-md-12">
-                    	
-                        <input type="text" className="search-query form-control" placeholder="13;234-343 or 589-767 or FOXP2" ref="inputSearch" />
-                        <span className="input-group-btn">
-                            <button className="btn btn-danger" type="button" onClick={this.handleSubmit}>
-                              <span className="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
+    var submitUrl = 'http://127.0.0.1:8000/';
 
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', submitUrl, true);
+    xhr.send(data);
+
+  },
+
+  valueIsString: function(o) {
+    return typeof o == "string" || (typeof o == "object" && o.constructor === String);
+  },
+
+  valueIsNumber: function(o) {
+    //return typeof o == "number" || (typeof o == "object" && o.constructor === Number);
+    //return (typeof o == 'number') && !isNaN(o - 0) && o !== '';
+    return !isNaN(parseInt(o));
+  },
+
+  render: function() {
+    return (
+      <div className="searchfield">
+        <div idName="custom-search-input">
+          <div className="input-group col-md-12">
+            <span className="input-group-btn">
+              <button className="btn btn-danger" type="button" onClick={this.handleSubmit}>
+                <span className="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
           </div>
         </div>
       </div>
     );
   }
-
 });
 
 export default SearchField;
