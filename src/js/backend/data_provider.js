@@ -9,9 +9,9 @@ import $ from 'jquery';
 //var refGenUrl = "http://localhost:8081/refGen/";
 //var mutationsUrl = "http://localhost:8081/mutations/";
 
-var detailTestDataUrl = "/Users/sprylab/git/Alazen-GUI/src/js/backend/data_provider.js";
-var agreggatedTestDataUrl = "/test/dummyAgreggatedViewData.json";
-var chromosomeTestDataUrl = "/test/dummyChromosomeList.json";
+var detailTestDataUrl = "../../test/dummyRehashedDetailViewData.json";
+var agreggatedTestDataUrl = "../../test/dummyAgreggatedViewData.json";
+var chromosomeTestDataUrl = "../../test/dummyChromosomeList.json";
 
 /**
  * GET-request to backend
@@ -71,13 +71,13 @@ var dataProvider = {
   getSources: function() { //TODO replace
     return [{
       id: 1,
-      data: testDataForDetailView
+      data: fetchData(detailTestDataUrl)
     }, {
       id: 2,
-      data: testDataForDetailView
+      data: fetchData(detailTestDataUrl)
     }, {
       id: 3,
-      data: testDataForDetailView
+      data: fetchData(detailTestDataUrl)
     }];
   },
 
@@ -91,7 +91,7 @@ var dataProvider = {
    * @returns {*[]}
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
-    return testDataForDetailView;
+    return fetchData(detailTestDataUrl);
   },
 
   /**
@@ -99,7 +99,7 @@ var dataProvider = {
    * maybe request, maybe static data
    */
   getChromosomes: function() {
-    return chromosomeList;
+    return fetchData(chromosomeTestDataUrl);
   },
 
   /**
