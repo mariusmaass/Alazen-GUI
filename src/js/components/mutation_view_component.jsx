@@ -37,7 +37,7 @@ var MutationView = React.createClass({
   render: function() {
     if (this.props.metaDataArray === null) {
       return <p>Keine Mutation ausgewählt.</p>;
-    } if (this.props.metaDataArray[0] === undefined && this.props.metaDataArray.length === 1) {
+    } if (this.props.metaDataArray[0] === undefined) {
       return <p>Es wurden keine Metadaten zu dieser Mutation gefunden.</p>;
     } else {
       return <div>{this.createView()}</div>;
