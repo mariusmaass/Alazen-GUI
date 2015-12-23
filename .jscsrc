@@ -1,4 +1,10 @@
 {
   "preset": "google",
-  "esnext": true
+  "esnext": true,
+  "validateQuoteMarks": false,
+  "maximumLineLength": false,
+  "jsDoc": false,
+  "excludeFiles": [
+    "src/js/spec/compiled.js"
+  ]
 }

@@ -1,7 +1,15 @@
+/* IMPORTS */
+
 @import "bootstrap";
 @import "slider";
 
+
+/* VARIABLES */
+
 $lane-space: 50px;
+
+
+/* GENERAL */
 
 body {
     background: #f3f3f3;
@@ -18,56 +26,15 @@ body {
     background: #eaeaea;
 }
 
-/* Lane Elememente */
+
+/* SLIIDER */
 
 .slider-container {
     padding: 1em 3em;
 }
 
-.main .lane-container {
-  padding: 0;
-}
 
-.char-element {
-    display: inline-block;
-    width: 15px;
-}
-
-.lane-block {
-    display: flex;
-    align-items: flex-start;
-}
-
-.lane {
-    margin-top: $lane-space;
-    text-align: left;
-    cursor: grab;
-    color: #6E6E6E;
-}
-
-.lanes {
-    overflow: auto;
-    z-index: 5;
-    width: 90%;
-    white-space: nowrap;
-    background-color: #EEEEEE;
-    padding: 10px 0;
-}
-
-.caption {
-    padding: 0px 10px;
-}
-
-.labels {
-    z-index: 6;
-    width: 10%;
-    background-color: #CCCCCC;
-    padding: 10px 0;
-}
-
-.lanesource {
-    margin-top: $lane-space;
-}
+/* SOURCE SELECT */
 
 .source-select {
     position: relative;
@@ -79,20 +46,75 @@ body {
     margin: 10px;
 }
 
+
+/* LANES */
+
+.mutation-board {
+    display: flex;
+    align-items: flex-start;
+}
+
+.main .lane-container {
+    padding: 0;
+}
+
+.lane-labels {
+    z-index: 6;
+    width: 10%;
+    background-color: #CCCCCC;
+    padding: 10px 0;
+}
+
+.lane-label-index {
+    padding: 0px 10px;
+}
+
+.lane-label {
+    margin-top: $lane-space;
+    padding: 0px 10px;
+}
+
+.lane-contents {
+    overflow: auto;
+    z-index: 5;
+    width: 90%;
+    white-space: nowrap;
+    background-color: #EEEEEE;
+    padding: 10px 0;
+}
+
+.lane-interval {
+    display: inline-block;
+    width: 15px;
+}
+
+.lane-content {
+    margin-top: $lane-space;
+    text-align: left;
+    cursor: grab;
+    color: #6E6E6E;
+}
+
 .lane-aggregation-source {
-  background: #6E6E6E;
-  color: #FFFFFF;
-  padding: 0px 10px;
-  display: block;
-  position: fixed;
-  transform: rotate(90deg);
-  left: -30px;
-  margin-top: 20px;
+    background: #6E6E6E;
+    color: #FFFFFF;
+    padding: 0px 10px;
+    display: block;
+    position: fixed;
+    transform: rotate(90deg);
+    left: -30px;
+    margin-top: 20px;
 }
 
 
+/* MUTATIONS */
 
-/** SearchField Custom Styles **/
+.mutation-view-table {
+    margin: auto;
+}
+
+
+/* SEARCH FIELD */
 
 #custom-search-input {
     margin:0;
@@ -108,8 +130,6 @@ body {
     /* IE7-8 doesn't have border-radius, so don't indent the padding */
 
     margin-bottom: 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -123,8 +143,6 @@ body {
     left: -28px;
     /* IE7-8 doesn't have border-radius, so don't indent the padding */
     margin-bottom: 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
     color:#D9230F;
 }

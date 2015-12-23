@@ -69,10 +69,16 @@ var dataProvider = {
    * @returns {*[]}
    */
   getSources: function() { //TODO replace
-    return [{id: 1, data: fetchData(detailTestDataUrl)},
-      {id: 2, data: fetchData(detailTestDataUrl)},
-      {id: 3, data: fetchData(detailTestDataUrl)}
-    ];
+    return [{
+      id: 1,
+      data: testDataForDetailView
+    }, {
+      id: 2,
+      data: testDataForDetailView
+    }, {
+      id: 3,
+      data: testDataForDetailView
+    }];
   },
 
   /**
@@ -85,7 +91,7 @@ var dataProvider = {
    * @returns {*[]}
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
-    return fetchData(detailTestDataUrl);
+    return testDataForDetailView;
   },
 
   /**
@@ -93,7 +99,7 @@ var dataProvider = {
    * maybe request, maybe static data
    */
   getChromosomes: function() {
-    return fetchData(chromosomeTestDataUrl);
+    return chromosomeList;
   },
 
   /**
@@ -139,14 +145,24 @@ function buildMutationSequence(parsedJson) {
   var from = 0;
 
   if (mutations.length == 0) {
-    mutationSequence.push({id: "refSeq", sequence: ref, mutationFlag: false, metadata: ""})
+    mutationSequence.push({
+      id: "refSeq",
+      sequence: ref,
+      mutationFlag: false,
+      metadata: ""
+    });
   }
 
   for(var index = 0; index < mutations.length; index++) {
     from = mutations[index].position.from;
     if (from != 0 || to < from - 1) {
       var innerSequence = ref.substring(to, from - 1);
-      mutationSequence.push({id: index, sequence: innerSequence, mutationFlag: false, metadata: ""});
+      mutationSequence.push({
+        id: index,
+        sequence: innerSequence,
+        mutationFlag: false,
+        metadata: ""
+      });
     }
     to = mutations[index].position.to;
     var subSequence = ref.substring(from, to);
@@ -159,7 +175,12 @@ function buildMutationSequence(parsedJson) {
     if (index + 1 == mutations.length) {
       if (to != ref.length) {
         var lastSequence = ref.substring(to + 1, ref.length);
-        mutationSequence.push({id: index, sequence: lastSequence, mutationFlag: false, metadata: ""});
+        mutationSequence.push({
+          id: index,
+          sequence: lastSequence,
+          mutationFlag: false,
+          metadata: ""
+        });
       }
     }
   }
