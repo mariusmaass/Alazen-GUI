@@ -76,6 +76,7 @@ body {
 
 .lane-contents {
     overflow: hidden;
+    text-align: left;
     z-index: 5;
     width: 90%;
     white-space: nowrap;
@@ -89,9 +90,12 @@ body {
     width: 15px;
 }
 
+.lanes-block {
+    width: 4500px;
+}
+
 .lane-content {
     margin-top: $lane-space;
-    text-align: left;
     color: #6E6E6E;
 }
 

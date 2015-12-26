@@ -53,9 +53,9 @@ var LaneContainer = React.createClass({
     var index = [];
     for (var i = this.state.startPos; i <= this.state.endPos; i++) {
       if ((i % 10) == 0) {
-        index.push(<span className="lane-interval" key={i}>{i}</span>);
+        index.push(<span className="lane-interval" key={i}>|{i}</span>);
       } else {
-        index.push(<span className="lane-interval" key={i}>_</span>);
+        index.push(<span className="lane-interval" key={i}></span>);
       }
     }
     return index;
@@ -86,7 +86,7 @@ var LaneContainer = React.createClass({
 
         <div className="lane-contents">
           <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
-            <div>
+            <div className="lanes-block">
               <div className="lane-content-index">{this.createIndex()}</div>
               <div>{this.createLanes()}</div>
             </div>
