@@ -10,6 +10,8 @@ import SourceSelect from './source_select_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
 
+const DEFAULT_BASE_FACTOR = 15;
+
 var LaneContainer = React.createClass({
   getInitialState: function() {
     return {
@@ -21,7 +23,7 @@ var LaneContainer = React.createClass({
     };
   },
   startPoint: function() {
-    return {x: -(20 * 15), y: 0};
+    return {x: -(20 * DEFAULT_BASE_FACTOR), y: 0};
   },
   handleSourceSelect: function(updateData) {
     //todo: anpassen für alle vier quellen
@@ -40,7 +42,7 @@ var LaneContainer = React.createClass({
     this.setState({detailView: !this.state.detailView});
   },
   handleDrag: function(event, ui) {
-    var bundle = {position: Math.round(Math.abs(ui.position.left) / 15) + this.state.startPos};
+    var bundle = {position: Math.round(Math.abs(ui.position.left) / DEFAULT_BASE_FACTOR) + this.state.startPos};
     this.props.moveFunction(bundle);
   },
   handleSingleMutation: function(singleData) {
