@@ -60,7 +60,7 @@ var dataProvider = {
       if (sources[0] == "Elefant") {
         return Promise.all([fetchData(detailModifiedTestDataUrl)]);
       } else {
-        return Promise.all([fetchData(detailTestDataUrl), fetchData(detailTestDataUrl), fetchData(detailTestDataUrl)]);
+        return Promise.all([fetchData(detailTestDataUrl), fetchData(detailModifiedTestDataUrl), fetchData(detailTestDataUrl)]);
       }
 
     } else {
