@@ -19,18 +19,13 @@ var chromosomeTestDataUrl = "../../test/dummyChromosomeList.json";
  * @param {string} url to endpoint
  */
 function fetchData(url) {
-  $.ajax({
+  var ajaxCall = $.ajax({
     type: "GET",
     url: url,
-    data: {},
-    dataType: "json",
-    success: function(data) {
-      console.log(JSON.stringify(data));
-    },
-    error: function(e) {
-      console.log("Error:", e);
-    }
+    dataType: "json"
   });
+
+  return ajaxCall.promise();
 }
 
 /**
