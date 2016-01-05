@@ -1,18 +1,20 @@
 'use strict';
 
 import React from 'react';
+import $ from 'jquery';
 
 import LaneContainer from './lane_container_component.jsx!';
 import Slider from 'rc-slider';
 import SearchField from './searchfield_component.jsx!';
 import SelectChromosome from './chromosome_selection_component.jsx!';
-
 import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
 
-var chromosomeList = dataProvider.getChromosomes();
+var sourceData;
+var chromosomeList;
 
 var GuiComponent = React.createClass({
+
   getInitialState: function() {
     return {
       sourceData: dataProvider.getSources(),
@@ -33,7 +35,7 @@ var GuiComponent = React.createClass({
   },
   handleMove: function(bundle) {
     this.setState({
-      sourceData: dataProvider.getSources(),
+      sourceData: sourceData,
       currentPosition: bundle.position
     });
   },
