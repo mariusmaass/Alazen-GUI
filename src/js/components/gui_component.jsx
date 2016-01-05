@@ -16,7 +16,13 @@ var GuiComponent = React.createClass({
   getInitialData: function() {
     // TODO wrapper promise!
     // Testing with single source for now
-    dataProvider.getSources()[0].data.then((data) => {
+    var sources;
+    var chromosome;
+    var position;
+    var zoomLevel;
+    var detailView = true;
+
+    dataProvider.getPosition(sources, chromosome, position, zoomLevel, detailView)[0].data.then((data) => {
       var singleSourceTestData = [{
         id: 1,
         data: data

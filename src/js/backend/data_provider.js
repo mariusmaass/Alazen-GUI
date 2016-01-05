@@ -32,24 +32,9 @@ function fetchData(url) {
 /**
  * Interface to GUI
  *
- * @type {{getSource: dataProvider.getSource, getSources: dataProvider.getSources, getPosition: dataProvider.getPosition, getChromosomes: dataProvider.getChromosomes, searchFor: dataProvider.searchGene, getPossibleSourceNamesForUserInput: ((userInput))}}
+ * @type {{getPosition: dataProvider.getPosition, searchFor: dataProvider.searchGene, getPossibleSourceNamesForUserInput: ((userInput))}}
  */
 var dataProvider = {
-
-  /**
-   * if detailView -> detailed data with refString will be sent
-   * otherwise aggregated data
-   *
-   * @returns {*[]}
-   * @param {boolean} detailView
-   */
-  getSource: function(detailView) { //TODO replace -> getPosition
-    if (detailView) {
-      return fetchData(detailTestDataUrl);
-    } else {
-      return fetchData(agreggatedTestDataUrl);
-    }
-  },
 
   /**
    * get initially all sources
@@ -62,23 +47,6 @@ var dataProvider = {
 
   /**
    *
-   * @returns {*[]}
-   */
-  getSources: function() { //TODO replace
-    return [{
-      id: 1,
-      data: fetchData(detailTestDataUrl)
-    }, {
-      id: 2,
-      data: fetchData(detailTestDataUrl)
-    }, {
-      id: 3,
-      data: fetchData(detailTestDataUrl)
-    }];
-  },
-
-  /**
-   *
    * @param {array} sources
    * @param {string} chromosome
    * @param {number} position from ... to ...
@@ -87,7 +55,20 @@ var dataProvider = {
    * @returns {*[]}
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
-    return fetchData(detailTestDataUrl);
+    if (detailView) {
+      return [{
+        id: 1,
+        data: fetchData(detailTestDataUrl)
+      }, {
+        id: 2,
+        data: fetchData(detailTestDataUrl)
+      }, {
+        id: 3,
+        data: fetchData(detailTestDataUrl)
+      }];
+    } else {
+      return [{id: 1, data: fetchData(agreggatedTestDataUrl)}];
+    }
   },
 
   /**

@@ -5,7 +5,7 @@ import { AreaChart } from 'react-d3';
 
 import dataProvider from 'backend/data_provider';
 
-var areaData = dataProvider.getSource(false);
+var areaData;
 
 var LaneAggregation = React.createClass({
   render: function() {
