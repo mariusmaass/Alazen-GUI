@@ -75,12 +75,14 @@ body {
 }
 
 .lane-contents {
-    overflow: auto;
+    overflow: hidden;
+    text-align: left;
     z-index: 5;
     width: 90%;
     white-space: nowrap;
     background-color: #EEEEEE;
     padding: 10px 0;
+    cursor: grab;
 }
 
 .lane-interval {
@@ -88,10 +90,12 @@ body {
     width: 15px;
 }
 
+.lanes-block {
+    width: 4500px;
+}
+
 .lane-content {
     margin-top: $lane-space;
-    text-align: left;
-    cursor: grab;
     color: #6E6E6E;
 }
 
