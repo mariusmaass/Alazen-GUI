@@ -14,21 +14,26 @@ var sourceData;
 
 var GuiComponent = React.createClass({
   getInitialData: function() {
-    // TODO wrapper promise!
-    // Testing with single source for now
     var sources;
     var chromosome;
     var position;
     var zoomLevel;
     var detailView = true;
 
-    dataProvider.getPosition(sources, chromosome, position, zoomLevel, detailView)[0].data.then((data) => {
-      var singleSourceTestData = [{
-        id: 1,
-        data: data
-      }];
+    dataProvider.getPosition(sources, chromosome, position, zoomLevel, detailView).then((values) => {
+      if (values.length == 0) {
+        return;
+      }
 
-      this.setState({sourceData: singleSourceTestData});
+      var sources = [];
+      for (var i = 0; i < values.length; i++) {
+        sources.push({
+          id: i,
+          data: values[i]
+        });
+      }
+
+      this.setState({sourceData: sources});
     });
   },
   getInitialState: function() {

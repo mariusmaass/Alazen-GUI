@@ -23,7 +23,7 @@ var providerUtils = {
       return mutationSequence;
     }
 
-    for(var index = 0; index < mutations.length; index++) {
+    for (var index = 0; index < mutations.length; index++) {
       startOfMutation = mutations[index].interval.startOfMutation;
 
       if (startOfMutation != 0 || endOfLastInterval < startOfMutation - 1) {

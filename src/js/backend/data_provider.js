@@ -56,18 +56,9 @@ var dataProvider = {
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
     if (detailView) {
-      return [{
-        id: 1,
-        data: fetchData(detailTestDataUrl)
-      }, {
-        id: 2,
-        data: fetchData(detailTestDataUrl)
-      }, {
-        id: 3,
-        data: fetchData(detailTestDataUrl)
-      }];
+      return Promise.all([fetchData(detailTestDataUrl), fetchData(detailTestDataUrl), fetchData(detailTestDataUrl)]);
     } else {
-      return [{id: 1, data: fetchData(agreggatedTestDataUrl)}];
+      return Promise.all([fetchData(agreggatedTestDataUrl), fetchData(agreggatedTestDataUrl), fetchData(agreggatedTestDataUrl)]);
     }
   },
 
