@@ -10,17 +10,9 @@ import SelectChromosome from './chromosome_selection_component.jsx!';
 import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
 
-var sourceData;
-
 var GuiComponent = React.createClass({
   getInitialData: function() {
-    var sources;
-    var chromosome;
-    var position;
-    var zoomLevel;
-    var detailView = true;
-
-    dataProvider.getPosition(sources, chromosome, position, zoomLevel, detailView).then((values) => {
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((values) => {
       if (values.length == 0) {
         return;
       }
@@ -32,7 +24,6 @@ var GuiComponent = React.createClass({
           data: values[i]
         });
       }
-
       this.setState({sourceData: sources});
     });
   },
@@ -57,7 +48,6 @@ var GuiComponent = React.createClass({
   },
   handleMove: function(bundle) {
     this.setState({
-      sourceData: sourceData,
       currentPosition: bundle.position
     });
   },

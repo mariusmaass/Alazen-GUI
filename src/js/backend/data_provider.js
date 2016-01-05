@@ -12,7 +12,7 @@ import providerUtils from './data_provider_utils';
 
 var detailTestDataUrl = "../../test/dummyRehashedDetailViewData.json";
 var agreggatedTestDataUrl = "../../test/dummyAgreggatedViewData.json";
-var chromosomeTestDataUrl = "../../test/dummyChromosomeList.json";
+var detailModifiedTestDataUrl = "../../test/dummyRehashedModifiedDetailViewData.json";
 
 /**
  * GET-request to backend
@@ -56,7 +56,13 @@ var dataProvider = {
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
     if (detailView) {
-      return Promise.all([fetchData(detailTestDataUrl), fetchData(detailTestDataUrl), fetchData(detailTestDataUrl)]);
+
+      if (sources[0] == "Elefant") {
+        return Promise.all([fetchData(detailModifiedTestDataUrl)]);
+      } else {
+        return Promise.all([fetchData(detailTestDataUrl), fetchData(detailTestDataUrl), fetchData(detailTestDataUrl)]);
+      }
+
     } else {
       return Promise.all([fetchData(agreggatedTestDataUrl), fetchData(agreggatedTestDataUrl), fetchData(agreggatedTestDataUrl)]);
     }
