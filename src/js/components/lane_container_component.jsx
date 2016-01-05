@@ -15,10 +15,7 @@ const DEFAULT_BASE_FACTOR = 15;
 var LaneContainer = React.createClass({
   getInitialState: function() {
     return {
-      sourceData: this.props.sourceData,
-      detailView: true,
-      startPos: 200,
-      endPos: 500,
+      data: this.props.data,
       mutationMetaData: null
     };
   },
@@ -27,22 +24,22 @@ var LaneContainer = React.createClass({
   },
   handleSourceSelect: function(updateData) {
     //todo: anpassen für alle vier quellen
-    //this.replaceState({sourceData: updateData});
-    var testData = this.state.sourceData;
+    //this.replaceState({data: updateData});
+    var testData = this.state.data;
     if (typeof testData[3] == "undefined") {
       testData.push(updateData);
-      this.setState({sourceData: testData});
+      this.setState({data: testData});
     } else {
       testData.pop();
-      this.setState({sourceData: testData});
+      this.setState({data: testData});
     }
 
   },
-  toggleDetailView: function() {
-    this.setState({detailView: !this.state.detailView});
+  isDetailView: function() {
+    return this.props.currentZoomLevel === 1;
   },
   handleDrag: function(event, ui) {
-    var bundle = {position: Math.round(Math.abs(ui.position.left) / DEFAULT_BASE_FACTOR) + this.state.startPos};
+    var bundle = {position: Math.round(Math.abs(ui.position.left) / DEFAULT_BASE_FACTOR) + this.props.windowBegin};
     this.props.moveFunction(bundle);
   },
   handleSingleMutation: function(singleData) {
@@ -53,9 +50,11 @@ var LaneContainer = React.createClass({
   },
   createIndex: function() {
     var index = [];
-    for (var i = this.state.startPos; i <= this.state.endPos; i++) {
-      if ((i % 10) == 0) {
-        index.push(<span className="lane-interval" key={i}>|{i}</span>);
+    var numberOfIntervals = 200;
+    var interval = this.props.windowSize / numberOfIntervals;
+    for (var i = this.props.windowBegin; i <= this.props.windowEnd; i += interval) {
+      if ((i % (interval * 10)) == 0) {
+        index.push(<span className="lane-interval" key={i}>{i}</span>);
       } else {
         index.push(<span className="lane-interval" key={i}></span>);
       }
@@ -63,8 +62,8 @@ var LaneContainer = React.createClass({
     return index;
   },
   createLanes: function() {
-    if (this.state.detailView) {
-      return this.state.sourceData.map(function(laneData) {
+    if (this.isDetailView()) {
+      return this.state.data.map(function(laneData) {
         return <Lane key={laneData.id} sequences={laneData.data} clickOnMutation={this.handleSingleMutation}/>;
       },this);
     } else {
@@ -72,14 +71,13 @@ var LaneContainer = React.createClass({
     }
   },
   createLanesLabels: function() {
-    return this.state.sourceData.map(function(laneData) {
+    return this.state.data.map(function(laneData) {
       return <div className="lane-label" key={laneData.id}>Source: {laneData.id}</div>;
     });
   },
   render: function() {
     return <div>
       <SourceSelect handleClick={this.handleSourceSelect}/>
-      <button onClick={this.toggleDetailView}>Toggle Details</button>
       <div className="mutation-board">
         <div className="lane-labels">
           <div className="lane-label-index">Index</div>
