@@ -12,14 +12,15 @@ var LaneAggregation = React.createClass({
     return (
       <div className="lane-content lane-aggregation">
         <div className="lane-aggregation-source">Source 1</div>
-        <AreaChart
-          data={areaData}
-          width={1400}
-          height={100}
-        />
       </div>
     );
   }
 });
+
+// <AreaChart
+//   data={areaData}
+//   width={1400}
+//   height={100}
+// />
 
 export default LaneAggregation;

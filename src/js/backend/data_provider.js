@@ -90,14 +90,6 @@ var dataProvider = {
   },
 
   /**
-   * @returns {*[]} a simple list of all chromosomes
-   * maybe request, maybe static data
-   */
-  getChromosomes: function() {
-    return fetchData(chromosomeTestDataUrl);
-  },
-
-  /**
    * send search-request regarding gene, if gene exists existing data will be returned
    * otherwise this function will (TODO) throw an error or return null
    *
@@ -148,7 +140,7 @@ function buildMutationSequence(parsedJson) {
     });
   }
 
-  for(var index = 0; index < mutations.length; index++) {
+  for (var index = 0; index < mutations.length; index++) {
     from = mutations[index].position.from;
     if (from != 0 || to < from - 1) {
       var innerSequence = ref.substring(to, from - 1);

@@ -11,19 +11,30 @@ import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
 
 var sourceData;
-var chromosomeList;
 
 var GuiComponent = React.createClass({
+  getInitialData: function() {
+    // TODO wrapper promise!
+    // Testing with single source for now
+    dataProvider.getSources()[0].data.then((data) => {
+      var singleSourceTestData = [{
+        id: 1,
+        data: data
+      }];
 
+      this.setState({sourceData: singleSourceTestData});
+    });
+  },
   getInitialState: function() {
+    this.getInitialData();
     return {
-      sourceData: dataProvider.getSources(),
+      sourceData: null,
       currentPosition: 0,
       currentZoomLevel: 1,
       windowBegin: 0,
       windowEnd: DATA.zoomLevel[1],
       windowSize: DATA.zoomLevel[1],
-      chromosomeNr: chromosomeList[0].id
+      chromosomeNr: DATA.chromosomeList[0].id
     };
   },
   getWindowIntervalByZoomLevel: function(zoomLevel) {
@@ -60,7 +71,7 @@ var GuiComponent = React.createClass({
         </div>
         <div className="chromosome-info">
           <h2>Chromosome {this.state.chromosomeNr}</h2>
-          <SelectChromosome list={chromosomeList} changeChromNumber={this.changeChromHeader}/>
+          <SelectChromosome list={DATA.chromosomeList} changeChromNumber={this.changeChromHeader}/>
         </div>
 
         <div className="container-fluid main">
