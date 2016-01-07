@@ -58,7 +58,8 @@ var LaneContainer = React.createClass({
   createIndex: function() {
     var index = [];
     var numberOfIntervals = 200;
-    var interval = this.props.windowSize / numberOfIntervals;
+    // var interval = this.props.windowSize / numberOfIntervals;
+    var interval = 2;
     for (var i = this.props.windowBegin; i <= this.props.windowEnd; i += interval) {
       if ((i % (interval * 10)) == 0) {
         index.push(<span className="lane-interval" key={i}>{i}</span>);
