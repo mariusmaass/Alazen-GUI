@@ -1,22 +1,36 @@
 [
   {
     "id": 1,
-    "sequence": "BASBSBSBQEBBASDBASD",
+    "sequence": "ATGCATGCATGCATGCATGCGG",
     "mutation": false
   },
   {
     "id": 2,
-    "sequence": "BGFD",
-    "mutation": true
+    "sequence": "ACCCCTGACGG",
+    "mutation": true,
+    "metadata":
+    {
+      "name": "GBChr.382",
+      "sequence": "ACCCCTGACGG",
+      "position":
+      {
+        "from": 345,
+        "to": 356
+      },
+      "source": "genome1000",
+      "gender": "m",
+      "origin": "DDR",
+      "downloadTime": "22/11/2015"
+    }
   },
   {
     "id": 3,
-    "sequence": "ASLJLJLASJDLJASLD",
+    "sequence": "ATGCATGCATGCAATGCATGCATGCA",
     "mutation": false
   },
   {
     "id": 4,
-    "sequence": "ASDASDQASDASDKJAKSJDKASJDKAJSDKAJSDKJASKD",
+    "sequence": "ATGCATGCATGCAGGGGAA",
     "mutation": false
   },
   {
@@ -36,7 +50,7 @@
   },
   {
     "id": 8,
-    "sequence": "ABABABABBABABABABABAABABABABABAB",
+    "sequence": "ATGCCCAAGGTGTGTGATGCATGCA",
     "mutation": false
   },
   {

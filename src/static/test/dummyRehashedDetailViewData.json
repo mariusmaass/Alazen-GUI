@@ -6,8 +6,22 @@
   },
   {
     "id": 2,
-    "sequence": "BGFD",
-    "mutation": true
+    "sequence": "ACCCCTGACGG",
+    "mutation": true,
+    "metadata":
+    {
+      "name": "GBChr.382",
+      "sequence": "ACCCCTGACGG",
+      "position":
+      {
+        "from": 345,
+        "to": 356
+      },
+      "source": "genome1000",
+      "gender": "m",
+      "origin": "DDR",
+      "downloadTime": "22/11/2015"
+    }
   },
   {
     "id": 3,
@@ -16,7 +30,7 @@
   },
   {
     "id": 4,
-    "sequence": "TGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGAC",
+    "sequence": "TGACTGACTGACTGACTGACTGACT",
     "mutation": false
   },
   {
@@ -36,7 +50,7 @@
   },
   {
     "id": 8,
-    "sequence": "ATGCATGCATGCATGCATGCATGCATGCATGCATGCATGCATGC",
+    "sequence": "ATGCATGCATGCATGCATGCATGC",
     "mutation": false
   },
   {
