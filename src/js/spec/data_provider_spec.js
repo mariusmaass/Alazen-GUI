@@ -11,6 +11,5 @@ describe('dataProvider', function() {
     it('has a searchGene function', function() {
       expect(dataProvider.searchGene).toBeDefined();
     });
-
   });
 });

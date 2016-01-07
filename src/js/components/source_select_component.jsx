@@ -5,8 +5,9 @@ import dataProvider from 'backend/data_provider';
 
 var SourceSelect = React.createClass({
   addSource: function() {
-    var test = dataProvider.getSource(true);
-    this.props.handleClick(test);
+    dataProvider.getPosition(["Elefant"], "ChromosomeXY", "0 - 10", 1, true).then((values) => {
+      this.props.handleClick(values[0]);
+    });
   },
   render: function() {
     return <div className="source-select">

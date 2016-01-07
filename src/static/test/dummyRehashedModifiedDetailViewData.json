@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "sequence": "ATGCATGCATGCATGCATGC",
+    "sequence": "ATGCATGCATGCATGCATGCGG",
     "mutation": false
   },
   {
@@ -25,12 +25,12 @@
   },
   {
     "id": 3,
-    "sequence": "ATGCATGCATGCATGCATGC",
+    "sequence": "ATGCATGCATGCAATGCATGCATGCA",
     "mutation": false
   },
   {
     "id": 4,
-    "sequence": "TGACTGACTGACTGACTGACTGACT",
+    "sequence": "ATGCATGCATGCAGGGGAA",
     "mutation": false
   },
   {
@@ -50,7 +50,7 @@
   },
   {
     "id": 8,
-    "sequence": "ATGCATGCATGCATGCATGCATGC",
+    "sequence": "ATGCCCAAGGTGTGTGATGCATGCA",
     "mutation": false
   },
   {

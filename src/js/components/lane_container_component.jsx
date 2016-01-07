@@ -19,6 +19,10 @@ var LaneContainer = React.createClass({
       mutationMetaData: null
     };
   },
+  componentWillReceiveProps: function(newProps) {
+    // TODO should data really live in props AND state?
+    this.setState({data: newProps.data});
+  },
   startPoint: function() {
     return {x: -(20 * DEFAULT_BASE_FACTOR), y: 0};
   },
@@ -48,6 +52,9 @@ var LaneContainer = React.createClass({
   handleMultiMutations: function(multiDatas) {
     this.setState({mutationMetaData: multiDatas});
   },
+  mutationBoardisActive: function() {
+    return this.state.data != null;
+  },
   createIndex: function() {
     var index = [];
     var numberOfIntervals = 200;
@@ -61,7 +68,7 @@ var LaneContainer = React.createClass({
     }
     return index;
   },
-  createLanes: function() {
+  renderLanes: function() {
     if (this.isDetailView()) {
       return this.state.data.map(function(laneData) {
         return <Lane key={laneData.id} sequences={laneData.data} clickOnMutation={this.handleSingleMutation}/>;
@@ -70,31 +77,39 @@ var LaneContainer = React.createClass({
       return <LaneAggregation />;
     }
   },
-  createLanesLabels: function() {
+  renderLanesLabels: function() {
     return this.state.data.map(function(laneData) {
       return <div className="lane-label" key={laneData.id}>Source: {laneData.id}</div>;
     });
   },
-  render: function() {
+  renderMutationBoard: function() {
     return <div>
       <SourceSelect handleClick={this.handleSourceSelect}/>
       <div className="mutation-board">
         <div className="lane-labels">
           <div className="lane-label-index">Index</div>
-          <div>{this.createLanesLabels()}</div>
+          <div>{this.renderLanesLabels()}</div>
         </div>
 
         <div className="lane-contents">
           <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
             <div className="lanes-block">
               <div className="lane-content-index">{this.createIndex()}</div>
-              <div>{this.createLanes()}</div>
+              <div>{this.renderLanes()}</div>
             </div>
           </Draggable>
         </div>
       </div>
       <MutationView metaDataArray={this.state.mutationMetaData} />
     </div>;
+
+  },
+  render: function() {
+    if (this.mutationBoardisActive()) {
+      return this.renderMutationBoard();
+    } else {
+      return <div>⚛</div>;
+    }
   }
 });
 

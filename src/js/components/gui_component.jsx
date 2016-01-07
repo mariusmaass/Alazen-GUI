@@ -1,27 +1,42 @@
 'use strict';
 
 import React from 'react';
+import $ from 'jquery';
 
 import LaneContainer from './lane_container_component.jsx!';
 import Slider from 'rc-slider';
 import SearchField from './searchfield_component.jsx!';
 import SelectChromosome from './chromosome_selection_component.jsx!';
-
 import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
 
-var chromosomeList = dataProvider.getChromosomes();
-
 var GuiComponent = React.createClass({
+  getInitialData: function() {
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((values) => {
+      if (values.length == 0) {
+        return;
+      }
+
+      var sources = [];
+      for (var i = 0; i < values.length; i++) {
+        sources.push({
+          id: i,
+          data: values[i]
+        });
+      }
+      this.setState({sourceData: sources});
+    });
+  },
   getInitialState: function() {
+    this.getInitialData();
     return {
-      sourceData: dataProvider.getSources(),
+      sourceData: null,
       currentPosition: 0,
       currentZoomLevel: 1,
       windowBegin: 0,
       windowEnd: DATA.zoomLevel[1],
       windowSize: DATA.zoomLevel[1],
-      chromosomeNr: chromosomeList[0].id
+      chromosomeNr: DATA.chromosomeList[0].id
     };
   },
   getWindowIntervalByZoomLevel: function(zoomLevel) {
@@ -33,7 +48,6 @@ var GuiComponent = React.createClass({
   },
   handleMove: function(bundle) {
     this.setState({
-      sourceData: dataProvider.getSources(),
       currentPosition: bundle.position
     });
   },
@@ -58,7 +72,7 @@ var GuiComponent = React.createClass({
         </div>
         <div className="chromosome-info">
           <h2>Chromosome {this.state.chromosomeNr}</h2>
-          <SelectChromosome list={chromosomeList} changeChromNumber={this.changeChromHeader}/>
+          <SelectChromosome list={DATA.chromosomeList} changeChromNumber={this.changeChromHeader}/>
         </div>
 
         <div className="container-fluid main">
