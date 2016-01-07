@@ -86,11 +86,63 @@ var SearchField = React.createClass({
     return !isNaN(parseInt(o));
   },
 
+  handleSearchAutoComplete: function() {
+
+    console.log('handleSearchAutoComplete');
+    // Get the <datalist> and <input> elements.
+    var dataList = document.getElementById('jsonDataList');
+    //var dataList = this.refs.jsonDataList;
+    //var input = document.getElementById('inputSearch');
+    var input = this.refs.inputSearch;
+
+    // Create a new XMLHttpRequest.
+    var request = new XMLHttpRequest();
+
+    // Set up the request.
+    request.open('GET', '../test/dummyGenAutoComplete.json', true);
+
+    // Handle state changes for the request.
+    request.onreadystatechange = function(response) {
+
+      if (request.readyState === 4) {
+        if (request.status === 200) {
+          // Parse the JSON
+          var jsonOptions = JSON.parse(request.responseText);
+          // Loop over the JSON array.
+          jsonOptions.forEach(function(item) {
+            // Create a new <option> element.
+            var option = document.createElement('option');
+
+            // Set the value using the item in the JSON array.
+            option.value = item;
+            // Add the <option> element to the <datalist>.
+            dataList.appendChild(option);
+          });
+
+          // Update the placeholder text.
+          input.placeholder = "e.g. datalist";
+        } else {
+          // An error occured :(
+          input.placeholder = "Couldn't load datalist options :(";
+        }
+      }
+    };
+
+    // Update the placeholder text.
+    input.placeholder = "Loading options...";
+
+    // Send the request.
+    request.send();
+
+  },
+
   render: function() {
     return (
       <div className="searchfield">
         <div idName="custom-search-input">
           <div className="input-group col-md-12">
+            <input type="text" className="search-query form-control" placeholder="13;234-343 or 589-767 or FOXP2" ref="inputSearch" list="jsonDataList" onKeyUp={this.handleSearchAutoComplete} />
+            <datalist idName="jsonDataList" id="jsonDataList" ref="jsonDataList"></datalist>
             <span className="input-group-btn">
               <button className="btn btn-danger" type="button" onClick={this.handleSubmit}>
                 <span className="glyphicon glyphicon-search"></span>
