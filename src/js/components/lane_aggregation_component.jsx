@@ -11,7 +11,7 @@ var LaneAggregation = React.createClass({
   render: function() {
     return (
       <div className="lane-content lane-aggregation">
-        <div className="lane-aggregation-source">Source 1</div>
+        Mutation aggregation view not yet implemented.
       </div>
     );
   }
