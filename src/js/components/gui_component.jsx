@@ -73,6 +73,8 @@ var GuiComponent = React.createClass({
         <div className="chromosome-info">
           <h2>Chromosome {this.state.chromosomeNr}</h2>
           <SelectChromosome list={DATA.chromosomeList} changeChromNumber={this.changeChromHeader}/>
+          <br/>
+          <img className="ideogram" src={"/images/chromosome_" + this.state.chromosomeNr + ".png"}/>
         </div>
 
         <div className="container-fluid main">
