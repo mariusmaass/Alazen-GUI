@@ -56,15 +56,39 @@ var dataProvider = {
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
     if (detailView) {
-
       if (sources[0] == "Elefant") {
         return Promise.all([fetchData(detailModifiedTestDataUrl)]);
       } else {
-        return Promise.all([fetchData(detailTestDataUrl), fetchData(detailModifiedTestDataUrl), fetchData(detailTestDataUrl)]);
+        return Promise.all(
+          [
+            fetchData(detailTestDataUrl),
+            fetchData(detailModifiedTestDataUrl),
+            fetchData(detailTestDataUrl)
+          ]
+        ).then(function(sources) {
+          return sources.map(function(source, index) {
+            return {
+              id: index,
+              data: source
+            };
+          });
+        });
       }
-
     } else {
-      return Promise.all([fetchData(agreggatedTestDataUrl), fetchData(agreggatedTestDataUrl), fetchData(agreggatedTestDataUrl)]);
+      return Promise.all(
+        [
+          fetchData(agreggatedTestDataUrl),
+          fetchData(agreggatedTestDataUrl),
+          fetchData(agreggatedTestDataUrl)
+        ]
+      ).then(function(sources) {
+        return sources.map(function(source, index) {
+          return {
+            id: index,
+            data: source
+          };
+        });
+      });
     }
   },
 

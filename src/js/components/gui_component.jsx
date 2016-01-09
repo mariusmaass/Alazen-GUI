@@ -12,18 +12,7 @@ import DATA from 'backend/embedded_data';
 
 var GuiComponent = React.createClass({
   getInitialData: function() {
-    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((values) => {
-      if (values.length == 0) {
-        return;
-      }
-
-      var sources = [];
-      for (var i = 0; i < values.length; i++) {
-        sources.push({
-          id: i,
-          data: values[i]
-        });
-      }
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((sources) => {
       this.setState({sourceData: sources});
     });
   },
