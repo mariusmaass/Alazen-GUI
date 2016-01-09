@@ -55,6 +55,14 @@ var dataProvider = {
    * @returns {*[]}
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
+    console.log('Interval Request', {
+      sources: sources,
+      chromosome: chromosome,
+      position: position,
+      zoomLevel: zoomLevel,
+      detailView: detailView
+    });
+
     if (detailView) {
       if (sources[0] == "Elefant") {
         return Promise.all([fetchData(detailModifiedTestDataUrl)]);
