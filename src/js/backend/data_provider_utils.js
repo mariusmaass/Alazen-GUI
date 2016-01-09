@@ -10,57 +10,56 @@ var providerUtils = {
     var ref = parsedJson.detail.refseq;
     var mutations = parsedJson.detail.mutations;
     var mutationSequence = [];
+    var mutationSequenceIndex = 0;
     var endOfLastInterval = 0;
     var startOfMutation = 0;
+    var sequence = "";
 
     if (mutations.length == 0) {
       mutationSequence.push({
-        id: "refSeq",
+        id: mutationSequenceIndex,
         sequence: ref,
         mutationFlag: false,
         metadata: ""
       });
       return mutationSequence;
     }
-
     for (var index = 0; index < mutations.length; index++) {
-      startOfMutation = mutations[index].interval.startOfMutation;
-
-      if (startOfMutation != 0 || endOfLastInterval < startOfMutation - 1) {
-        handleGaps(ref, mutationSequence, startOfMutation, endOfLastInterval, index);
+      startOfMutation = mutations[index].interval.from;    
+      if (startOfMutation != 0 && index == 0) {
+    	  sequence = ref.substring(endOfLastInterval, startOfMutation);
+    	  pushSequence(sequence, mutationSequence, mutationSequenceIndex);
+    	  mutationSequenceIndex++;
+      } else if (endOfLastInterval < startOfMutation - 1) {
+    	   sequence = ref.substring(endOfLastInterval + 1, startOfMutation);
+    	   pushSequence(sequence, mutationSequence, mutationSequenceIndex);
+    	   mutationSequenceIndex++;
       }
-
-      endOfLastInterval = mutations[index].interval.endOfLastInterval;
-      var subSequence = ref.substring(startOfMutation, endOfLastInterval);
+      endOfLastInterval = mutations[index].interval.to;
+      var subSequence = ref.substring(startOfMutation, endOfLastInterval+1);
       mutationSequence.push({
-        id: mutations[index].name,
+        id: mutationSequenceIndex,
         sequence: subSequence,
         mutationFlag: true,
         metadata: mutations[index].metadata
       });
-
-      if (index + 1 == mutations.length) {
-        handleGaps(ref, mutationSequence, startOfMutation, endOfLastInterval, index);
+      mutationSequenceIndex++;
+      if (index + 1 == mutations.length && endOfLastInterval != ref.length-1) {
+    	  sequence = ref.substring(endOfLastInterval+1, ref.length);
+    	  pushSequence(sequence, mutationSequence, mutationSequenceIndex);
+    	  mutationSequenceIndex++;
       }
     }
     return mutationSequence;
   }
 };
 
-function handleGaps(ref, mutationSequence, startOfMutation, endOfLastInterval, index) {
-  var sequence = "test";
-  if (endOfLastInterval == 0 && startOfMutation != 0) {
-    sequence = ref.substring(endOfLastInterval, startOfMutation - 1);
-  } else if (endOfLastInterval < startOfMutation - 1) {
-    sequence = ref.substring(endOfLastInterval + 1, startOfMutation - 1);
-  } else if (endOfLastInterval != ref.length) {
-    sequence = ref.substring(endOfLastInterval + 1, ref.length);
-  }
+function pushSequence(sequence, mutationSequence, index) {
   mutationSequence.push({
     id: index,
     sequence: sequence,
     mutationFlag: false,
-    metadata: ""
+    metadata: "none"
   });
 }
 
