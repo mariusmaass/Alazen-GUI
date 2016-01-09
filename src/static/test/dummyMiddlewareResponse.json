@@ -1,0 +1,83 @@
+{
+  "source": "humanDB",
+  "chromosom": "14",
+  "interval": {
+    "from": "0",
+    "to": "400",
+    "size": "50"
+  },
+  "details": {
+    "refseq": "GCCGGATATGAACTTCATGGCGGCGGTGACCGGTCAACACGGGATTCTAATGGGGTTGAGCCAGATGAGATCGCCCCCCGACGCGGTCGATTAAAGCCTTCTCACGCGAACGCCATTACGGCGTAAGCCCACAGAATTTCGTTTTGGTGCTTGTGCCTCCCTGGTCATGGTTCTCAAACTCACGGAGTAAGAGTCATTTGGAAGTACTGAGGACGTCTGACTTACCTGGGTAACGTTCGTACTATGCCATGCATCTTGGGAGTTCGGAATTACGGTTAACGCCATTGTAATGTCCAATGTAGCAAGGGGAGAGACAATCTCTAATGGAAGCAGGGGAGTGGAACGGCTCCGTGTAGAAGGCCTGACCCGAGAACCCAGGTGCATGTCCGGGCAGCCAGTC",
+    "mutations": [
+      {
+        "refname": "RS435",
+        "sequence": "GGG",
+        "position": {
+          "from": "17",
+          "to": "20"
+        },
+        "metadata": {
+          "gender": "m",
+          "origin": "DDR",
+          "downloadtime": "21/02/2010"
+        }
+      },
+      {
+        "refname": "RS346",
+        "sequence": "GTCAGG",
+        "position": {
+          "from": "50",
+          "to": "56"
+        },
+        "metadata": {
+          "gender": "w",
+          "origin": "GBR",
+          "downloadtime": "21/02/2010"
+        }
+      },
+      {
+        "refname": "RS42365",
+        "sequence": "========",
+        "position": {
+          "from": "172",
+          "to": "180"
+        },
+        "metadata": {
+          "gender": "w",
+          "origin": "GBR",
+          "downloadtime": "21/01/2011"
+        }
+      },
+      {
+        "refname": "RS93",
+        "sequence": "TTTGG",
+        "position": {
+          "from": "220",
+          "to": "225"
+        },
+        "metadata": {
+          "gender": "m",
+          "origin": "DDR",
+          "downloadtime": "21/01/2011"
+        }
+      },
+      {
+        "refname": "RS34555",
+        "sequence": "==",
+        "position": {
+          "from": "390",
+          "to": "392"
+        },
+        "metadata": {
+          "gender": "w",
+          "origin": "DDR",
+          "downloadtime": "21/01/2011"
+        }
+      }
+    ]
+  },
+  "graph":
+  {
+
+  }
+}
