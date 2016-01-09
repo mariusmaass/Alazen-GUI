@@ -43,12 +43,19 @@ var GuiComponent = React.createClass({
   handleSearch: function(bundle) {
     // TODO
   },
-  handleZoom: function(value) {
-    value = value || 1;
-    var stateUpdate = {};
-    Object.assign(stateUpdate, {currentZoomLevel: value}, this.getWindowIntervalByZoomLevel(value));
-    console.log("handleZoom ", value, stateUpdate);
-    this.setState(stateUpdate);
+  handleZoom: function(zoomLevel) {
+    zoomLevel    = zoomLevel || 1;
+    var isDetailView = zoomLevel === 1;
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", zoomLevel, isDetailView).then((sources) => {
+      var stateUpdate = {};
+      Object.assign(
+        stateUpdate,
+        {currentZoomLevel: zoomLevel, sourceData: sources},
+        this.getWindowIntervalByZoomLevel(zoomLevel)
+      );
+      console.log("handleZoom ", zoomLevel, stateUpdate);
+      this.setState(stateUpdate);
+    });
   },
   changeChromHeader: function(chromosomeNr) {
     this.setState({chromosomeNr: chromosomeNr});
