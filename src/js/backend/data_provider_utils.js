@@ -15,7 +15,7 @@ var providerUtils = {
     var startOfMutation = 0;
     var sequence = "";
 
-    if (mutations.length == 0) {
+    if (mutations.length === 0) {
       mutationSequence.push({
         id: mutationSequenceIndex,
         sequence: ref,
@@ -24,9 +24,9 @@ var providerUtils = {
       });
       return mutationSequence;
     }
-    for(var index = 0; index < mutations.length; index++) {
+    for (var index = 0; index < mutations.length; index++) {
       startOfMutation = mutations[index].interval.from;
-      if (startOfMutation != 0 && index == 0) {
+      if (startOfMutation !== 0 && index === 0) {
         sequence = ref.substring(endOfLastInterval, startOfMutation);
         pushSequence(sequence, mutationSequence, mutationSequenceIndex);
         mutationSequenceIndex++;

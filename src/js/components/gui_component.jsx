@@ -12,18 +12,7 @@ import DATA from 'backend/embedded_data';
 
 var GuiComponent = React.createClass({
   getInitialData: function() {
-    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((values) => {
-      if (values.length == 0) {
-        return;
-      }
-
-      var sources = [];
-      for (var i = 0; i < values.length; i++) {
-        sources.push({
-          id: i,
-          data: values[i]
-        });
-      }
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((sources) => {
       this.setState({sourceData: sources});
     });
   },
@@ -46,20 +35,34 @@ var GuiComponent = React.createClass({
       windowSize: DATA.zoomLevel[zoomLevel]
     };
   },
+  // TODO go away from single position, always work w/ interval begin and interval end
   handleMove: function(bundle) {
-    this.setState({
-      currentPosition: bundle.position
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", bundle.position, this.state.currentZoomLevel, this.state.currentZoomLevel === 1).then((sources) => {
+      var stateUpdate = {};
+      Object.assign(
+        stateUpdate,
+        {currentPosition: bundle.position, sourceData: sources}
+      );
+      console.log("handleMove", bundle.position, stateUpdate);
+      this.setState(stateUpdate);
     });
   },
   handleSearch: function(bundle) {
     // TODO
   },
-  handleZoom: function(value) {
-    value = value || 1;
-    var stateUpdate = {};
-    Object.assign(stateUpdate, {currentZoomLevel: value}, this.getWindowIntervalByZoomLevel(value));
-    console.log("handleZoom ", value, stateUpdate);
-    this.setState(stateUpdate);
+  handleZoom: function(zoomLevel) {
+    zoomLevel    = zoomLevel || 1;
+    var isDetailView = zoomLevel === 1;
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", this.state.currentPosition, zoomLevel, isDetailView).then((sources) => {
+      var stateUpdate = {};
+      Object.assign(
+        stateUpdate,
+        {currentZoomLevel: zoomLevel, sourceData: sources},
+        this.getWindowIntervalByZoomLevel(zoomLevel)
+      );
+      console.log("handleZoom ", zoomLevel, stateUpdate);
+      this.setState(stateUpdate);
+    });
   },
   changeChromHeader: function(chromosomeNr) {
     this.setState({chromosomeNr: chromosomeNr});

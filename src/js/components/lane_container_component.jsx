@@ -70,13 +70,13 @@ var LaneContainer = React.createClass({
     return index;
   },
   renderLanes: function() {
-    if (this.isDetailView()) {
-      return this.state.data.map(function(laneData) {
+    return this.state.data.map(function(laneData) {
+      if (this.isDetailView()) {
         return <Lane key={laneData.id} sequences={laneData.data} clickOnMutation={this.handleSingleMutation}/>;
-      },this);
-    } else {
-      return <LaneAggregation />;
-    }
+      } else {
+        return <LaneAggregation key={laneData.id} data={laneData.data} />;
+      }
+    },this);
   },
   renderLanesLabels: function() {
     return this.state.data.map(function(laneData) {
