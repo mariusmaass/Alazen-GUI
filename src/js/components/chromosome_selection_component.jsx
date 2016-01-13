@@ -15,17 +15,11 @@ var SelectChromosome = React.createClass({
 
   render: function() {
     return (
-      <div>
         <div className="selection-list">
-          <div className="row">
-            <div className="col-xs-2 col-md-offset-5">
-              <select className="form-control" ref="selectBox" onChange={this.onSelectClick}>
+            <select className="form-control" ref="selectBox" onChange={this.onSelectClick}>
                 {this.renderListChromosomes()}
-              </select>
-            </div>
-          </div>
+            </select>
         </div>
-      </div>
     );
   },
 
