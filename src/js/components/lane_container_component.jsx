@@ -78,21 +78,11 @@ var LaneContainer = React.createClass({
       }
     },this);
   },
-  renderLanesLabels: function() {
-    return this.state.data.map(function(laneData) {
-      return <div className="lane-label" key={laneData.id}>Source: {laneData.id}</div>;
-    });
-  },
   renderMutationBoard: function() {
     return <div>
-      <SourceSelect handleClick={this.handleSourceSelect}/>
       <div className="mutation-board">
-        <div className="lane-labels">
-          <div className="lane-label-index">Index</div>
-          <div>{this.renderLanesLabels()}</div>
-        </div>
-
         <div className="lane-contents">
+          <SourceSelect sourceData={this.state.data} handleClick={this.handleSourceSelect}/>
           <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
             <div className="lanes-block">
               <div className="lane-content-index">{this.createIndex()}</div>

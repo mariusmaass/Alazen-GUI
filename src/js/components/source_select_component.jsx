@@ -9,12 +9,19 @@ var SourceSelect = React.createClass({
       this.props.handleClick(values[0]);
     });
   },
+  removeSource: function() {
+
+  },
+  renderSourceLabels: function() {
+    console.log('source select', this.props.sourceData);
+    return this.props.sourceData.map(function(laneData) {
+      return <div className="source-label" key={laneData.id}>Source: {laneData.id} <button className="source-button">-</button></div>;
+    });
+  },
   render: function() {
     return <div className="source-select">
-      <button className="btn btn-success active source-button">Source 1</button>
-      <button className="btn btn-success active source-button">Source 2</button>
-      <button className="btn btn-success active source-button">Source 3</button>
-      <button className="btn btn-primary sourcebutton" onClick={this.addSource}>Source 4</button>
+      <div>{this.renderSourceLabels()}</div>
+      <button className="source-button source-label">+</button>
     </div>;
   }
 });

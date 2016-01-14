@@ -37,13 +37,18 @@ body {
 /* SOURCE SELECT */
 
 .source-select {
-    position: relative;
-    padding: 10px;
+    position: absolute;
     display: inline-block;
+    z-index: 6;
+    background: rgba(220,160,140,0.5);
 }
 
 .source-button {
-    margin: 10px;
+    margin-left: 10px;
+}
+
+.source-label {
+    margin-top: 44px;
 }
 
 
@@ -58,27 +63,11 @@ body {
     padding: 0;
 }
 
-.lane-labels {
-    z-index: 6;
-    width: 10%;
-    background-color: #CCCCCC;
-    padding: 10px 0;
-}
-
-.lane-label-index {
-    padding: 0px 10px;
-}
-
-.lane-label {
-    margin-top: $lane-space;
-    padding: 0px 10px;
-}
-
 .lane-contents {
     overflow: hidden;
     text-align: left;
     z-index: 5;
-    width: 90%;
+    width: 100%;
     white-space: nowrap;
     background-color: #EEEEEE;
     padding: 10px 0;
