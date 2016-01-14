@@ -15,13 +15,13 @@ var SourceSelect = React.createClass({
   renderSourceLabels: function() {
     console.log('source select', this.props.sourceData);
     return this.props.sourceData.map(function(laneData) {
-      return <div className="source-label" key={laneData.id}>Source: {laneData.id} <button className="source-button">-</button></div>;
+      return <div className="source-label" key={laneData.id}>Source: {laneData.id} <button className="btn btn-xs btn-danger"><span className="glyphicon glyphicon-trash"></span></button></div>;
     });
   },
   render: function() {
     return <div className="source-select">
       <div>{this.renderSourceLabels()}</div>
-      <button className="source-button source-label">+</button>
+      <button className="btn btn-success source-label"><span className="glyphicon glyphicon-plus"></span></button>
     </div>;
   }
 });
