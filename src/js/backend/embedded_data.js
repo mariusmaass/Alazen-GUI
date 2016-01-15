@@ -105,6 +105,24 @@ var DATA = {
       "id": 24,
       "name": "Chromosome Y"
     }
+  ],
+  "countryList": [
+    {
+      "id": "XX",
+      "name": "All"
+    },
+    {
+      "id": "DE",
+      "name": "Germany"
+    },
+    {
+      "id": "BG",
+      "name": "Bulgaria"
+    },
+    {
+      "id": "GB",
+      "name": "United Kingdom"
+    }
   ]
 };
 

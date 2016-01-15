@@ -7,6 +7,7 @@ import LaneContainer from './lane_container_component.jsx!';
 import Slider from 'rc-slider';
 import SearchField from './searchfield_component.jsx!';
 import SelectChromosome from './chromosome_selection_component.jsx!';
+import SelectNationality from './nationality_selection_component.jsx!';
 import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
 
@@ -25,7 +26,8 @@ var GuiComponent = React.createClass({
       windowBegin: 0,
       windowEnd: DATA.zoomLevel[1],
       windowSize: DATA.zoomLevel[1],
-      chromosomeNr: DATA.chromosomeList[0].id
+      chromosomeNr: DATA.chromosomeList[0].id,
+      origin: [DATA.countryList[0].id]
     };
   },
   getWindowIntervalByZoomLevel: function(zoomLevel) {
@@ -67,6 +69,10 @@ var GuiComponent = React.createClass({
   changeChromHeader: function(chromosomeNr) {
     this.setState({chromosomeNr: chromosomeNr});
   },
+  changeNationality: function(countryCode) {
+    console.log("changeNationality sets state origin to: " + countryCode);
+    this.setState({origin: countryCode});
+  },
   render: function() {
     return (
       <div>
@@ -79,7 +85,10 @@ var GuiComponent = React.createClass({
           <br/>
           <img className="ideogram" src={"/images/chromosome_" + this.state.chromosomeNr + ".png"}/>
         </div>
-
+        <br/>
+        <div className="search-filter">
+          <SelectNationality list={DATA.countryList} nationalitySelected={this.changeNationality}/>
+        </div>
         <div className="container-fluid main">
           <div className="row navigation">
             <div className="col-xs-12 col-sm-7">
