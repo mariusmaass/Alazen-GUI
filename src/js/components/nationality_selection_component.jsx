@@ -21,7 +21,7 @@ var SelectNationality = React.createClass({
   render: function() {
     return (
         <div className="country-selection-list">
-            <select multiple className="form-control" ref="selectBox" onChange={this.getSelectValues}>
+            <select multiple size="5" className="form-control" ref="selectBox" onChange={this.getSelectValues}>
                 {this.renderListCountries()}
             </select>
         </div>
@@ -32,9 +32,15 @@ var SelectNationality = React.createClass({
     var countries = [];
     for (var i = 0; i < this.props.list.length; i++) {
       var country = this.props.list[i];
-      countries.push(
+      if (i == 0)  {
+        countries.push(
+        <option value={country.id} selected key={country.id}>{country.name}</option>
+      );
+      }else {
+        countries.push(
         <option value={country.id} key={country.id}>{country.name}</option>
       );
+      }
     }
     return countries;
   }
