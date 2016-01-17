@@ -2,39 +2,50 @@
 
 import providerUtils from 'backend/data_provider_utils';
 
-var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
-  '"mutations":' +
-  '[{"name":"PX7","interval":' +
-  '{ "from": 4, "to": 6 }},' +
-  '{"name": "PX10", "interval":' +
-  '{"from": 7, "to": 9}}' +
-  ']}}';
+//{"details": {"refseq": "AAACCCGGGTTT", "mutations": [{"refname":"PX7", "mutationseq": "CCG",
+//  "position": {"from": 4, "to": 6}, "metadata": ""}, {"refname":"PX10", "mutationseq":"GGT",
+//  "position": {"from": 7,"to": 9}, "metadata": ""}]
 
-var expectedAnswer = new Array([{
-  id: "0",
+var testMutationJSON =
+'{"details": ' +
+  '{"refseq": "AAACCCGGGTTT",' +
+  '"mutations": [' +
+    '{"refname":"PX7",' +
+    '"mutationseq": "CCG","position":' +
+    '{"from": 4, "to": 6 },' +
+    '"metadata": ""},' +
+    '{"refname": "PX10",' +
+    '"mutationseq": "GGT", "position":' +
+    '{"from": 7, "to": 9},' +
+    '"metadata": ""}' +
+  ']}' +
+'}';
+
+var expectedAnswer = new Array({
+  id: 0,
   sequence: "AAAC",
   mutationFlag: false,
   metadata: ""
-},
+  },
   {
-    id: "PX7",
+    id: 1,
     sequence: "CCG",
     mutationFlag: true,
     metadata: ""
   },
   {
-    id: "PX10",
+    id: 2,
     sequence: "GGT",
     mutationFlag: true,
     metadata: ""
   },
   {
-    id: "3",
+    id: 3,
     sequence: "TT",
     mutationFlag: false,
     metadata: ""
-  },
-]);
+  }
+);
 
 describe('dataProvider', function() {
   describe('[actions]', function() {
