@@ -10,6 +10,9 @@ import SelectChromosome from './chromosome_selection_component.jsx!';
 import SelectNationality from './nationality_selection_component.jsx!';
 import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
+import SelectMaleCheckbox from './select_male_checkbox_component.jsx!';
+import SelectFemaleCheckbox from './select_female_checkbox_component.jsx!';
+import SelectRelativeFrequencyCheckbox from './select_relative_frequency_component.jsx!';
 
 var GuiComponent = React.createClass({
   getInitialData: function() {
@@ -27,7 +30,10 @@ var GuiComponent = React.createClass({
       windowEnd: DATA.zoomLevel[1],
       windowSize: DATA.zoomLevel[1],
       chromosomeNr: DATA.chromosomeList[0].id,
-      origin: [DATA.countryList[0].id]
+      origin: [DATA.countryList[0].id],
+      male: true,
+      female: true,
+      relativeFrequency: true
     };
   },
   getWindowIntervalByZoomLevel: function(zoomLevel) {
@@ -73,6 +79,23 @@ var GuiComponent = React.createClass({
     console.log("changeNationality sets state origin to: " + countryCode);
     this.setState({origin: countryCode});
   },
+  changeSearchFilter: function(filterSelected) {
+    if (filterSelected == "male") {
+      var maleSelect = !this.state.male;
+      console.log(filterSelected + " state changed to " + maleSelect);
+      this.setState({male: maleSelect});
+    } else if (filterSelected == "female") {
+      var femaleSelect = !this.state.female;
+      console.log(filterSelected + " state changed to " + femaleSelect);
+      this.setState({female: femaleSelect});
+    } else if (filterSelected == "relFreq") {
+      var relFreqSelect = !this.state.relativeFrequency;
+      console.log(filterSelected + " state changed to " + relFreqSelect);
+      this.setState({relativeFrequency: relFreqSelect});
+    } else {
+      console.log("Filter Eror");
+    }
+  },
   render: function() {
     return (
       <div>
@@ -88,6 +111,11 @@ var GuiComponent = React.createClass({
         <br/>
         <div className="search-filter">
           <SelectNationality list={DATA.countryList} nationalitySelected={this.changeNationality}/>
+          <div className="search-checkboxes">
+            <SelectMaleCheckbox checkboxSelected={this.changeSearchFilter}/>
+            <SelectFemaleCheckbox checkboxSelected={this.changeSearchFilter}/>
+            <SelectRelativeFrequencyCheckbox checkboxSelected={this.changeSearchFilter}/>
+          </div>
         </div>
         <div className="container-fluid main">
           <div className="row navigation">

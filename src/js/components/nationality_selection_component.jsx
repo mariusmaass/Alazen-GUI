@@ -20,11 +20,11 @@ var SelectNationality = React.createClass({
 
   render: function() {
     return (
-        <div className="country-selection-list">
-            <select multiple size="5" className="form-control" ref="selectBox" onChange={this.getSelectValues}>
-                {this.renderListCountries()}
-            </select>
-        </div>
+      <div className="country-selection-list">
+        <select multiple size="5" className="form-control" ref="selectBox" onChange={this.getSelectValues}>
+          {this.renderListCountries()}
+        </select>
+      </div>
     );
   },
 

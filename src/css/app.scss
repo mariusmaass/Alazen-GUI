@@ -170,6 +170,14 @@ body {
 }
 
 .country-selection-list {
+    display: inline-block; //neu
     width: 150px;
+    position: relative; //neu
     margin: auto;
+}
+.search-checkboxes {
+    display: inline-block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
 }
