@@ -16,6 +16,9 @@ var GuiComponent = React.createClass({
       this.setState({sourceData: sources});
     });
   },
+  getInitialSource: function() {
+    //inital source request
+  },
   getInitialState: function() {
     this.getInitialData();
     return {
@@ -64,6 +67,9 @@ var GuiComponent = React.createClass({
       this.setState(stateUpdate);
     });
   },
+  handleAddSource: function() {
+    console.log('handleAddSource');
+  },
   changeChromHeader: function(chromosomeNr) {
     this.setState({chromosomeNr: chromosomeNr});
   },
@@ -98,7 +104,14 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="lane-container col-sm-12">
-              <LaneContainer data={this.state.sourceData} currentZoomLevel={this.state.currentZoomLevel} windowBegin={this.state.windowBegin} windowEnd={this.state.windowEnd} windowSize={this.state.windowSize} moveFunction={this.handleMove}/>
+              <LaneContainer
+                data={this.state.sourceData}
+                currentZoomLevel={this.state.currentZoomLevel}
+                windowBegin={this.state.windowBegin}
+                windowEnd={this.state.windowEnd}
+                windowSize={this.state.windowSize}
+                moveFunction={this.handleMove}
+                addSourceFunction={this.handleAddSource}/>
             </div>
           </div>
         </div>
