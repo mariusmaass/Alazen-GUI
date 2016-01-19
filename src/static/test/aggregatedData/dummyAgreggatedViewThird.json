@@ -1,0 +1,17 @@
+{
+  "source": "humanDB",
+  "chromosome": "14",
+  "interval": {
+    "from": 2000,
+    "to": 3000,
+    "size": 50
+  },
+  "graph": [
+    233,
+    123,
+    53,
+    56,
+    65,
+    89
+  ]
+}

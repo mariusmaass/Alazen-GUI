@@ -11,8 +11,10 @@ import providerUtils from './data_provider_utils';
 //var mutationsUrl = "http://localhost:8081/mutations/";
 
 var detailTestDataUrl = "../../test/dummyRehashedDetailViewData.json";
-var agreggatedTestDataUrl = "../../test/dummyAgreggatedViewData.json";
+
 var detailModifiedTestDataUrl = "../../test/dummyRehashedModifiedDetailViewData.json";
+var aggregatedDataBaseUrl = "../../test/aggregatedData/";
+var aggregatedDataFileNames = new Array("dummyAggregatedViewFirst.json", "dummyAggregatedViewSecond.json", "dummyAggregatedViewThird.json", "dummyAggregatedViewFourth.json", "dummyAggregatedViewFifth.json", "dummyAggregatedViewSixth.json", "dummyAggregatedViewFirst.json");
 
 /**
  * GET-request to backend
@@ -55,13 +57,7 @@ var dataProvider = {
    * @returns {*[]}
    */
   getPosition: function(sources, chromosome, position, zoomLevel, detailView) {
-    console.log('Interval Request', {
-      sources: sources,
-      chromosome: chromosome,
-      position: position,
-      zoomLevel: zoomLevel,
-      detailView: detailView
-    });
+    logRequest(sources, chromosome, position, zoomLevel, detailView);
 
     if (detailView) {
       if (sources[0] == "Elefant") {
@@ -83,11 +79,13 @@ var dataProvider = {
         });
       }
     } else {
+
+      var dataUrl = getAggregatedDataUrl(aggregatedDataFileNames[zoomLevel - 2]);
       return Promise.all(
         [
-          fetchData(agreggatedTestDataUrl),
-          fetchData(agreggatedTestDataUrl),
-          fetchData(agreggatedTestDataUrl)
+          fetchData(dataUrl),
+          fetchData(dataUrl),
+          fetchData(dataUrl)
         ]
       ).then(function(sources) {
         return sources.map(function(source, index) {
@@ -121,5 +119,20 @@ var dataProvider = {
     //TODO... implement filter
   }
 };
+
+function logRequest(sources, chromosome, position, zoomLevel, detailView) {
+  console.log('Interval Request', {
+    sources: sources,
+    chromosome: chromosome,
+    position: position,
+    zoomLevel: zoomLevel,
+    detailView: detailView
+  });
+}
+
+function getAggregatedDataUrl(fileName) {
+  console.log("requested url: " + aggregatedDataBaseUrl + fileName);
+  return aggregatedDataBaseUrl + fileName;
+}
 
 export default dataProvider;

@@ -51,9 +51,8 @@ var GuiComponent = React.createClass({
     // TODO
   },
   handleZoom: function(zoomLevel) {
-    zoomLevel    = zoomLevel || 1;
-    var isDetailView = zoomLevel === 1;
-    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", this.state.currentPosition, zoomLevel, isDetailView).then((sources) => {
+    var detailView = zoomLevel == 1 ? true : false;
+    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", this.state.currentPosition, zoomLevel, detailView).then((sources) => {
       var stateUpdate = {};
       Object.assign(
         stateUpdate,
