@@ -11,6 +11,7 @@ import SourceSelect from './source_select_component.jsx!';
 import dataProvider from 'backend/data_provider';
 
 const DEFAULT_BASE_FACTOR = 15;
+const NUMBER_OF_INTERVALS = 200;
 
 var LaneContainer = React.createClass({
   getInitialState: function() {
@@ -57,9 +58,7 @@ var LaneContainer = React.createClass({
   },
   createIndex: function() {
     var index = [];
-    var numberOfIntervals = 200;
-    // var interval = this.props.windowSize / numberOfIntervals;
-    var interval = 2;
+    var interval = this.props.windowSize / NUMBER_OF_INTERVALS;
     for (var i = this.props.windowBegin; i <= this.props.windowEnd; i += interval) {
       if ((i % (interval * 10)) == 0) {
         index.push(<span className="lane-interval" key={i}>{i}</span>);
