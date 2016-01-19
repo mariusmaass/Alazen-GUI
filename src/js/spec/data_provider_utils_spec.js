@@ -51,7 +51,7 @@ describe('dataProvider', function() {
   describe('[actions]', function() {
     it('has a buildMutationSequence function', function() {
       var answer = providerUtils.buildMutationSequence(JSON.parse(testMutationJSON));
-      expect(answer).toBe(expectedAnswer);
+      expect(JSON.stringify(answer)).toBe(JSON.stringify(expectedAnswer));
     });
   });
 });
