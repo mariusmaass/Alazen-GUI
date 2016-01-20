@@ -28,7 +28,7 @@ var providerUtils = {
       startOfMutation = mutations[index].position.from;
       // if first mutation is not at start of refseq
       if (startOfMutation !== 0 && index === 0) {
-    	  sequence = ref.substring(endOfLastInterval, startOfMutation);
+    	  sequence = ref.substring(0, startOfMutation);
     	  pushSequence(sequence, mutationSequence, mutationSequenceIndex);
     	  mutationSequenceIndex++;
       // if there is a gap between mutations
@@ -47,8 +47,8 @@ var providerUtils = {
       });
       mutationSequenceIndex++;
       // if the last mutation does not reach the end of the refseq
-      if (index + 1 == mutations.length && endOfLastInterval != ref.length-1) {
-    	  sequence = ref.substring(endOfLastInterval+1, ref.length);
+      if (index + 1 == mutations.length && endOfLastInterval < ref.length-1) {
+    	  sequence = ref.substring(endOfLastInterval+1, ref.length+1);
     	  pushSequence(sequence, mutationSequence, mutationSequenceIndex);
     	  mutationSequenceIndex++;
       }
