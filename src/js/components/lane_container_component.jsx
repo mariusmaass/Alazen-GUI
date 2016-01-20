@@ -10,7 +10,7 @@ import SourceSelect from './source_select_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
 
-const DEFAULT_BASE_FACTOR = 15;
+const PIXELS_PER_INTERVAL = 15;
 const NUMBER_OF_INTERVALS = 200;
 
 var LaneContainer = React.createClass({
@@ -25,7 +25,7 @@ var LaneContainer = React.createClass({
     this.setState({data: newProps.data});
   },
   startPoint: function() {
-    return {x: -(20 * DEFAULT_BASE_FACTOR), y: 0};
+    return {x: -(20 * PIXELS_PER_INTERVAL), y: 0};
   },
   handleSourceSelect: function(updateData) {
     //todo: anpassen für alle vier quellen
@@ -43,9 +43,13 @@ var LaneContainer = React.createClass({
   isDetailView: function() {
     return this.props.currentZoomLevel === 1;
   },
+  getWindowBeginByPixelPosition: function(pixelBegin) {
+    return -Math.round((pixelBegin * this.props.windowSize) / (PIXELS_PER_INTERVAL * NUMBER_OF_INTERVALS));
+  },
   handleDrag: function(event, ui) {
-    var bundle = {position: Math.round(Math.abs(ui.position.left) / DEFAULT_BASE_FACTOR) + this.props.windowBegin};
-    this.props.moveFunction(bundle);
+    this.props.moveFunction({
+      windowBegin: this.getWindowBeginByPixelPosition(ui.position.left)
+    });
   },
   handleSingleMutation: function(singleData) {
     this.setState({mutationMetaData: [singleData]});
@@ -59,7 +63,7 @@ var LaneContainer = React.createClass({
   createIndex: function() {
     var index = [];
     var interval = this.props.windowSize / NUMBER_OF_INTERVALS;
-    for (var i = this.props.windowBegin; i <= this.props.windowEnd; i += interval) {
+    for (var i = 0; i <= this.props.windowEnd; i += interval) {
       if ((i % (interval * 10)) == 0) {
         index.push(<span className="lane-interval" key={i}>{i}</span>);
       } else {
