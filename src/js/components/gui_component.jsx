@@ -18,9 +18,25 @@ var GuiComponent = React.createClass({
   },
   getInitialSource: function() {
     //inital source request
+    if (typeof(Storage) !== "undefined") {
+      dataProvider.getInitialSources().then((sources) => {
+        localStorage.setItem("initSources", JSON.stringify(sources));
+        var sourcesMap = {};
+        sources.map(function(source) {
+          sourcesMap[source] = false;
+        });
+        console.log('sources', sourcesMap);
+        localStorage.setItem("sourcesMap", JSON.stringify(sourcesMap));
+      });
+      console.log('localStorage', JSON.parse(localStorage.getItem("sources")));
+    } else {
+      // if localStorage is NOT aviable for the browser
+      alert("Please use other a Browser like Firefox or Chrome");
+    }
   },
   getInitialState: function() {
     this.getInitialData();
+    this.getInitialSource();
     return {
       sourceData: null,
       currentPosition: 0,

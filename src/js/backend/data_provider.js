@@ -13,6 +13,7 @@ import providerUtils from './data_provider_utils';
 var detailTestDataUrl = "../../test/dummyRehashedDetailViewData.json";
 var agreggatedTestDataUrl = "../../test/dummyAgreggatedViewData.json";
 var detailModifiedTestDataUrl = "../../test/dummyRehashedModifiedDetailViewData.json";
+var initialSourcesUrl = "../../test/dummyInitialSourceRequest.json";
 
 /**
  * GET-request to backend
@@ -43,6 +44,10 @@ var dataProvider = {
    */
   getInitialSources: function() {
     //TODO return dummyData
+    return fetchData(initialSourcesUrl).then(function(sources) {
+      console.log('getInitialSources', sources);
+      return sources.source;
+    });
   },
 
   /**
