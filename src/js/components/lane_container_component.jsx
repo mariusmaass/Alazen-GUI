@@ -9,9 +9,10 @@ import MutationView from './mutation_view_component.jsx!';
 import SourceSelect from './source_select_component.jsx!';
 
 import dataProvider from 'backend/data_provider';
+import DATA from 'backend/embedded_data';
 
-const PIXELS_PER_INTERVAL = 15;
-const NUMBER_OF_INTERVALS = 200;
+const PIXELS_PER_INTERVAL = DATA.config.pixelsPerInterval;
+const NUMBER_OF_INTERVALS = DATA.config.numberOfIntervals;
 
 var LaneContainer = React.createClass({
   getInitialState: function() {
@@ -46,8 +47,7 @@ var LaneContainer = React.createClass({
   handleDrag: function(event, ui) {
     var newWindowBegin = this.getWindowBeginByPixelPosition(ui.position.left);
     this.props.moveFunction({
-      windowBegin: newWindowBegin,
-      windowEnd:   newWindowBegin + this.props.windowSize
+      windowBegin: newWindowBegin
     });
   },
   handleSingleMutation: function(singleData) {
@@ -62,8 +62,10 @@ var LaneContainer = React.createClass({
   createIndex: function() {
     var index = [];
     var interval = this.props.windowSize / NUMBER_OF_INTERVALS;
+    var markerInterval = interval * 10;
+    var markerAt = this.props.windowBegin % markerInterval;
     for (var i = this.props.windowBegin; i <= this.props.windowEnd; i += interval) {
-      if ((i % (interval * 10)) == 0) {
+      if (i % markerInterval === markerAt) {
         index.push(<span className="lane-interval" key={i}>{i}</span>);
       } else {
         index.push(<span className="lane-interval" key={i}></span>);

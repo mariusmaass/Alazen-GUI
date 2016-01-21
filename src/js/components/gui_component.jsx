@@ -36,17 +36,18 @@ var GuiComponent = React.createClass({
       true
     );
   },
-  getWindowIntervalByZoomLevel: function(zoomLevel) {
-    return {
-      windowEnd: DATA.zoomLevel[zoomLevel],
-      windowSize: DATA.zoomLevel[zoomLevel]
-    };
+  getWindowBeginForZoomlevel: function(oldWindowBegin, zoomLevel) {
+    // var intervalSize = DATA.zoomLevel[zoomLevel] / DATA.config.numberOfIntervals;
+    // var offBy = oldWindowBegin % intervalSize;
+    // return oldWindowBegin + intervalSize - offBy;
+    return oldWindowBegin;
   },
   handleMove: function(bundle) {
+    var newWindowBegin = this.getWindowBeginForZoomlevel(bundle.windowBegin, this.state.currentZoomLevel);
     dataProvider.getPosition(
       ["Maus", "Pferd", "B-Meise"],
       "ChromosomeXY",
-      bundle.windowBegin,
+      newWindowBegin,
       this.state.currentZoomLevel,
       this.state.currentZoomLevel === 1
     ).then((sources) => {
@@ -54,10 +55,10 @@ var GuiComponent = React.createClass({
       Object.assign(
         stateUpdate,
         {
-          windowBegin: bundle.windowBegin,
-          windowEnd: bundle.windowEnd,
-          laneContentsVersion: yyid(),
+          windowBegin: newWindowBegin,
+          windowEnd:   newWindowBegin + this.state.windowSize,
           sourceData: sources,
+          laneContentsVersion: yyid()
         }
       );
       this.setState(stateUpdate);
@@ -67,20 +68,27 @@ var GuiComponent = React.createClass({
     // TODO
   },
   handleZoom: function(zoomLevel) {
-    zoomLevel    = zoomLevel || 1;
-    var isDetailView = zoomLevel === 1;
+    zoomLevel          = zoomLevel ||  1;
+    var isDetailView   = zoomLevel === 1;
+    var newWindowBegin = this.getWindowBeginForZoomlevel(this.state.windowBegin, zoomLevel);
     dataProvider.getPosition(
       ["Maus", "Pferd", "B-Meise"],
       "ChromosomeXY",
-      this.state.windowBegin,
+      newWindowBegin,
       zoomLevel,
       isDetailView
     ).then((sources) => {
       var stateUpdate = {};
       Object.assign(
         stateUpdate,
-        {currentZoomLevel: zoomLevel, sourceData: sources},
-        this.getWindowIntervalByZoomLevel(zoomLevel)
+        {
+          currentZoomLevel: zoomLevel,
+          windowSize:       DATA.zoomLevel[zoomLevel],
+          windowBegin:      newWindowBegin,
+          windowEnd:        newWindowBegin + DATA.zoomLevel[zoomLevel],
+          sourceData:       sources,
+          laneContentsVersion: yyid()
+        }
       );
       this.setState(stateUpdate);
     });
@@ -113,7 +121,7 @@ var GuiComponent = React.createClass({
             </div>
             <div className="col-xs-12 col-sm-12">
               <div className="info">
-                Current Position {this.state.windowBegin} / Zoomlevel {this.state.currentZoomLevel} / More Info
+                Current Position {this.state.windowBegin} | Zoomlevel {this.state.currentZoomLevel}
               </div>
             </div>
           </div>

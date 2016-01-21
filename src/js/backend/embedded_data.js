@@ -1,4 +1,8 @@
 var DATA = {
+  "config": {
+    "pixelsPerInterval": 15,
+    "numberOfIntervals": 200
+  },
   "zoomLevel": {
     "1": 200,
     "2": 1000,
