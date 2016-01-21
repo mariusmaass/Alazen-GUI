@@ -37,6 +37,7 @@ var GuiComponent = React.createClass({
     );
   },
   getWindowBeginForZoomlevel: function(oldWindowBegin, zoomLevel) {
+    if (oldWindowBegin < 0) { return 0; }
     // var intervalSize = DATA.zoomLevel[zoomLevel] / DATA.config.numberOfIntervals;
     // var offBy = oldWindowBegin % intervalSize;
     // return oldWindowBegin + intervalSize - offBy;
