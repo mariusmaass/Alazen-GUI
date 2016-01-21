@@ -2,6 +2,7 @@
 
 import React from 'react';
 import $ from 'jquery';
+import yyid from 'yyid';
 
 import LaneContainer from './lane_container_component.jsx!';
 import Slider from 'rc-slider';
@@ -17,7 +18,8 @@ var GuiComponent = React.createClass({
     windowBegin: 0,
     windowEnd: DATA.zoomLevel[1],
     windowSize: DATA.zoomLevel[1],
-    chromosomeNr: DATA.chromosomeList[0].id
+    chromosomeNr: DATA.chromosomeList[0].id,
+    laneContentsVersion: yyid()
   },
   getInitialState: function() {
     this.getInitialData().then((sources) => {
@@ -51,7 +53,12 @@ var GuiComponent = React.createClass({
       var stateUpdate = {};
       Object.assign(
         stateUpdate,
-        {windowBegin: bundle.windowBegin, sourceData: sources}
+        {
+          windowBegin: bundle.windowBegin,
+          windowEnd: bundle.windowEnd,
+          laneContentsVersion: yyid(),
+          sourceData: sources,
+        }
       );
       this.setState(stateUpdate);
     });
@@ -75,7 +82,6 @@ var GuiComponent = React.createClass({
         {currentZoomLevel: zoomLevel, sourceData: sources},
         this.getWindowIntervalByZoomLevel(zoomLevel)
       );
-      console.log("handleZoom ", zoomLevel, stateUpdate);
       this.setState(stateUpdate);
     });
   },
@@ -113,7 +119,7 @@ var GuiComponent = React.createClass({
           </div>
           <div className="row">
             <div className="lane-container col-sm-12">
-              <LaneContainer data={this.state.sourceData} currentZoomLevel={this.state.currentZoomLevel} windowBegin={this.state.windowBegin} windowEnd={this.state.windowEnd} windowSize={this.state.windowSize} moveFunction={this.handleMove}/>
+              <LaneContainer data={this.state.sourceData} currentZoomLevel={this.state.currentZoomLevel} windowBegin={this.state.windowBegin} windowEnd={this.state.windowEnd} windowSize={this.state.windowSize} moveFunction={this.handleMove} laneContentsVersion={this.state.laneContentsVersion}/>
             </div>
           </div>
         </div>

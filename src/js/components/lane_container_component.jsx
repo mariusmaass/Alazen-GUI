@@ -24,9 +24,6 @@ var LaneContainer = React.createClass({
     // TODO should data really live in props AND state?
     this.setState({data: newProps.data});
   },
-  startPoint: function() {
-    return {x: -(20 * PIXELS_PER_INTERVAL), y: 0};
-  },
   handleSourceSelect: function(updateData) {
     //todo: anpassen für alle vier quellen
     //this.replaceState({data: updateData});
@@ -44,11 +41,13 @@ var LaneContainer = React.createClass({
     return this.props.currentZoomLevel === 1;
   },
   getWindowBeginByPixelPosition: function(pixelBegin) {
-    return -Math.round((pixelBegin * this.props.windowSize) / (PIXELS_PER_INTERVAL * NUMBER_OF_INTERVALS));
+    return this.props.windowBegin - Math.round((pixelBegin * this.props.windowSize) / (PIXELS_PER_INTERVAL * NUMBER_OF_INTERVALS));
   },
   handleDrag: function(event, ui) {
+    var newWindowBegin = this.getWindowBeginByPixelPosition(ui.position.left);
     this.props.moveFunction({
-      windowBegin: this.getWindowBeginByPixelPosition(ui.position.left)
+      windowBegin: newWindowBegin,
+      windowEnd:   newWindowBegin + this.props.windowSize
     });
   },
   handleSingleMutation: function(singleData) {
@@ -63,7 +62,7 @@ var LaneContainer = React.createClass({
   createIndex: function() {
     var index = [];
     var interval = this.props.windowSize / NUMBER_OF_INTERVALS;
-    for (var i = 0; i <= this.props.windowEnd; i += interval) {
+    for (var i = this.props.windowBegin; i <= this.props.windowEnd; i += interval) {
       if ((i % (interval * 10)) == 0) {
         index.push(<span className="lane-interval" key={i}>{i}</span>);
       } else {
@@ -96,7 +95,7 @@ var LaneContainer = React.createClass({
         </div>
 
         <div className="lane-contents">
-          <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
+          <Draggable axis="x" onStop={this.handleDrag} key={this.props.laneContentsVersion}>
             <div className="lanes-block">
               <div className="lane-content-index">{this.createIndex()}</div>
               <div>{this.renderLanes()}</div>
