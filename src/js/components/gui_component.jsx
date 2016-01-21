@@ -12,7 +12,7 @@ import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
 import SelectMaleCheckbox from './select_male_checkbox_component.jsx!';
 import SelectFemaleCheckbox from './select_female_checkbox_component.jsx!';
-import SelectRelativeFrequencyCheckbox from './select_relative_frequency_component.jsx!';
+import InputRelativeFrequency from './input_relative_frequency_component.jsx!';
 
 var GuiComponent = React.createClass({
   getInitialData: function() {
@@ -33,7 +33,7 @@ var GuiComponent = React.createClass({
       origin: [DATA.countryList[0].id],
       male: true,
       female: true,
-      relativeFrequency: true
+      relativeFrequency: 0
     };
   },
   getWindowIntervalByZoomLevel: function(zoomLevel) {
@@ -88,10 +88,10 @@ var GuiComponent = React.createClass({
       var femaleSelect = !this.state.female;
       console.log(filterSelected + " state changed to " + femaleSelect);
       this.setState({female: femaleSelect});
-    } else if (filterSelected == "relFreq") {
-      var relFreqSelect = !this.state.relativeFrequency;
-      console.log(filterSelected + " state changed to " + relFreqSelect);
-      this.setState({relativeFrequency: relFreqSelect});
+    } else if (Number.isInteger(parseFloat(filterSelected))) {
+      var relFreqNum = parseFloat(filterSelected);
+      console.log("Relative frequency state changed to " + relFreqNum);
+      this.setState({relativeFrequency: relFreqNum});
     } else {
       console.log("Filter Eror");
     }
@@ -109,20 +109,22 @@ var GuiComponent = React.createClass({
           <img className="ideogram" src={"/images/chromosome_" + this.state.chromosomeNr + ".png"}/>
         </div>
         <br/>
-        <div className="search-filter">
-          <SelectNationality list={DATA.countryList} nationalitySelected={this.changeNationality}/>
-          <div className="search-checkboxes">
-            <SelectMaleCheckbox checkboxSelected={this.changeSearchFilter}/>
-            <SelectFemaleCheckbox checkboxSelected={this.changeSearchFilter}/>
-            <SelectRelativeFrequencyCheckbox checkboxSelected={this.changeSearchFilter}/>
-          </div>
-        </div>
         <div className="container-fluid main">
           <div className="row navigation">
-            <div className="col-xs-12 col-sm-7">
+            <div className="col-xs-12 col-sm-4">
               <SearchField/>
             </div>
-            <div className="col-xs-12 col-sm-5">
+            <div className="col-xs-12 col-sm-4 search-filter">
+              <div className="country-selection-filter">
+                <SelectNationality list={DATA.countryList} nationalitySelected={this.changeNationality}/>
+              </div>
+              <div className="filter">
+                <SelectMaleCheckbox checkboxSelected={this.changeSearchFilter}/>
+                <SelectFemaleCheckbox checkboxSelected={this.changeSearchFilter}/>
+                <InputRelativeFrequency numberInput={this.changeSearchFilter}/>
+              </div>
+            </div>
+            <div className="col-xs-12 col-sm-4">
               <div className="slider-container">
                 <Slider min={1} max={7} defaultValue={this.state.currentZoomLevel} onChange={this.handleZoom}/>
               </div>

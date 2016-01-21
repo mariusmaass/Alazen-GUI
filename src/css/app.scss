@@ -168,16 +168,29 @@ body {
     width: 150px;
     margin: auto;
 }
+/* NATIONALITY SELECTION */
 
 .country-selection-list {
-    display: inline-block; //neu
+    margin-left: 50px;
     width: 150px;
-    position: relative; //neu
-    margin: auto;
 }
-.search-checkboxes {
-    display: inline-block;
-    position: relative;
-    padding-left: 40px;
-    margin-bottom: 20px;
+/* SEARCH FILTERS */
+.filter {
+    text-align: left;
+}
+.filter .checkbox {
+    margin: 0px;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+.search-filter {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.rel-freq-box {
+    margin-left: 10px;
+}
+.rel-freq {
+    width: 70px;
 }
