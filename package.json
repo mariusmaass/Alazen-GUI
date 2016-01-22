@@ -32,7 +32,8 @@
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4",
       "jshint": "npm:jshint@^2.8.0",
-      "jsx": "github:floatdrop/plugin-jsx@^1.1.0"
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
+      "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.6"
     }
   },
   "devDependencies": {
