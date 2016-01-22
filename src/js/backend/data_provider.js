@@ -69,8 +69,15 @@ var dataProvider = {
     });
 
     if (detailView) {
-      if (sources[0] == "Elefant") {
-        return Promise.all([fetchData(detailModifiedTestDataUrl)]);
+      if (sources[0] == "UCSC") {
+        return Promise.all([fetchData(detailModifiedTestDataUrl)]).then(function(srcs) {
+          return srcs.map(function(value, index) {
+            return {
+              id: sources[index],
+              data: value
+            };
+          });
+        });
       } else {
         return Promise.all(
           [

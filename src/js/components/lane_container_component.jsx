@@ -28,13 +28,17 @@ var LaneContainer = React.createClass({
   },
   handleRemoveSource: function(selectedSrc) {
     var oldData = this.state.data;
-    //console.log('handleRemoveSource', selectedSrc, oldData);
     var newData = [];
     for (var i = 0; i < oldData.length; i++) {
       if (oldData[i].id !== selectedSrc) {
         newData.push(oldData[i]);
       }
     }
+    // get localStorage source map an set the source false, and save the map
+    var checkedSources = JSON.parse(localStorage.getItem("sourcesMap"));
+    checkedSources[selectedSrc] = false;
+    console.log('newSources', checkedSources);
+    localStorage.setItem("sourcesMap", JSON.stringify(checkedSources));
     this.setState({data: newData});
   },
   isDetailView: function() {

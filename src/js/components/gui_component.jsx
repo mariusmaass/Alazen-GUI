@@ -83,8 +83,17 @@ var GuiComponent = React.createClass({
       this.setState(stateUpdate);
     });
   },
-  handleAddSource: function() {
-    console.log('handleAddSource');
+  handleAddSource: function(src) {
+    // TODO: fail handle!
+    console.log('handleAddSource', src);
+    dataProvider.getPosition([src], this.state.chromosomeNr, "0 - 10", this.state.currentZoomLevel, true).then((sources) => {
+      // get localStorage source map an set the source true, and save the map
+      var checkedSources = JSON.parse(localStorage.getItem("sourcesMap"));
+      checkedSources[src] = true;
+      console.log('newSources', checkedSources);
+      localStorage.setItem("sourcesMap", JSON.stringify(checkedSources));
+      this.setState({sourceData: sources});
+    });
   },
   changeChromHeader: function(chromosomeNr) {
     this.setState({chromosomeNr: chromosomeNr});
