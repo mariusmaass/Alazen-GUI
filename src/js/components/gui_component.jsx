@@ -9,33 +9,22 @@ import SearchField from './searchfield_component.jsx!';
 import SelectChromosome from './chromosome_selection_component.jsx!';
 import dataProvider from 'backend/data_provider';
 import DATA from 'backend/embedded_data';
+import sourceDigger from 'backend/source_digger';
 
 var GuiComponent = React.createClass({
-  getInitialData: function() {
-    dataProvider.getPosition(["Maus", "Pferd", "B-Meise"], "ChromosomeXY", "0 - 10", 7, true).then((sources) => {
+  getInitialSourceData: function(sourceNames) {
+    dataProvider.getPosition(sourceNames, this.state.chromosomeNr, "0 - 10", 1, true).then((sources) => {
       this.setState({sourceData: sources});
     });
   },
   getInitialSource: function() {
-    //inital source request
-    if (typeof(Storage) !== "undefined") {
-      dataProvider.getInitialSources().then((sources) => {
-        localStorage.setItem("initSources", JSON.stringify(sources));
-        var sourcesMap = {};
-        sources.map(function(source) {
-          sourcesMap[source] = false;
-        });
-        console.log('sources', sourcesMap);
-        localStorage.setItem("sourcesMap", JSON.stringify(sourcesMap));
-      });
-      console.log('localStorage', JSON.parse(localStorage.getItem("sources")));
-    } else {
-      // if localStorage is NOT aviable for the browser
-      alert("Please use other a Browser like Firefox or Chrome");
-    }
+    sourceDigger.getSources().then((sources) => {
+      this.setState({availableSources: sources});
+      var availableSources = Object.keys(sources).filter((sourceId) => sources[sourceId]);
+      this.getInitialSourceData(availableSources);
+    });
   },
   getInitialState: function() {
-    this.getInitialData();
     this.getInitialSource();
     return {
       sourceData: null,
@@ -44,7 +33,8 @@ var GuiComponent = React.createClass({
       windowBegin: 0,
       windowEnd: DATA.zoomLevel[1],
       windowSize: DATA.zoomLevel[1],
-      chromosomeNr: DATA.chromosomeList[0].id
+      chromosomeNr: DATA.chromosomeList[0].id,
+      availableSources: null
     };
   },
   getWindowIntervalByZoomLevel: function(zoomLevel) {
@@ -83,16 +73,35 @@ var GuiComponent = React.createClass({
       this.setState(stateUpdate);
     });
   },
-  handleAddSource: function(src) {
+  handleAddSource: function(selectedSource) {
     // TODO: fail handle!
-    console.log('handleAddSource', src);
-    dataProvider.getPosition([src], this.state.chromosomeNr, "0 - 10", this.state.currentZoomLevel, true).then((sources) => {
-      // get localStorage source map an set the source true, and save the map
-      var checkedSources = JSON.parse(localStorage.getItem("sourcesMap"));
-      checkedSources[src] = true;
-      console.log('newSources', checkedSources);
-      localStorage.setItem("sourcesMap", JSON.stringify(checkedSources));
-      this.setState({sourceData: sources});
+    dataProvider.getPosition([selectedSource], this.state.chromosomeNr, "0 - 10", this.state.currentZoomLevel, true).then((source) => {
+      var oldData = this.state.sourceData;
+      var newData = oldData.concat(source);
+      var newSources = this.state.availableSources;
+      newSources[selectedSource] = true;
+      sourceDigger.updateSources(newSources);
+      this.setState({
+        sourceData: newData,
+        availableSources: newSources
+      });
+    });
+  },
+  handleRemoveSource: function(selectedSource) {
+    // TODO: false lane remove handle
+    var oldData = this.state.sourceData;
+    var newData = [];
+    for (var i = 0; i < oldData.length; i++) {
+      if (oldData[i].id !== selectedSource) {
+        newData.push(oldData[i]);
+      }
+    }
+    var newSources = this.state.availableSources;
+    newSources[selectedSource] = false;
+    sourceDigger.updateSources(newSources);
+    this.setState({
+      sourceData: newData,
+      availableSources: newSources
     });
   },
   changeChromHeader: function(chromosomeNr) {
@@ -131,12 +140,14 @@ var GuiComponent = React.createClass({
             <div className="lane-container col-sm-12">
               <LaneContainer
                 data={this.state.sourceData}
+                availableSources={this.state.availableSources}
                 currentZoomLevel={this.state.currentZoomLevel}
                 windowBegin={this.state.windowBegin}
                 windowEnd={this.state.windowEnd}
                 windowSize={this.state.windowSize}
                 moveFunction={this.handleMove}
-                addSourceFunction={this.handleAddSource}/>
+                addSourceFunction={this.handleAddSource}
+                removeSourceFunction={this.handleRemoveSource}/>
             </div>
           </div>
         </div>

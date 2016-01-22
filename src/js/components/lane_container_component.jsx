@@ -26,21 +26,6 @@ var LaneContainer = React.createClass({
   startPoint: function() {
     return {x: -(20 * DEFAULT_BASE_FACTOR), y: 0};
   },
-  handleRemoveSource: function(selectedSrc) {
-    var oldData = this.state.data;
-    var newData = [];
-    for (var i = 0; i < oldData.length; i++) {
-      if (oldData[i].id !== selectedSrc) {
-        newData.push(oldData[i]);
-      }
-    }
-    // get localStorage source map an set the source false, and save the map
-    var checkedSources = JSON.parse(localStorage.getItem("sourcesMap"));
-    checkedSources[selectedSrc] = false;
-    console.log('newSources', checkedSources);
-    localStorage.setItem("sourcesMap", JSON.stringify(checkedSources));
-    this.setState({data: newData});
-  },
   isDetailView: function() {
     return this.props.currentZoomLevel === 1;
   },
@@ -84,7 +69,7 @@ var LaneContainer = React.createClass({
     return <div>
       <div className="mutation-board">
         <div className="lane-contents">
-          <SourceSelect sourceData={this.state.data} handleClick={this.handleSourceSelect} addSourceFunction={this.props.addSourceFunction} removeSourceFunction={this.handleRemoveSource}/>
+          <SourceSelect availableSources={this.props.availableSources} sourceData={this.state.data} handleClick={this.handleSourceSelect} addSourceFunction={this.props.addSourceFunction} removeSourceFunction={this.props.removeSourceFunction}/>
           <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
             <div className="lanes-block">
               <div className="lane-content-index">{this.createIndex()}</div>
