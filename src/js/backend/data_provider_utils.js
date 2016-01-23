@@ -17,10 +17,10 @@ var providerUtils = {
 
     if (mutations.length === 0) {
       mutationSequence.push({
-        id          : mutationSequenceIndex,
-        sequence    : ref,
+        id: mutationSequenceIndex,
+        sequence: ref,
         mutationFlag: false,
-        metadata    : ""
+        metadata: ""
       });
       return mutationSequence;
     }
@@ -28,10 +28,10 @@ var providerUtils = {
       startOfMutation = mutations[index].position.from;
       // if first mutation is not at start of refseq
       if (startOfMutation !== 0 && index === 0) {
-    	  sequence = ref.substring(0, startOfMutation);
-    	  pushSequence(sequence, mutationSequence, mutationSequenceIndex);
-    	  mutationSequenceIndex++;
-      // if there is a gap between mutations
+        sequence = ref.substring(0, startOfMutation);
+        pushSequence(sequence, mutationSequence, mutationSequenceIndex);
+        mutationSequenceIndex++;
+          // if there is a gap between mutations
       } else if (endOfLastInterval < startOfMutation - 1) {
         sequence = ref.substring(endOfLastInterval + 1, startOfMutation);
         pushSequence(sequence, mutationSequence, mutationSequenceIndex);
@@ -40,17 +40,17 @@ var providerUtils = {
       endOfLastInterval = mutations[index].position.to;
       // pushing a mutation into the array
       mutationSequence.push({
-        id          : mutationSequenceIndex,
-        sequence    : mutations[index].mutationseq,
+        id: mutationSequenceIndex,
+        sequence: mutations[index].mutationseq,
         mutationFlag: true,
-        metadata    : mutations[index].metadata
+        metadata: mutations[index].metadata
       });
       mutationSequenceIndex++;
       // if the last mutation does not reach the end of the refseq
-      if (index + 1 == mutations.length && endOfLastInterval < ref.length-1) {
-    	  sequence = ref.substring(endOfLastInterval+1, ref.length+1);
-    	  pushSequence(sequence, mutationSequence, mutationSequenceIndex);
-    	  mutationSequenceIndex++;
+      if (index + 1 == mutations.length && endOfLastInterval < ref.length - 1) {
+        sequence = ref.substring(endOfLastInterval + 1, ref.length + 1);
+        pushSequence(sequence, mutationSequence, mutationSequenceIndex);
+        mutationSequenceIndex++;
       }
     }
     return mutationSequence;
@@ -66,10 +66,10 @@ var providerUtils = {
 */
 function pushSequence(sequence, mutationSequence, index) {
   mutationSequence.push({
-    id          : index,
-    sequence    : sequence,
+    id: index,
+    sequence: sequence,
     mutationFlag: false,
-    metadata    : ""
+    metadata: ""
   });
 }
 
