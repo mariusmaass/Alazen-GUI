@@ -47,8 +47,60 @@ var GuiComponent = React.createClass({
       this.setState(stateUpdate);
     });
   },
-  handleSearch: function(bundle) {
-    // TODO
+  handleSearch: function(bundle, iType) {
+    /*
+      iType: 1 = Chromosom; From - To
+      iType: 2 = From - To
+      iType: 3 = Genname
+    */
+    var aSources = ["Maus", "Pferd", "B-Meise"];
+    var iChromosomeId; /* 12 */
+    var sPosition; /* 123-456 */
+    var iZoomLevel; /* Integer */
+    var bDetailView; /* true|false */
+
+    switch (iType) {
+      case 1:
+
+        /* Get Chromosom ID and Position from Search Field */
+        console.log("iType = " + iType);
+        iChromosomeId = bundle.chromosom;
+        sPosition = bundle.from + "-" + bundle.to;
+
+        break;
+
+      case 2:
+
+        /* Get only Position from Search Field and Chromosom ID from Chromosom Field */
+        console.log("iType = " + iType);
+        iChromosomeId = this.state.chromosomeNr;
+        sPosition = bundle.from + "-" + bundle.to;
+
+        break;
+
+      case 3:
+        /* Get Gen Name from Search Field */
+        console.log("iType = " + iType);
+        console.log("Gen = " + bundle);
+
+        break;
+
+      default:
+        /* Nothing */
+        console.log("Nothing ...");
+
+        break;
+
+    }
+
+    console.log('Internal Search Request', {
+      sources: aSources,
+      chromosome: iChromosomeId,
+      position: sPosition,
+      zoomLevel: iZoomLevel,
+      detailView: bDetailView
+    });
+
   },
   handleZoom: function(zoomLevel) {
     zoomLevel    = zoomLevel || 1;
@@ -83,7 +135,7 @@ var GuiComponent = React.createClass({
         <div className="container-fluid main">
           <div className="row navigation">
             <div className="col-xs-12 col-sm-7">
-              <SearchField/>
+              <SearchField submitFunction={this.handleSearch}/>
             </div>
             <div className="col-xs-12 col-sm-5">
               <div className="slider-container">

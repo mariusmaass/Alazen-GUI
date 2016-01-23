@@ -8,6 +8,12 @@ var SearchField = React.createClass({
 
     var inputSearchValue = this.refs.inputSearch.value;
     var bundle;
+    /*
+      iType: 1 = Chromosom; From - To
+      iType: 2 = From - To
+      iType: 3 = Genname
+    */
+    var iType;
 
     if (!inputSearchValue) {
       /* Input Value is Empty */
@@ -19,9 +25,11 @@ var SearchField = React.createClass({
       /* Input Value is Integer and not empty */
 
       var iInputSearchValue = inputSearchValue;
+      iType = 2;
 
       if (-1 !== iInputSearchValue.indexOf(';')) {
         /* Input Value contains ';' */
+        iType = 1;
         var iChromosom    = iInputSearchValue.slice(0, iInputSearchValue.indexOf(';'));
         iInputSearchValue = iInputSearchValue.slice(iInputSearchValue.indexOf(';') + 1);
       }
@@ -40,24 +48,26 @@ var SearchField = React.createClass({
         to: iRightPosition,
       };
 
-            /* Call Backend Function getPosition() */
-            //getPosition(bundle);
+      this.props.submitFunction(
+        bundle,
+        iType
+      );
 
     } else {
 
       /* Input Value is String and not empty */
-
+      iType = 3;
       inputSearchValue = inputSearchValue.trim();
       /* Create bundle for the Backend */
       bundle = inputSearchValue;
 
-      /* Call Backend Function searchGene() */
-      //searchGene(bundle);
+      this.props.submitFunction(
+        bundle,
+        iType
+      );
+
     }
 
-    //this.handleSearchSubmit({inputSearch : inputSearchValue});
-    // TODO: send request to the server
-    //this.refs.inputSearch.value = '';
     return;
   },
 
