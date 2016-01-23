@@ -2,45 +2,43 @@
 
 import providerUtils from 'backend/data_provider_utils';
 
-var testMutationJSON = '{"detail":{"refseq": "AAACCCGGGTTT",' +
-  '"mutations":' +
-  '[{"name":"PX7","interval":' +
-  '{ "from": 4, "to": 6 }},' +
-  '{"name": "PX10", "interval":' +
-  '{"from": 7, "to": 9}}' +
-  ']}}';
+var testMutationJSON =
+'{"details": ' +
+  '{"refseq": "AAACCCCGGGGTTTT",' +
+  '"mutations": [' +
+    '{"refname":"PX7",' +
+    '"mutationseq": "AAACCCC","position":' +
+    '{"from": 0, "to": 6 },' +
+    '"metadata": ""},' +
+    '{"refname": "PX10",' +
+    '"mutationseq": "TTT", "position":' +
+    '{"from": 12, "to": 14},' +
+    '"metadata": ""}' +
+  ']}' +
+'}';
 
-var expectedAnswer = new Array([{
-  id: "0",
-  sequence: "AAAC",
+var expectedAnswer = new Array({
+  id: 0,
+  sequence: "AAACCCC",
+  mutationFlag: true,
+  metadata: ""
+}, {
+  id: 1,
+  sequence: "GGGGT",
   mutationFlag: false,
   metadata: ""
-},
-  {
-    id: "PX7",
-    sequence: "CCG",
-    mutationFlag: true,
-    metadata: ""
-  },
-  {
-    id: "PX10",
-    sequence: "GGT",
-    mutationFlag: true,
-    metadata: ""
-  },
-  {
-    id: "3",
-    sequence: "TT",
-    mutationFlag: false,
-    metadata: ""
-  },
-]);
+}, {
+  id: 2,
+  sequence: "TTT",
+  mutationFlag: true,
+  metadata: ""
+});
 
 describe('dataProvider', function() {
   describe('[actions]', function() {
     it('has a buildMutationSequence function', function() {
       var answer = providerUtils.buildMutationSequence(JSON.parse(testMutationJSON));
-      expect(answer).toBe(expectedAnswer);
+      expect(JSON.stringify(answer)).toBe(JSON.stringify(expectedAnswer));
     });
   });
 });
