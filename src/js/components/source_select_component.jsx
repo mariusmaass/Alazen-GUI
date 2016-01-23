@@ -4,17 +4,27 @@ import React from 'react';
 import dataProvider from 'backend/data_provider';
 
 var SourceSelect = React.createClass({
-  addSource: function() {
-    dataProvider.getPosition(["Elefant"], "ChromosomeXY", "0 - 10", 1, true).then((values) => {
-      this.props.handleClick(values[0]);
+  addSource: function(id) {
+    this.props.addSourceFunction(id);
+  },
+  removeSource: function(id) {
+    this.props.removeSourceFunction(id);
+  },
+  showInactiveSources: function() {
+    var inactiveSourceNames = Object.keys(this.props.availableSources).filter((source) => this.props.availableSources[source] !== true);
+    return inactiveSourceNames.map((source) => {
+      return <div><button className="btn btn-success source-button" key={source} onClick={this.addSource.bind(this, source)}>{source}</button></div>;
     });
+  },
+  renderSourceLabels: function() {
+    return this.props.sourceData.map(function(laneData) {
+      return <div className="source-label" key={laneData.id}>Source: {laneData.id} <button className="btn btn-xs btn-danger" onClick={this.removeSource.bind(this, laneData.id)}><span className="glyphicon glyphicon-trash"></span></button></div>;
+    }, this);
   },
   render: function() {
     return <div className="source-select">
-      <button className="btn btn-success active source-button">Source 1</button>
-      <button className="btn btn-success active source-button">Source 2</button>
-      <button className="btn btn-success active source-button">Source 3</button>
-      <button className="btn btn-primary sourcebutton" onClick={this.addSource}>Source 4</button>
+      <div>{this.renderSourceLabels()}</div>
+      <div className="button-container">{this.showInactiveSources()}</div>
     </div>;
   }
 });

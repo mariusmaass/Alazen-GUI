@@ -26,19 +26,6 @@ var LaneContainer = React.createClass({
   startPoint: function() {
     return {x: -(20 * DEFAULT_BASE_FACTOR), y: 0};
   },
-  handleSourceSelect: function(updateData) {
-    //todo: anpassen für alle vier quellen
-    //this.replaceState({data: updateData});
-    var testData = this.state.data;
-    if (typeof testData[3] == "undefined") {
-      testData.push(updateData);
-      this.setState({data: testData});
-    } else {
-      testData.pop();
-      this.setState({data: testData});
-    }
-
-  },
   isDetailView: function() {
     return this.props.currentZoomLevel === 1;
   },
@@ -78,21 +65,11 @@ var LaneContainer = React.createClass({
       }
     },this);
   },
-  renderLanesLabels: function() {
-    return this.state.data.map(function(laneData) {
-      return <div className="lane-label" key={laneData.id}>Source: {laneData.id}</div>;
-    });
-  },
   renderMutationBoard: function() {
     return <div>
-      <SourceSelect handleClick={this.handleSourceSelect}/>
       <div className="mutation-board">
-        <div className="lane-labels">
-          <div className="lane-label-index">Index</div>
-          <div>{this.renderLanesLabels()}</div>
-        </div>
-
         <div className="lane-contents">
+          <SourceSelect availableSources={this.props.availableSources} sourceData={this.state.data} handleClick={this.handleSourceSelect} addSourceFunction={this.props.addSourceFunction} removeSourceFunction={this.props.removeSourceFunction}/>
           <Draggable axis="x" onStop={this.handleDrag} start={this.startPoint()}>
             <div className="lanes-block">
               <div className="lane-content-index">{this.createIndex()}</div>

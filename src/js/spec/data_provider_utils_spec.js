@@ -22,21 +22,17 @@ var expectedAnswer = new Array({
   sequence: "AAACCCC",
   mutationFlag: true,
   metadata: ""
-  },
-  {
-    id: 1,
-    sequence: "GGGGT",
-    mutationFlag: false,
-    metadata: ""
-  },
-  {
-    id: 2,
-    sequence: "TTT",
-    mutationFlag: true,
-    metadata: ""
-  }
-);
-
+}, {
+  id: 1,
+  sequence: "GGGGT",
+  mutationFlag: false,
+  metadata: ""
+}, {
+  id: 2,
+  sequence: "TTT",
+  mutationFlag: true,
+  metadata: ""
+});
 
 describe('dataProvider', function() {
   describe('[actions]', function() {
