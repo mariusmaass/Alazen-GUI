@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+const aGenNames = ['FOXP2', 'Dystrophin', 'NF1', 'BRCA1', 'BRCA2', 'Survivin'];
+
 var SearchField = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
@@ -96,54 +98,40 @@ var SearchField = React.createClass({
     return !isNaN(parseInt(o));
   },
 
-  handleSearchAutoComplete: function() {
+  handleSearchAutoComplete: function(val) {
 
     console.log('handleSearchAutoComplete');
-    // Get the <datalist> and <input> elements.
+
     var dataList = document.getElementById('jsonDataList');
-    //var dataList = this.refs.jsonDataList;
-    //var input = document.getElementById('inputSearch');
-    var input = this.refs.inputSearch;
+    this.clearDataList(dataList);
 
-    // Create a new XMLHttpRequest.
-    var request = new XMLHttpRequest();
+    var autoCompleteResult = this.matchGenName(this.refs.inputSearch.value);
 
-    // Set up the request.
-    request.open('GET', '../test/dummyGenAutoComplete.json', true);
+    autoCompleteResult.forEach(function(item) {
+      // Create a new <option> element.
+      var option = document.createElement('option');
+      // Set the value using the item in the JSON array.
+      option.value = item;
+      // Add the <option> element to the <datalist>.
+      dataList.appendChild(option);
+    });
 
-    // Handle state changes for the request.
-    request.onreadystatechange = function(response) {
+  },
 
-      if (request.readyState === 4) {
-        if (request.status === 200) {
-          // Parse the JSON
-          var jsonOptions = JSON.parse(request.responseText);
-          // Loop over the JSON array.
-          jsonOptions.forEach(function(item) {
-            // Create a new <option> element.
-            var option = document.createElement('option');
+  matchGenName: function(input) {
+    var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
 
-            // Set the value using the item in the JSON array.
-            option.value = item;
-            // Add the <option> element to the <datalist>.
-            dataList.appendChild(option);
-          });
-
-          // Update the placeholder text.
-          input.placeholder = "e.g. datalist";
-        } else {
-          // An error occured :(
-          input.placeholder = "Couldn't load datalist options :(";
-        }
+    return aGenNames.filter(function(gen) {
+      if (gen.match(reg)) {
+        return gen;
       }
-    };
+    });
+  },
 
-    // Update the placeholder text.
-    input.placeholder = "Loading options...";
-
-    // Send the request.
-    request.send();
-
+  clearDataList: function(element) {
+    while (element.lastChild) {
+      element.removeChild(element.lastChild);
+    }
   },
 
   render: function() {
