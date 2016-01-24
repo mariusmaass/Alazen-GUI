@@ -101,6 +101,10 @@ var GuiComponent = React.createClass({
       detailView: bDetailView
     });
 
+    dataProvider.getPosition(aSources, iChromosomeId, sPosition, iZoomLevel, bDetailView).then((sources) => {
+      this.setState({sourceData: sources});
+    });
+
   },
   handleZoom: function(zoomLevel) {
     zoomLevel    = zoomLevel || 1;
